@@ -48,7 +48,33 @@ npm run qa         # consola, 404, overflow, CLS, peso, LCP y scroll-proof
 window.__BUILD_ID__  qué build está sirviendo producción realmente
 ```
 
-## Publicación (Coolify, proyecto demos-sector)
+## Publicado
+
+**https://nacar.asck.tech** — app Coolify `nacar-dental` (`ar9athq8375g243vh3s7t49b`),
+proyecto `demos-sector`, build pack `dockerfile`, repo `009XS/asck-demo-nacar`, rama `main`.
+Cada push a `main` dispara despliegue por webhook.
+
+⚠️ **No confundir con `dentista.asck.tech`**: ese subdominio sirve la demo **Clínica Marfil**
+(repo `009XS/asck-demo-dental-landing`, carpeta `02_DEMOS_SECTOR/dental/clinica-marfil-demo`).
+Son dos piezas distintas del mismo sector y ninguna sustituye a la otra.
+
+### Rúbrica `doctrina-diseno` — 8.5 / 10 (medido contra producción, sin topes activos)
+
+| Categoría | Peso | Nota | Evidencia |
+|---|---|---|---|
+| Concepto y narrativa | 15% | 8.5 | «capa por capa»; firma = el acto de los 45' |
+| Tipografía | 15% | 8.5 | 2 familias subset; ratio 9.6:1; fallbacks métricos |
+| Composición y espacio | 10% | 8 | 12 col, 0.42/0.58, numeración editorial |
+| Color y atmósfera | 10% | 8.5 | tokens del mundo, acento avaro, grano de nácar |
+| Movimiento y scroll | 15% | 8 | una pieza scrub que narra; catálogo cerrado |
+| Fallback reduce + a11y | 10% | 9 | misma obra apilada, interruptor, foco, skip |
+| Rendimiento | 10% | 9 | 270 KB · LCP 0.92 s · CLS 0.0023 en 6 escenarios |
+| Detalle / craft | 10% | 8.5 | foco por contexto, velo en filas, 404 propio |
+| Contenido y conversión | 5% | 9 | números concretos, CTA que dice qué pasa |
+
+Contraste AA medido: pizarra 5.53 · jade 5.60 · tinta 15.71 · porcelana/petróleo 15.23.
+
+## Cómo se publicó (Coolify, proyecto demos-sector)
 
 Contenedor `Dockerfile` + nginx (mismo patrón que umbral-arquitectura: cabeceras en
 `security-headers.conf` incluidas por location, `noindex` mientras sea demo).
