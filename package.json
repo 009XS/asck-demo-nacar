@@ -1,0 +1,23 @@
+{
+  "name": "nacar-dental-landing",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 5187 --strictPort",
+    "build": "tsc -p tsconfig.json && vite build",
+    "preview": "vite preview --port 4187 --strictPort",
+    "typecheck": "tsc -p tsconfig.json",
+    "qa": "node scripts/qa.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "^5.2.5",
+    "@fontsource/cormorant-garamond": "^5.2.5",
+    "gsap": "^3.13.0"
+  },
+  "devDependencies": {
+    "playwright": "^1.62.1",
+    "typescript": "^5.8.3",
+    "vite": "^7.0.0"
+  }
+}
