@@ -58,19 +58,22 @@ Cada push a `main` dispara despliegue por webhook.
 (repo `009XS/asck-demo-dental-landing`, carpeta `02_DEMOS_SECTOR/dental/clinica-marfil-demo`).
 Son dos piezas distintas del mismo sector y ninguna sustituye a la otra.
 
-### Rúbrica `doctrina-diseno` — 8.5 / 10 (medido contra producción, sin topes activos)
+### Rúbrica `doctrina-diseno` — 8.6 / 10 (medido contra producción, sin topes activos)
 
 | Categoría | Peso | Nota | Evidencia |
 |---|---|---|---|
 | Concepto y narrativa | 15% | 8.5 | «capa por capa»; firma = el acto de los 45' |
 | Tipografía | 15% | 8.5 | 2 familias subset; ratio 9.6:1; fallbacks métricos |
-| Composición y espacio | 10% | 8 | 12 col, 0.42/0.58, numeración editorial |
+| Composición y espacio | 10% | 8.5 | filas escalonadas, cita a sangre derecha, testimonios desfasados |
 | Color y atmósfera | 10% | 8.5 | tokens del mundo, acento avaro, grano de nácar |
-| Movimiento y scroll | 15% | 8 | una pieza scrub que narra; catálogo cerrado |
+| Movimiento y scroll | 15% | 8.5 | cada paso ilumina SU capa del arco; parallax de plano sostenido |
 | Fallback reduce + a11y | 10% | 9 | misma obra apilada, interruptor, foco, skip |
-| Rendimiento | 10% | 9 | 270 KB · LCP 0.92 s · CLS 0.0023 en 6 escenarios |
+| Rendimiento | 10% | 9 | 272 KB · LCP ≤ 0.88 s · CLS ≤ 0.0033 en 6 escenarios |
 | Detalle / craft | 10% | 8.5 | foco por contexto, velo en filas, 404 propio |
 | Contenido y conversión | 5% | 9 | números concretos, CTA que dice qué pasa |
+
+Video de venta (adjunto de llamadas): `scripts/grabar-video.cjs` →
+`D:\ASCK-Video\listo\nacar-landing-demo-2026-08-08.mp4` (79 s · 8 MB · 1080p).
 
 Contraste AA medido: pizarra 5.53 · jade 5.60 · tinta 15.71 · porcelana/petróleo 15.23.
 
