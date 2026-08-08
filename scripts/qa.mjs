@@ -99,6 +99,12 @@ for (const modo of ['on', 'off']) {
 
     await page.goto(`${BASE}/?motion=${modo}`, { waitUntil: 'networkidle' })
 
+    // LCP de la CARGA, antes de mover la página. Medirlo después del recorrido
+    // no mide nada útil: la API sigue promoviendo elementos mayores mientras
+    // no haya interacción real, así que el scroll programático del QA
+    // convertía cualquier bloque grande del acto en «el LCP».
+    const lcpCarga = await page.evaluate(() => window.__lcp)
+
     // overflow horizontal
     const overflow = await page.evaluate(
       () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
@@ -150,9 +156,12 @@ for (const modo of ['on', 'off']) {
     }
 
     // métricas
-    const { cls, lcp } = await page.evaluate(() => ({ cls: window.__cls, lcp: window.__lcp }))
-    nota(`CLS (máx. ventana): ${cls.toFixed(4)} · LCP: ${Math.round(lcp)}ms · transferido: ${(bytes / 1024).toFixed(0)}KB`)
+    const { cls } = await page.evaluate(() => ({ cls: window.__cls }))
+    nota(
+      `CLS (máx. ventana): ${cls.toFixed(4)} · LCP de carga: ${Math.round(lcpCarga)}ms · transferido: ${(bytes / 1024).toFixed(0)}KB`,
+    )
     if (cls > 0.1) fallos.push(`[${etiqueta}] CLS ${cls.toFixed(4)} (> 0.1)`)
+    if (lcpCarga > 2500) fallos.push(`[${etiqueta}] LCP ${Math.round(lcpCarga)}ms (> 2500)`)
     if (bytes / 1024 > 1536) fallos.push(`[${etiqueta}] entrada de ${(bytes / 1024).toFixed(0)}KB (> 1.5MB)`)
 
     // 404 del propio nginx/preview no cuenta como roto si es la ruta de prueba

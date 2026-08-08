@@ -7,6 +7,21 @@
  * Inter — SIL Open Font License 1.1
  */
 
+/**
+ * Fallback métrico de Inter sobre Arial (medido en Chrome contra el sitio
+ * publicado: ancho 107.3 %, ascent 0.97em, descent 0.24em). Sin él, en red
+ * real el swap reflowaba el texto del hero en móvil: CLS 0.243 medido en
+ * https://nacar.asck.tech con perfil 375 px.
+ */
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial');
+  size-adjust: 107.3%;
+  ascent-override: 97%;
+  descent-override: 24%;
+  line-gap-override: 0%;
+}
+
 @font-face {
   font-family: 'Inter Variable';
   font-style: normal;
