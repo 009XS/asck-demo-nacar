@@ -86,6 +86,18 @@ export function montarActo(animar: boolean): gsap.Context {
       { entra: 0.52, sale: 0.73 },
       { entra: 0.75, sale: -1 },
     ]
+
+    // «Capa por capa» dejado de ser sólo copy: cada paso ILUMINA su capa del
+    // arco (esmalte → dentina → nervio → las tres) y atenúa las demás. Es el
+    // concepto de la marca convertido en la mecánica del scroll.
+    const capas = ['.arco-a', '.arco-b', '.arco-c']
+    const foco = [
+      [1, 0.35, 0.25],
+      [0.3, 1, 0.3],
+      [0.25, 0.35, 1],
+      [0.85, 0.85, 0.85],
+    ]
+
     pasos.forEach((paso, i) => {
       const t = tramos[i]
       if (!t) return
@@ -94,6 +106,15 @@ export function montarActo(animar: boolean): gsap.Context {
       tl.fromTo(paso, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.055 }, t.entra)
       if (num) tl.fromTo(num, { yPercent: 26 }, { yPercent: 0, duration: 0.075 }, t.entra)
       if (tit) tl.fromTo(tit, { y: 34 }, { y: 0, duration: 0.075 }, t.entra)
+
+      const pesos = foco[i]
+      if (pesos) {
+        capas.forEach((capa, c) => {
+          const el = pin.querySelector(capa)
+          if (el) tl.to(el, { opacity: pesos[c], duration: 0.05 }, t.entra)
+        })
+      }
+
       if (t.sale > 0) tl.to(paso, { autoAlpha: 0, y: -28, duration: 0.05 }, t.sale)
     })
 

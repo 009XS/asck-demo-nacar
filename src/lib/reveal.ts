@@ -74,6 +74,25 @@ export function montarReveals(animar: boolean): gsap.Context {
       })
     })
 
+    // La cita a sangre deriva más lento que la página: el intersticio se
+    // siente como un plano sostenido, no como otra sección que pasa.
+    gsap.utils.toArray<HTMLElement>('[data-parallax-lento]').forEach((el) => {
+      gsap.fromTo(
+        el,
+        { yPercent: -7 },
+        {
+          yPercent: 7,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: el.closest('.intersticio') ?? el,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 0.5,
+          },
+        },
+      )
+    })
+
     // La pista «Desplaza» se disuelve con el primer gesto de scroll.
     const hint = document.querySelector('.h-hint')
     if (hint) {

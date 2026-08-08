@@ -7,6 +7,7 @@ import {
   cierre,
   equipo,
   footer,
+  intersticio,
   manifiesto,
   metodo,
   nav,
@@ -105,13 +106,13 @@ const serviciosHtml = () => `
       <div class="filas">
         ${servicios.items
           .map(
-            (s) => `
-        <article class="fila" data-reveal-group>
+            (s, i) => `
+        <article class="fila" data-fila="${i}" data-reveal-group>
           <div class="fila__velo" aria-hidden="true"></div>
           <span class="fila__indice reveal" aria-hidden="true">${s.indice}</span>
-          <div class="fila__centro reveal">
-            <h3 class="fila__nombre">${s.nombre}</h3>
-            <p class="label">${s.tag}</p>
+          <div class="fila__centro">
+            <h3 class="fila__nombre"><span class="reveal-mask"><span>${s.nombre}</span></span></h3>
+            <p class="label reveal">${s.tag}</p>
           </div>
           <div class="fila__lado reveal">
             <p class="fila__texto">${s.texto}</p>
@@ -123,6 +124,16 @@ const serviciosHtml = () => `
       </div>
     </div>
   </section>`
+
+const intersticioHtml = () => `
+  <aside class="intersticio" aria-label="Nota de la directora clínica" data-reveal-group>
+    <div class="shell" data-parallax-lento>
+      <!-- Sin reveal-mask a propósito: la máscara recorta bloques de varias
+           líneas. Aquí manda el parallax lento + un fade-up. -->
+      <blockquote class="intersticio__cita reveal">${intersticio.cita}</blockquote>
+      <p class="label intersticio__pie reveal">${intersticio.pie}</p>
+    </div>
+  </aside>`
 
 const pacientesHtml = () => `
   <section class="seccion seccion--arena pacientes" id="pacientes" aria-labelledby="t-pacientes">
@@ -149,8 +160,8 @@ const pacientesHtml = () => `
       <div class="testimonios" data-reveal-group>
         ${pacientes.testimonios
           .map(
-            (t) => `
-        <article class="testimonio reveal">
+            (t, i) => `
+        <article class="testimonio reveal" data-testimonio="${i}">
           <blockquote>«${t.cita}»</blockquote>
           <footer><b>${t.nombre}</b>${t.tratamiento}</footer>
         </article>`,
@@ -241,6 +252,7 @@ export function render(root: HTMLElement): void {
       ${manifiestoHtml()}
       ${actoHtml()}
       ${serviciosHtml()}
+      ${intersticioHtml()}
       ${pacientesHtml()}
       ${equipoHtml()}
       ${visitaHtml()}

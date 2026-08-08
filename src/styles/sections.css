@@ -430,12 +430,27 @@ html[data-motion='off'] .acto__rail {
   pointer-events: none;
 }
 
+/* Asimetría intencional #1: cada fila entra un poco más que la anterior y su
+   columna de texto se acorta. La lista deja de ser una tabla y se lee como
+   una secuencia que se estrecha hacia el final. */
+.fila[data-fila='1'] {
+  padding-left: clamp(0rem, 2vw, 2.5rem);
+}
+.fila[data-fila='2'] {
+  padding-left: clamp(0rem, 4vw, 5rem);
+}
+.fila[data-fila='3'] {
+  padding-left: clamp(0rem, 6vw, 7.5rem);
+}
+
 .fila__indice {
   position: relative;
   font-family: var(--serif);
   font-weight: 300;
   font-size: 1.4rem;
   color: var(--oro);
+  font-feature-settings: 'lnum';
+  font-variant-numeric: lining-nums;
 }
 
 .fila__centro {
@@ -484,6 +499,53 @@ html[data-motion='off'] .acto__rail {
   .fila {
     grid-template-columns: 1fr;
     gap: 0.7rem;
+  }
+  /* El escalonado sólo tiene sentido con ancho: en móvil comería la medida. */
+  .fila[data-fila] {
+    padding-left: 0;
+  }
+}
+
+/* ========================================================== intersticio */
+
+.intersticio {
+  position: relative;
+  background: var(--petroleo);
+  color: var(--porcelana);
+  padding-block: clamp(5rem, 16vh, 10rem);
+  overflow: hidden;
+}
+
+.intersticio__cita {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(1.75rem, 4.2vw, 3.6rem);
+  line-height: 1.18;
+  letter-spacing: -0.015em;
+  /* Asimetría #2: la cita arranca en la mitad derecha y sangra hacia fuera. */
+  max-width: 20ch;
+  margin-left: auto;
+  margin-right: clamp(0rem, 4vw, 6rem);
+  text-align: left;
+}
+
+.intersticio__pie {
+  margin-top: 1.8rem;
+  margin-right: clamp(0rem, 4vw, 6rem);
+  text-align: right;
+  color: var(--jade-claro);
+}
+
+@media (max-width: 760px) {
+  .intersticio__cita {
+    max-width: none;
+    margin-right: 0;
+  }
+  .intersticio__pie {
+    margin-right: 0;
+    text-align: left;
   }
 }
 
@@ -560,6 +622,17 @@ html[data-motion='off'] .acto__rail {
   gap: 1.3rem;
   background: var(--porcelana);
   padding: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+/* Asimetría #3: los testimonios no se alinean por arriba. Tres tarjetas a la
+   misma altura son una tabla; desfasadas son una conversación. */
+@media (min-width: 901px) {
+  .testimonio[data-testimonio='1'] {
+    margin-top: clamp(1.5rem, 4vh, 3rem);
+  }
+  .testimonio[data-testimonio='2'] {
+    margin-top: clamp(3rem, 8vh, 6rem);
+  }
 }
 
 .testimonio blockquote {

@@ -136,6 +136,12 @@ export const servicios = {
   ],
 }
 
+/** Intersticio a sangre: respiro entre el catálogo y la prueba social. */
+export const intersticio = {
+  cita: 'Nadie llega al dentista por los dientes. Llega por lo que dejó de hacer con ellos.',
+  pie: 'Dra. Irene Salcedo — directora clínica',
+}
+
 export const pacientes = {
   numero: '04',
   etiqueta: 'Pacientes',
