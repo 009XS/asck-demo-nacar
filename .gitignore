@@ -3,3 +3,5 @@ dist/
 qa/
 *.local
 .DS_Store
+.npm-cache-c03/
+assets-src/

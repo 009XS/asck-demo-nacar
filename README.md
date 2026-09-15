@@ -5,6 +5,8 @@ Landing de UNA página para el sector dental, construida al nivel del kit UMBRAL
 el disclaimer va en el pie; la captación (WhatsApp/tel) apunta a ASCK.
 
 Dirección de arte y guion de scroll: `DIRECCION.md` (mini-biblia — manda sobre el CSS).
+Rúbrica vigente: `RUBRICA_v2.md`. Informes de misión: `docs/misiones/` (`C19.report.md` es el
+cierre de la v2.1 en producción).
 
 ## Qué es (y qué no)
 
