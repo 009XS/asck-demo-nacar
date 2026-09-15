@@ -1,7 +1,7 @@
 {
   "frameBytes": {
-    "desktop": 7884418,
-    "mobile": 2824596
+    "desktop": 7983510,
+    "mobile": 2980502
   },
   "limits": {
     "desktop": 8000000,
@@ -11,488 +11,166 @@
     {
       "mode": "on",
       "name": "390x844",
-      "lcpMs": 728,
+      "lcpMs": 756,
       "clsInitial": 0,
-      "clsScrollDiagnostico": 2,
+      "clsScrollDiagnostico": 0,
+      "inputBytes": 3170256,
       "overflowPx": 0,
       "errors": [],
       "broken": [],
       "scrollProof": 45,
-      "contentScreens": 7.62,
+      "contentScreens": 7.67,
+      "labelContrasts": [
+        15.23,
+        8.54,
+        8.54,
+        8.54,
+        8.54,
+        8.54,
+        8.54,
+        15.23,
+        8.55
+      ],
       "motionToggle": {
         "width": 155.578125,
         "height": 44,
         "pressed": "true"
       },
-      "shifts": [
-        {
-          "phase": "scroll",
-          "value": 1,
-          "startTime": 4632,
-          "sources": [
-            {
-              "node": "canvas",
-              "previousRect": {
-                "x": 0,
-                "y": 0,
-                "width": 0,
-                "height": 0,
-                "top": 0,
-                "right": 0,
-                "bottom": 0,
-                "left": 0
-              },
-              "currentRect": {
-                "x": 0,
-                "y": 0.484375,
-                "width": 390,
-                "height": 843.515625,
-                "top": 0.484375,
-                "right": 390,
-                "bottom": 844,
-                "left": 0
-              }
-            }
-          ]
-        },
-        {
-          "phase": "scroll",
-          "value": 1,
-          "startTime": 9731,
-          "sources": [
-            {
-              "node": "canvas",
-              "previousRect": {
-                "x": 0,
-                "y": 0,
-                "width": 0,
-                "height": 0,
-                "top": 0,
-                "right": 0,
-                "bottom": 0,
-                "left": 0
-              },
-              "currentRect": {
-                "x": 0,
-                "y": 0.484375,
-                "width": 390,
-                "height": 843.515625,
-                "top": 0.484375,
-                "right": 390,
-                "bottom": 844,
-                "left": 0
-              }
-            }
-          ]
-        }
-      ]
+      "shifts": []
     },
     {
       "mode": "on",
       "name": "667x375",
-      "lcpMs": 128,
+      "lcpMs": 144,
       "clsInitial": 0,
-      "clsScrollDiagnostico": 2,
+      "clsScrollDiagnostico": 0,
+      "inputBytes": 3170256,
       "overflowPx": 0,
       "errors": [],
       "broken": [],
       "scrollProof": 45,
-      "contentScreens": 14.78,
+      "contentScreens": 14.84,
+      "labelContrasts": null,
       "motionToggle": {
         "width": 169.90625,
         "height": 44,
         "pressed": "true"
       },
-      "shifts": [
-        {
-          "phase": "scroll",
-          "value": 1,
-          "startTime": 1056,
-          "sources": [
-            {
-              "node": "#metodo",
-              "previousRect": {
-                "x": 0,
-                "y": 0,
-                "width": 0,
-                "height": 0,
-                "top": 0,
-                "right": 0,
-                "bottom": 0,
-                "left": 0
-              },
-              "currentRect": {
-                "x": 0,
-                "y": 0.265625,
-                "width": 667,
-                "height": 374.734375,
-                "top": 0.265625,
-                "right": 667,
-                "bottom": 375,
-                "left": 0
-              }
-            }
-          ]
-        },
-        {
-          "phase": "scroll",
-          "value": 1,
-          "startTime": 5873,
-          "sources": [
-            {
-              "node": "canvas",
-              "previousRect": {
-                "x": 0,
-                "y": 0,
-                "width": 0,
-                "height": 0,
-                "top": 0,
-                "right": 0,
-                "bottom": 0,
-                "left": 0
-              },
-              "currentRect": {
-                "x": 0,
-                "y": 0.265625,
-                "width": 667,
-                "height": 374.734375,
-                "top": 0.265625,
-                "right": 667,
-                "bottom": 375,
-                "left": 0
-              }
-            }
-          ]
-        }
-      ]
+      "shifts": []
     },
     {
       "mode": "on",
       "name": "768x1024",
-      "lcpMs": 132,
+      "lcpMs": 128,
       "clsInitial": 0,
-      "clsScrollDiagnostico": 2,
+      "clsScrollDiagnostico": 0,
+      "inputBytes": 3170256,
       "overflowPx": 0,
       "errors": [],
       "broken": [],
       "scrollProof": 45,
-      "contentScreens": 6.27,
+      "contentScreens": 6.29,
+      "labelContrasts": null,
       "motionToggle": {
         "width": 169.90625,
         "height": 44,
         "pressed": "true"
       },
-      "shifts": [
-        {
-          "phase": "scroll",
-          "value": 1,
-          "startTime": 1174,
-          "sources": [
-            {
-              "node": "canvas",
-              "previousRect": {
-                "x": 0,
-                "y": 0,
-                "width": 0,
-                "height": 0,
-                "top": 0,
-                "right": 0,
-                "bottom": 0,
-                "left": 0
-              },
-              "currentRect": {
-                "x": 0,
-                "y": 0,
-                "width": 768,
-                "height": 1023.875,
-                "top": 0,
-                "right": 768,
-                "bottom": 1023.875,
-                "left": 0
-              }
-            }
-          ]
-        },
-        {
-          "phase": "scroll",
-          "value": 1,
-          "startTime": 5874,
-          "sources": [
-            {
-              "node": "canvas",
-              "previousRect": {
-                "x": 0,
-                "y": 0,
-                "width": 0,
-                "height": 0,
-                "top": 0,
-                "right": 0,
-                "bottom": 0,
-                "left": 0
-              },
-              "currentRect": {
-                "x": 0,
-                "y": 0,
-                "width": 768,
-                "height": 1023.875,
-                "top": 0,
-                "right": 768,
-                "bottom": 1023.875,
-                "left": 0
-              }
-            }
-          ]
-        }
-      ]
+      "shifts": []
     },
     {
       "mode": "on",
       "name": "1024x768",
-      "lcpMs": 156,
+      "lcpMs": 136,
       "clsInitial": 0,
-      "clsScrollDiagnostico": 2,
+      "clsScrollDiagnostico": 0,
+      "inputBytes": 8173264,
       "overflowPx": 0,
       "errors": [],
       "broken": [],
       "scrollProof": 45,
-      "contentScreens": 6.21,
+      "contentScreens": 6.17,
+      "labelContrasts": null,
       "motionToggle": {
         "width": 169.90625,
         "height": 44,
         "pressed": "true"
       },
-      "shifts": [
-        {
-          "phase": "scroll",
-          "value": 1,
-          "startTime": 1059,
-          "sources": [
-            {
-              "node": "#metodo",
-              "previousRect": {
-                "x": 0,
-                "y": 0,
-                "width": 0,
-                "height": 0,
-                "top": 0,
-                "right": 0,
-                "bottom": 0,
-                "left": 0
-              },
-              "currentRect": {
-                "x": 0,
-                "y": 0.078125,
-                "width": 1024,
-                "height": 767.921875,
-                "top": 0.078125,
-                "right": 1024,
-                "bottom": 768,
-                "left": 0
-              }
-            }
-          ]
-        },
-        {
-          "phase": "scroll",
-          "value": 1,
-          "startTime": 5892,
-          "sources": [
-            {
-              "node": "canvas",
-              "previousRect": {
-                "x": 0,
-                "y": 0,
-                "width": 0,
-                "height": 0,
-                "top": 0,
-                "right": 0,
-                "bottom": 0,
-                "left": 0
-              },
-              "currentRect": {
-                "x": 0,
-                "y": 0.078125,
-                "width": 1024,
-                "height": 767.921875,
-                "top": 0.078125,
-                "right": 1024,
-                "bottom": 768,
-                "left": 0
-              }
-            }
-          ]
-        }
-      ]
+      "shifts": []
     },
     {
       "mode": "on",
       "name": "1440x900",
       "lcpMs": 148,
       "clsInitial": 0,
-      "clsScrollDiagnostico": 2,
+      "clsScrollDiagnostico": 0,
+      "inputBytes": 8173264,
       "overflowPx": 0,
       "errors": [],
       "broken": [],
       "scrollProof": 45,
-      "contentScreens": 5.85,
+      "contentScreens": 5.88,
+      "labelContrasts": [
+        15.23,
+        15.21,
+        15.21,
+        8.54,
+        8.54,
+        15.2,
+        8.54,
+        15.23,
+        8.54
+      ],
       "motionToggle": {
         "width": 169.90625,
         "height": 44,
         "pressed": "true"
       },
-      "shifts": [
-        {
-          "phase": "scroll",
-          "value": 1,
-          "startTime": 1496,
-          "sources": [
-            {
-              "node": "canvas",
-              "previousRect": {
-                "x": 0,
-                "y": 0,
-                "width": 0,
-                "height": 0,
-                "top": 0,
-                "right": 0,
-                "bottom": 0,
-                "left": 0
-              },
-              "currentRect": {
-                "x": 0,
-                "y": 0.171875,
-                "width": 1440,
-                "height": 899.828125,
-                "top": 0.171875,
-                "right": 1440,
-                "bottom": 900,
-                "left": 0
-              }
-            }
-          ]
-        },
-        {
-          "phase": "scroll",
-          "value": 1,
-          "startTime": 7061,
-          "sources": [
-            {
-              "node": "canvas",
-              "previousRect": {
-                "x": 0,
-                "y": 0,
-                "width": 0,
-                "height": 0,
-                "top": 0,
-                "right": 0,
-                "bottom": 0,
-                "left": 0
-              },
-              "currentRect": {
-                "x": 0,
-                "y": 0.171875,
-                "width": 1440,
-                "height": 899.828125,
-                "top": 0.171875,
-                "right": 1440,
-                "bottom": 900,
-                "left": 0
-              }
-            }
-          ]
-        }
-      ]
+      "shifts": []
     },
     {
       "mode": "on",
       "name": "1920x1080",
       "lcpMs": 168,
       "clsInitial": 0,
-      "clsScrollDiagnostico": 1.9911,
+      "clsScrollDiagnostico": 0,
+      "inputBytes": 8173264,
       "overflowPx": 0,
       "errors": [],
       "broken": [],
       "scrollProof": 45,
-      "contentScreens": 5.32,
+      "contentScreens": 5.34,
+      "labelContrasts": null,
       "motionToggle": {
         "width": 169.90625,
         "height": 44,
         "pressed": "true"
       },
-      "shifts": [
-        {
-          "phase": "scroll",
-          "value": 0.9911458333333333,
-          "startTime": 1205,
-          "sources": [
-            {
-              "node": "canvas",
-              "previousRect": {
-                "x": 0,
-                "y": 0,
-                "width": 0,
-                "height": 0,
-                "top": 0,
-                "right": 0,
-                "bottom": 0,
-                "left": 0
-              },
-              "currentRect": {
-                "x": 0,
-                "y": 0,
-                "width": 1920,
-                "height": 1079.84375,
-                "top": 0,
-                "right": 1920,
-                "bottom": 1079.84375,
-                "left": 0
-              }
-            }
-          ]
-        },
-        {
-          "phase": "scroll",
-          "value": 1,
-          "startTime": 5927,
-          "sources": [
-            {
-              "node": "canvas",
-              "previousRect": {
-                "x": 0,
-                "y": 0,
-                "width": 0,
-                "height": 0,
-                "top": 0,
-                "right": 0,
-                "bottom": 0,
-                "left": 0
-              },
-              "currentRect": {
-                "x": 0,
-                "y": 0,
-                "width": 1920,
-                "height": 1079.84375,
-                "top": 0,
-                "right": 1920,
-                "bottom": 1079.84375,
-                "left": 0
-              }
-            }
-          ]
-        }
-      ]
+      "shifts": []
     },
     {
       "mode": "off",
       "name": "390x844",
-      "lcpMs": 684,
+      "lcpMs": 672,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
+      "inputBytes": 867374,
       "overflowPx": 0,
       "errors": [],
       "broken": [],
       "scrollProof": null,
       "contentScreens": null,
+      "labelContrasts": [
+        8.54,
+        8.54,
+        8.54,
+        8.54,
+        8.54,
+        8.54,
+        8.55,
+        8.54,
+        8.54
+      ],
       "motionToggle": {
         "width": 165.421875,
         "height": 44,
@@ -503,14 +181,16 @@
     {
       "mode": "off",
       "name": "667x375",
-      "lcpMs": 120,
+      "lcpMs": 108,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
+      "inputBytes": 867374,
       "overflowPx": 0,
       "errors": [],
       "broken": [],
       "scrollProof": null,
       "contentScreens": null,
+      "labelContrasts": null,
       "motionToggle": {
         "width": 179.484375,
         "height": 44,
@@ -521,14 +201,16 @@
     {
       "mode": "off",
       "name": "768x1024",
-      "lcpMs": 124,
+      "lcpMs": 128,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
+      "inputBytes": 867374,
       "overflowPx": 0,
       "errors": [],
       "broken": [],
       "scrollProof": null,
       "contentScreens": null,
+      "labelContrasts": null,
       "motionToggle": {
         "width": 179.484375,
         "height": 44,
@@ -542,11 +224,13 @@
       "lcpMs": 124,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
+      "inputBytes": 1089333,
       "overflowPx": 0,
       "errors": [],
       "broken": [],
       "scrollProof": null,
       "contentScreens": null,
+      "labelContrasts": null,
       "motionToggle": {
         "width": 179.484375,
         "height": 44,
@@ -560,11 +244,23 @@
       "lcpMs": 140,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
+      "inputBytes": 1089333,
       "overflowPx": 0,
       "errors": [],
       "broken": [],
       "scrollProof": null,
       "contentScreens": null,
+      "labelContrasts": [
+        8.54,
+        8.54,
+        8.54,
+        8.54,
+        8.54,
+        8.53,
+        8.54,
+        8.54,
+        8.54
+      ],
       "motionToggle": {
         "width": 179.484375,
         "height": 44,
@@ -578,11 +274,13 @@
       "lcpMs": 148,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
+      "inputBytes": 1089333,
       "overflowPx": 0,
       "errors": [],
       "broken": [],
       "scrollProof": null,
       "contentScreens": null,
+      "labelContrasts": null,
       "motionToggle": {
         "width": 179.484375,
         "height": 44,

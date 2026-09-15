@@ -1,6 +1,12 @@
 node_modules/
 dist/
-qa/
+qa/*
+!qa/R1/
+!qa/R1/**
+!qa/v2.2/
+!qa/v2.2/**
+qa/v2.2/cand-a/
+qa/v2.2/cand-b/
 *.local
 .DS_Store
 .npm-cache-c03/

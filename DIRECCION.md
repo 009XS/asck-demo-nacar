@@ -24,7 +24,7 @@ el precio: es el miedo y la desconfianza.
 | `--porcelana` | `#F6F3EE` | Fondo principal |
 | `--arena` | `#EAE5DC` | Fondos secundarios, velos de hover |
 | `--tinta` | `#1B1A18` | Texto principal |
-| `--pizarra` | `#6D6C66` | Texto secundario |
+| `--pizarra` | `#63625C` | Texto secundario |
 | `--jade` | `#2E6B60` | Acento (con avaricia): CTA, etiquetas, notas |
 | `--jade-claro` | `#8FC4B7` | Etiquetas y raíl sobre fondo oscuro |
 | `--oro` | `#A38E63` | Numerales editoriales, tercer arco |
@@ -92,6 +92,6 @@ El capítulo central conserva la promesa comercial: **Tu primera cita, minuto a 
 - `c03` — **sillón → instrumental**: travelling cercano desde el sillón jade hacia instrumental de precisión sobre piedra; latón envejecido y fondo petróleo.
 - `c04` — **radiografía → nácar oro**: la pantalla abstracta se resuelve en arcos luminosos y capas de nácar encendidas desde dentro con oro antiguo.
 
-Los cortes declarados son `c01-066 → c02-001`, `c02-066 → c03-001` y `c03-066 → c04-001`. El manifiesto conserva orden, capítulos y cortes para ambos sets. Los WebP existentes son 1440 px desktop / 800 px móvil, 10 fps; peso total medido: 7,512,862 B / 3,493,070 B. El modo `motion-off` mantiene las nueve JPG maestras como láminas fijas.
+Los cortes declarados son `c01-066 → c02-001`, `c02-066 → c03-001` y `c03-066 → c04-001`. El manifiesto conserva orden, capítulos y cortes para ambos sets. Los WebP existentes son 1440 px desktop / 720 px móvil, 10 fps; peso total medido: 7,983,510 B / 2,980,502 B. El modo `motion-off` mantiene las nueve JPG maestras como láminas fijas.
 
-La comprobación perceptual detecta además picos internos (máximo tras el índice 95): razón 6.798 desktop y 6.752 móvil frente al límite 3.5. No se reclasifican como cortes porque el manifiesto solo admite los tres cambios de plano reales; queda como deuda de continuidad del material fuente.
+La comprobación perceptual v2.2 mide un máximo interno de 25.385 desktop y 25.310 móvil en el set completo. El clip 02 elegido tiene pico 9.894 y razón máxima 1.466, sin sustitución de objetos. La puerta absoluta vigente es `0.75 × REF_SALTO = 32.33175`; los únicos saltos excluidos siguen siendo los tres cortes declarados.

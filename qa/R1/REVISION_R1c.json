@@ -1,0 +1,87 @@
+{
+  "revision": "R1c",
+  "fecha": "2026-09-15",
+  "objeto": "https://nacar.asck.tech",
+  "commit": "faa35d8",
+  "metodo": "medicion contra la URL en vivo; manifiesto identico y 7/7 hashes SHA-1 de fotogramas coinciden con el worktree en faa35d8; 6 viewports x 2 modos sin cache, 390x844 con CPU 4x y 1.6 Mbps; muestreo de barrido 600 ms; referentes medidos en vivo el mismo dia con el mismo script",
+  "verdict": "RECHAZADA",
+  "score": 6.0,
+  "score_ponderado_sin_tope": 7.13,
+  "tope_aplicado": "Fallback reduce = pagina sin narrativa -> 6",
+  "criteria": {
+    "concepto_y_narrativa": { "weight": 0.15, "score": 8.0 },
+    "tipografia": { "weight": 0.15, "score": 8.5 },
+    "composicion_y_espacio": { "weight": 0.10, "score": 7.5 },
+    "color_y_atmosfera": { "weight": 0.10, "score": 6.5 },
+    "movimiento_y_scroll": { "weight": 0.15, "score": 7.5 },
+    "reduce_y_accesibilidad": { "weight": 0.10, "score": 4.0 },
+    "rendimiento": { "weight": 0.10, "score": 6.0 },
+    "detalle_y_craft": { "weight": 0.10, "score": 7.0 },
+    "contenido_y_conversion": { "weight": 0.05, "score": 8.5 }
+  },
+  "mediciones": {
+    "lcp_ms": { "390x844_on": 1204, "390x844_off": 1268, "667x375_on": 1020, "768x1024_on": 984, "1024x768_on": 696, "1440x900_on": 856, "1920x1080_on": 1072 },
+    "cls_inicial": { "todas_las_12_combinaciones": 0.0 },
+    "cls_tras_barrido": { "390x844": 2.0, "667x375": 4.0, "768x1024": 2.0, "1024x768": 2.0, "1440x900": 2.0, "1920x1080": 1.9911, "fuentes": ["canvas", "#metodo"] },
+    "overflow_px": { "320x640": 0, "360x740": 0, "390x844": 0, "667x375": 0, "768x1024": 0, "1024x768": 0, "1440x900": 0, "1920x1080": 0 },
+    "entrada_bytes": { "390x844_on": 3210000, "667x375_on": 8270000, "768x1024_on": 8270000, "1440x900_on": 8270000, "390x844_off": 920000, "1440x900_off": 1140000 },
+    "set_bytes": { "desktop": 7884418, "mobile": 2824596, "limite_proyecto_desktop": 8000000, "limite_proyecto_mobile": 3000000, "limite_doctrina_mobile": 2500000 },
+    "scroll_proof_data_frame": { "muestras": 45, "distintos": 45, "viewports": 6 },
+    "scroll_proof_hash_canvas_1440": { "nacar": 35, "umbral": 35, "excamormar": 37, "danza": 13 },
+    "film_check": { "pico_interno_max_desktop": 33.959, "pico_indice": 98, "mediana_clip02": 14.078, "razon_max": 2.412, "limite_absoluto_calibrado": 38.7981, "cortes_declarados": [76.964, 89.061, 81.3] },
+    "contraste": { "etiqueta_capitulo_390": 2.19, "etiqueta_capitulo_1440": 3.65, "titular_1440": 15.62, "cuerpo_1440": 13.06, "hud_1440": 7.8, "boton_wa_nav_1440": 5.9, "exigido_AA": 4.5 },
+    "tipografia_1440": { "h1_px": 158.4, "cuerpo_px": 18, "ratio": 8.8, "familias": ["Cormorant Garamond", "Inter Variable"], "woff2": 4, "bytes_fuentes": 115624 },
+    "tap_targets_menores_44_en_390": 5,
+    "consola": { "errores": 0, "excepciones": 0, "respuestas_4xx_5xx": 0, "combinaciones": 12 },
+    "pagina_404": { "status": 404, "titulo": "404 — NÁCAR" },
+    "enlaces_whatsapp": 13
+  },
+  "blocking_fixes": [
+    "B1 src/lib/acto.ts: el ScrollTrigger y la timeline se crean dentro del .then() de fetch, fuera del alcance sincrono de gsap.context, asi que context.revert() no los mata. Pulsar el interruptor on->off deja data-motion=off con 1 pin-spacer, 1 trigger y las 9 film-card con opacity:0/visibility:hidden en linea: 0 de 9 capitulos visibles y ~34000 px de pantallas vacias. Arreglo: gsap.context((self) => ... self.add(() => { timeline; ScrollTrigger.create(...) })). Regresion en qa.mjs: pulsar [data-motion-toggle] y exigir 9 tarjetas visibles, 0 pin-spacer y 0 triggers.",
+    "B2 sections.css: .label hereda --pizarra #63625c sobre la pelicula. Contraste medido 2.19:1 en 390 y 3.65:1 en 1440, en los 9 capitulos y en ambos modos. Falla AA (4.5:1) e incluso AA grande (3:1). Arreglo: color propio de etiqueta sobre .film (jade-claro o rgba(246,243,238,.72)) + regresion de contraste sobre capturas.",
+    "B3 CLS de ciclo de vida 2.0 (4.0 en 667x375) causado por dos shifts de valor 1.0 del canvas al entrar y salir del pin. qa.mjs lo reclasifico como diagnostico en f9f6b5d en vez de corregirlo. Arreglo: pinType 'transform' o canvas fijo propio; clsScroll < 0.1 como puerta.",
+    "B4 Continuidad: entre los indices 97 y 98, dentro del clip c02 y sin corte declarado, cambian el sillon (unidad moderna gris-marron con lampara -> sillon vintage jade con base de laton), desaparece el taburete y cambia el suelo. Pico interno 33.959 frente a mediana de clip 14.078 (2.41x) y frente a cortes reales de 77-89. El guardarrail v2.1 se fijo en 38.7981 = 0.9 x el salto original, justo por encima del defecto restante. Arreglo: regenerar 93-101 o declarar corte, y devolver el guardarrail relativo a puerta.",
+    "B5 acto.ts elige el set con matchMedia('(max-width: 640px)') en vez de pointer:coarse: un telefono en horizontal (667x375) y una tableta (768x1024) descargan el set desktop de 7.88 MB (entrada medida 8.27 MB). El CSS del modo quieto ya usa la regla correcta (pointer:coarse) and (max-width:1180px)."
+  ],
+  "nice_to_have": [
+    "N1 La radiografia de los indices 198-235 es una ortopantomografia literal con orbitas y arcada completa; el fotograma 206 lee como craneo sonriente y el 225 muestra anatomia inverosimil (arcada duplicada, manchas anaranjadas). DIRECCION.md pedia 'radiografia abstracta' y prohibe caras.",
+    "N2 Copy contra imagen: el capitulo 02 'Diagnostico, mirar antes de tocar' cae sobre macro de nacar (indices 28-60) y el 06 'Plan, tu boca en pantalla' cae sobre instrumental (143-176); la pantalla no aparece hasta el 198.",
+    "N3 Cinco objetivos tactiles menores de 44 px en 390: h-quiet 187x27, nav__marca 121x38, nav__wa 117x38 (CTA principal), cierre__tel 226x27 y el mailto 127x16.",
+    "N4 DIRECCION.md ya no describe lo servido: declara 7512862/3493070 B (real 7884418/2824596), WebP movil de 800 px (real 720x412), razon 6.798/6.752 frente a limite 3.5 (vigente 2.412 frente a 4.0 + guardarrail 38.7981) y --pizarra #6D6C66 (CSS: #63625c).",
+    "N5 Codigo muerto de la v1 en el bundle: render.ts define actoHtml()/arcosActo() y los retiene con 'void actoHtml', impidiendo el tree-shaking; su CSS (.acto*, .paso*, .rail*) tambien sigue.",
+    "N6 El pie enlaza mailto:asck7986@gmail.com; el correo operativo de ASCK es contacto@asck.tech.",
+    "N7 Las 8 CTA de capitulo no se alcanzan por teclado sin recorrer el pin (las tarjetas estan visibility:hidden hasta que el scrub las muestra).",
+    "N8 Los 9 capitulos repiten la misma composicion (bloque abajo-izquierda); conviene romperla en 2 de 9."
+  ],
+  "comparacion_referentes": {
+    "metodo": "Chromium sin cache, mismo script y mismo dia; 390x844 con CPU 4x; scroll-proof comparable por hash del canvas con 45 muestras a 600 ms en 1440x900",
+    "nacar": { "lcp_390": 1204, "lcp_1440": 856, "cls_inicial_390": 0.0, "cls_tras_barrido_1440": 2.0, "entrada_390_mb": 3.21, "entrada_1440_mb": 8.27, "quieto_mb": 0.92, "cambios_hash": 35, "pantallas": 31.2, "interruptor": "156-187x44 con aria-pressed", "wa_links": 13, "familias": ["Cormorant Garamond", "Inter Variable"], "errores_consola": 0, "overflow": 0 },
+    "danza": { "url": "https://danza.asck.tech", "lcp_390": 1112, "lcp_1440": 824, "cls_inicial_390": 0.0101, "cls_tras_barrido_1440": 0.0051, "entrada_390_mb": 2.55, "entrada_1440_mb": 2.55, "quieto_mb": 1.52, "cambios_hash": 13, "pantallas": 10.7, "interruptor": "99x44 con aria-pressed", "wa_links": 6, "familias": ["Patrick Hand", "Caveat"], "errores_consola": 0, "overflow": 0 },
+    "excamormar": { "url": "https://excamormar.asck.tech", "lcp_390": 1480, "lcp_1440": 880, "cls_inicial_390": 0.0, "cls_tras_barrido_1440": 0.0, "entrada_390_mb": 10.18, "entrada_1440_mb": 34.81, "quieto_mb": 9.54, "cambios_hash": 37, "pantallas": 33.7, "interruptor": "252x44 sin aria-pressed", "wa_links": 0, "familias": ["Archivo Variable", "Inter Variable"], "errores_consola": 0, "overflow": 0 },
+    "umbral": { "url": "https://arquitectura.asck.tech", "calibracion_doctrina": 8.5, "lcp_390": 724, "lcp_1440": 576, "cls_inicial_390": 0.00003, "cls_tras_barrido_1440": 1.5369, "entrada_390_mb": 6.07, "entrada_1440_mb": 20.35, "quieto_mb": 0.72, "cambios_hash": 35, "pantallas": 37.6, "interruptor": "no encontrado con busqueda amplia", "wa_links": 0, "familias": ["Cormorant Garamond", "Inter Variable"], "errores_consola": 0, "overflow": 0 },
+    "gana_nacar_en": [
+      "Peso: 8.27 MB en desktop frente a 20.35 (UMBRAL) y 34.81 (Excamormar); 3.21 MB en movil frente a 6.07 y 10.18",
+      "Densidad narrativa por pantalla: 35 cambios en 31.2 pantallas frente a 35 en 37.6 (UMBRAL) y 37 en 33.7 (Excamormar), con 9 bloques de copy y CTA propios",
+      "Interruptor de movimiento con tamano y aria-pressed correctos (Excamormar lo tiene sin aria-pressed; en UMBRAL no se encontro)",
+      "Conversion: 13 enlaces wa.me con mensaje precargado por capitulo frente a 6, 0 y 0",
+      "Tipografia frente a danza (dos manuscritas como sistema de titulares)"
+    ],
+    "pierde_nacar_en": [
+      "CLS: 2.0 (4.0 en horizontal) frente a 0.0051 de danza, 0.0 de Excamormar y 1.5369 de UMBRAL; es el peor de los cuatro",
+      "LCP: 1204/856 ms frente a 724/576 ms de UMBRAL en las dos medidas",
+      "Integridad del material: solo NACAR tiene una sustitucion de mobiliario a mitad de plano (33.959)",
+      "Contraste: 2.19:1 en la etiqueta repetida nueve veces; ningun referente tiene un fallo AA equivalente",
+      "Robustez del modo quieto: danza conserva la obra al pulsar el interruptor, NACAR la pierde",
+      "Identidad tipografica: usa exactamente el mismo par que UMBRAL (Cormorant Garamond + Inter Variable), no uno propio"
+    ],
+    "conclusion": "Supera a Entre lineas y a Excamormar en ambicion narrativa, conversion y peso. NO supera a UMBRAL: pierde en LCP, CLS y identidad tipografica propia, y suma tres defectos que UMBRAL no tiene (salto interno de continuidad, fallo AA repetido y el interruptor que rompe la pieza central)."
+  },
+  "capturas": {
+    "r1c-01-salto-interno-clip02.png": "Fotogramas 93->101: sillon, taburete y suelo cambian dentro del mismo plano (B4)",
+    "r1c-02-radiografia-craneo.png": "Fotograma 206 ampliado: ortopantomografia literal que lee como craneo (N1)",
+    "r1c-03-etiqueta-capitulo-ilegible-390.png": "Etiqueta 05 - CONSULTA a 2.19:1 (B2)",
+    "r1c-04-interruptor-roto-capitulo-vacio.png": "Tras pulsar QUITAR MOVIMIENTO: pantalla completa vacia (B1)",
+    "r1c-05-desktop-capitulo07.png": "Nivel real de la pieza cuando funciona, 1440x900",
+    "r1c-06-movil-modo-quieto.png": "Modo quieto en carga fria, 390x844"
+  }
+}

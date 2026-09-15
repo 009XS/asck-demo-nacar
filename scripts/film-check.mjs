@@ -1,8 +1,8 @@
 /**
- * FILM-CHECK v2.1
+ * FILM-CHECK v2.2
  *
  * Guardarraíl absoluto calibrado con el salto humano confirmado del clip 02
- * original: REF_SALTO = 43.109 y LIMITE_SALTO = 0.9 * REF_SALTO = 38.7981.
+ * original: REF_SALTO = 43.109 y LIMITE_SALTO = 0.75 * REF_SALTO = 32.33175.
  * Falla si cualquier par interno alcanza ese límite. La mediana, razón local,
  * aislamiento y rachas se conservan como información; no deciden la puerta.
  * Los cortes declarados tras 65/131/197 se excluyen y se siguen listando.
@@ -17,7 +17,7 @@ const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'))
 const declaredCuts = new Set(manifest.cuts.map(({ after }) => after))
 const LIMITS = { desktop: 8_000_000, mobile: 3_000_000 }
 const REF_SALTO = 43.109
-const LIMITE_SALTO = 38.7981 // 0.9 * 43.109
+const LIMITE_SALTO = 0.75 * REF_SALTO
 const RATIO_THRESHOLD = 4.0
 const ISOLATION_THRESHOLD = 2.0
 const referenceClip02 = process.env.FILM_REFERENCE_C02
@@ -95,8 +95,8 @@ async function inspect(set) {
 }
 
 const report = {
-  version: 2.1,
-  calibracion: { refSalto: REF_SALTO, limiteSalto: LIMITE_SALTO, factor: 0.9, escala: 'gris 64x64, diferencia media absoluta' },
+  version: 2.2,
+  calibracion: { refSalto: REF_SALTO, limiteSalto: LIMITE_SALTO, factor: 0.75, escala: 'gris 64x64, diferencia media absoluta' },
   metricasInformativas: { razonClip: RATIO_THRESHOLD, picoAislado: ISOLATION_THRESHOLD },
   fps: manifest.fps, pinScreens: manifest.pinVh, contentScreensMax: 8,
   desktop: await inspect('desktop'), mobile: await inspect('mobile'),

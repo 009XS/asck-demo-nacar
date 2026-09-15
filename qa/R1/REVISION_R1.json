@@ -1,0 +1,26 @@
+{
+  "verdict": "RECHAZADA",
+  "score": 7.7,
+  "criteria": {
+    "concept_and_narrative": { "score": 8.7, "weight": 0.15, "evidence": "9 capítulos y concepto capa por capa; salto interno 95→96 rompe continuidad." },
+    "typography": { "score": 8.6, "weight": 0.15, "evidence": "Cormorant Garamond + Inter autoalojadas, escala fluida y jerarquía editorial." },
+    "composition_and_space": { "score": 8.3, "weight": 0.10, "evidence": "Film a sangre, asimetría, 0 px overflow en 6 tamaños; 33.61 pantallas totales móvil." },
+    "color_and_atmosphere": { "score": 8.8, "weight": 0.10, "evidence": "Paleta DIRECCION.md reproducida, scrims direccionales, mundo visual consistente." },
+    "motion_and_scroll": { "score": 6.8, "weight": 0.15, "evidence": "45/45 cambios en warmup; film-check 6.798/6.752 y pico interno no fundido tras frame 95." },
+    "reduced_motion_and_accessibility": { "score": 7.5, "weight": 0.10, "evidence": "9 láminas equivalentes y foco 2px; motion-pill sólo 30.6px de alto y sin aria-pressed." },
+    "performance": { "score": 5.8, "weight": 0.10, "evidence": "LCP 748ms; CLS 0.1984; frames móviles 3493070 B > 3000000 B." },
+    "detail_and_craft": { "score": 7.6, "weight": 0.10, "evidence": "Consola, 404 y overflow limpios; defectos de continuidad y target táctil pendientes." },
+    "content_and_conversion": { "score": 8.4, "weight": 0.05, "evidence": "Copy específico, WhatsApp precargado y disclaimer; sólo 1/9 CTA de capítulos va a WhatsApp." }
+  },
+  "blocking_fixes": [
+    { "file": "assets-src/clip/clip-02.mp4 + public/film/{desktop,mobile}/c02-*", "change": "Regenerar el tramo 95→96 y lograr razonCorte <= 3.5 sin reclasificarlo como corte." },
+    { "file": "index.html, src/fonts.css, src/lib/acto.ts", "change": "Eliminar el layout shift de 0.19774 a 1463ms y lograr CLS < 0.05 en carga fría móvil." },
+    { "file": "public/film/mobile/*, scripts/qa.mjs, scripts/film-check.mjs", "change": "Bajar el set móvil a <= 3000000 B y codificar ese límite real en las regresiones." },
+    { "file": "src/styles/sections.css, src/main.ts", "change": "Hacer motion-pill de al menos 44px de alto y sincronizar aria-pressed." }
+  ],
+  "nice_to_have": [
+    { "file": "src/lib/acto.ts", "change": "Precargar frames clave y anticipar dirección para scroll rápido bajo 4G." },
+    { "file": "src/render.ts", "change": "Llevar los nueve CTA de capítulos a WhatsApp si el requisito se interpreta literalmente." },
+    { "file": "scripts/qa.mjs", "change": "Separar CLS inicial de scroll, desactivar caché y guardar attribution de shifts." }
+  ]
+}
