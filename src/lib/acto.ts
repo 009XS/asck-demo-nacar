@@ -10,7 +10,7 @@ type FilmManifest = {
   cuts: Array<{ after: number; from: string; to: string }>
 }
 
-const MOBILE_QUERY = '(max-width: 640px)'
+const MOBILE_QUERY = '(max-width: 820px), (pointer: coarse) and (max-width: 1180px)'
 const PREFETCH = 12
 
 function drawCover(ctx: CanvasRenderingContext2D, image: HTMLImageElement): void {
@@ -21,7 +21,7 @@ function drawCover(ctx: CanvasRenderingContext2D, image: HTMLImageElement): void
 }
 
 export function montarActo(animar: boolean): gsap.Context {
-  return gsap.context(() => {
+  return gsap.context((self) => {
     const root = document.querySelector<HTMLElement>('.film')
     const canvas = root?.querySelector<HTMLCanvasElement>('canvas')
     if (!root || !canvas || !animar) return
@@ -97,29 +97,43 @@ export function montarActo(animar: boolean): gsap.Context {
       paint(true)
     }
 
-    void fetch('/film/manifest.json').then((response) => {
+    const controller = new AbortController()
+    let disposed = false
+    self.add(() => () => {
+      disposed = true
+      controller.abort()
+      ScrollTrigger.removeEventListener('refresh', resize)
+      gsap.set(root, { clearProps: '--film-progress' })
+      gsap.set(root.querySelectorAll('.film-card'), { clearProps: 'all' })
+      root.classList.remove('is-painted')
+      delete root.dataset.frame
+    })
+
+    void fetch('/film/manifest.json', { signal: controller.signal }).then((response) => {
       if (!response.ok) throw new Error(`Film manifest ${response.status}`)
       return response.json() as Promise<FilmManifest>
     }).then((data) => {
-      manifest = data
-      frames = data.sets[matchMedia(MOBILE_QUERY).matches ? 'mobile' : 'desktop']
-      images = new Array(frames.length)
-      preloadKeyframes()
-      preloadDirection(0, 1)
-      const cards = gsap.utils.toArray<HTMLElement>('.film-card', root)
-      const count = root.querySelector<HTMLElement>('[data-film-count]')
-      const timeline = gsap.timeline()
-      cards.forEach((card, index) => {
-        const from = Number(card.dataset.from)
-        const to = Number(card.dataset.to)
-        const span = to - from
-        timeline.fromTo(card, { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: span * 0.18, ease: 'power2.out' }, from + span * 0.06)
-        if (index < cards.length - 1) timeline.to(card, { autoAlpha: 0, y: -20, duration: span * 0.14, ease: 'power2.in' }, to - span * 0.2)
-      })
-      timeline.set({}, {}, 1)
-      ScrollTrigger.create({
+      if (disposed) return
+      self.add(() => {
+        manifest = data
+        frames = data.sets[matchMedia(MOBILE_QUERY).matches ? 'mobile' : 'desktop']
+        images = new Array(frames.length)
+        preloadKeyframes()
+        preloadDirection(0, 1)
+        const cards = gsap.utils.toArray<HTMLElement>('.film-card', root)
+        const count = root.querySelector<HTMLElement>('[data-film-count]')
+        const timeline = gsap.timeline()
+        cards.forEach((card, index) => {
+          const from = Number(card.dataset.from)
+          const to = Number(card.dataset.to)
+          const span = to - from
+          timeline.fromTo(card, { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: span * 0.18, ease: 'power2.out' }, from + span * 0.06)
+          if (index < cards.length - 1) timeline.to(card, { autoAlpha: 0, y: -20, duration: span * 0.14, ease: 'power2.in' }, to - span * 0.2)
+        })
+        timeline.set({}, {}, 1)
+        ScrollTrigger.create({
         trigger: root, start: 'top top', end: () => `+=${Math.round(data.pinVh * innerHeight)}`,
-        pin: true, pinSpacing: true, scrub: 0.5, anticipatePin: 1, invalidateOnRefresh: true,
+        pin: true, pinType: 'transform', pinSpacing: true, scrub: 0.5, anticipatePin: 1, invalidateOnRefresh: true,
         animation: timeline,
         onUpdate: ({ progress: next }) => {
           progress = next
@@ -130,11 +144,14 @@ export function montarActo(animar: boolean): gsap.Context {
           paint()
           if (count) count.textContent = String(Math.min(9, Math.floor(progress * 9) + 1)).padStart(2, '0')
         },
+        })
+        ScrollTrigger.addEventListener('refresh', resize)
+        resize()
+        ScrollTrigger.refresh()
       })
-      ScrollTrigger.addEventListener('refresh', resize)
-      resize()
-      ScrollTrigger.refresh()
-    }).catch((error: unknown) => console.error(error))
+    }).catch((error: unknown) => {
+      if (!(error instanceof DOMException && error.name === 'AbortError')) console.error(error)
+    })
 
   })
 }

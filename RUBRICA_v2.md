@@ -1,25 +1,24 @@
-# Rúbrica NÁCAR v2.1 — clips regenerados sin fundidos
+# Rúbrica NÁCAR v2.2 — correcciones R1c
 
-Evaluación adversarial posterior a la integración de los clips regenerados. Fecha: 2026-09-15. Evidencia reproducible en `qa/v2.1/`, `qa/R1/film-12-contact-sheet.webp` y `npm run film-check`.
+Evaluación adversarial posterior a las correcciones C21. Fecha: 2026-09-15. Evidencia reproducible en `qa/v2/`, `qa/v2.2/`, `qa/R1/film-12-contact-sheet.webp`, `npm run film-check` y `npm run qa`.
 
 | Criterio | Peso | Nota | Evidencia medida |
 |---|---:|---:|---|
-| Concepto y narrativa | 15% | 8.9 | Se conservan cuatro clips, 264 fotogramas y nueve capítulos; los tres clips regenerados recuperan continuidad espacial sin fundidos internos. |
-| Tipografía | 15% | 8.7 | Cormorant Garamond e Inter autoalojadas, precargadas y con fallbacks métricos; `font-display: optional` elimina el reflow de carga fría. |
-| Composición y espacio | 10% | 8.5 | Canvas a sangre y coda asimétrica; 0 px de overflow en 12 perfiles. |
-| Color y atmósfera | 10% | 8.8 | Paleta porcelana/jade/oro/petróleo y scrims consistentes. |
-| Movimiento y scroll | 15% | 9.3 | 45/45 cambios en seis tamaños; 263 pares/set comprobados. Máximo absoluto 33.959 desktop y 34.004 móvil, ambos bajo el guardarraíl calibrado 38.7981. Precarga direccional de 12 frames. |
-| Reduce + accesibilidad | 10% | 9.2 | Nueve láminas en motion-off; control de 44 px de alto, foco visible y `aria-pressed` sincronizado en on/off. |
-| Rendimiento | 10% | 9.3 | Carga fría 390×844, CPU 4×, 100 ms/1.6 Mbps: LCP 768 ms y CLS inicial 0.0000. Sets: 7,884,418 B desktop y 2,824,596 B móvil. |
-| Detalle / craft | 10% | 9.3 | Consola y respuestas HTTP limpias, 0 overflow y guardarraíl absoluto reproducible; 0 dobles exposiciones en los 63 fotogramas de 85–105, 180–200 y 225–245. |
-| Contenido y conversión | 5% | 8.4 | Copy específico y nueve CTA de WhatsApp funcionales; la nota no sube porque C18 no modificó ni volvió a medir conversión. |
+| Concepto y narrativa | 15% | 8.8 | Se conservan cuatro clips, 264 fotogramas y nueve capítulos. El clip 02 ya no sustituye sillón, suelo ni paredes; se mantienen las decisiones de Kevin sobre radiografía y copy. |
+| Tipografía | 15% | 8.5 | Cormorant Garamond e Inter autoalojadas, dos familias y ratio de escala 8.8:1. Sigue compartiendo el par tipográfico de UMBRAL, así que no se sobrepuntúa identidad. |
+| Composición y espacio | 10% | 8.0 | Canvas a sangre, coda asimétrica y 0 px de overflow en 12 perfiles; los nueve capítulos conservan una composición deliberadamente consistente. |
+| Color y atmósfera | 10% | 9.0 | Etiquetas sobre scrim local petróleo: contraste real mínimo 8.53:1 en 36 capturas (9 capítulos × 2 anchos × 2 modos), frente a 2.19/3.65:1. |
+| Movimiento y scroll | 15% | 9.4 | 45/45 cambios en seis tamaños; CLS de barrido 0.0000 en 390×844 y 1440×900; pin transform y ciclo on→off→on estable. |
+| Reduce + accesibilidad | 10% | 9.4 | En off quedan 9/9 tarjetas, 0 pin-spacer y 0 triggers; off→on y on→off→on pasan; los cinco objetivos señalados miden al menos 44 px. |
+| Rendimiento | 10% | 9.2 | Entrada 667×375 y 768×1024: 3,170,256 B; sets 7,983,510 B / 2,980,502 B; LCP móvil local 756 ms y CLS inicial 0. |
+| Detalle / craft | 10% | 9.0 | Consola/HTTP limpios, guardarraíl 0.75× activo, evidencia R1 versionada y `actoHtml` eliminado. La deuda estética de radiografía se conserva por decisión del cliente. |
+| Contenido y conversión | 5% | 8.5 | 13 enlaces WhatsApp y mensajes por capítulo; contacto Gmail y radiografía se mantienen expresamente por decisión de Kevin. |
 
-Puntuación ponderada: **8.97 / 10**. Suben movimiento, craft y ligeramente narrativa por eliminar los tres fundidos internos; no se elevan tipografía, composición, accesibilidad, rendimiento ni conversión porque no cambiaron sus fundamentos.
+Puntuación ponderada: **8.89 / 10**. Sin topes: el fallback ya no destruye la narrativa ni existe un incumplimiento AA repetido.
 
 ## Puerta objetiva
 
 - `npm run typecheck`: aprobado.
 - `npm run build`: aprobado.
-- `npm run film-check`: aprobado, guardarraíl absoluto 38.7981 y límites exactos 8,000,000 B desktop / 3,000,000 B móvil.
-- `npm run qa`: aprobado en seis tamaños, motion on/off; LCP móvil <2.5 s, CLS inicial <0.05, consola limpia, overflow 0 y scroll-proof 45.
-- Capturas: cinco puntos de scroll para 390×844 y cinco para 1440×900 en `qa/v2/`.
+- `npm run film-check`: aprobado; máximo interno 25.385 < 32.33175, 264 fotogramas por set y presupuestos conformes.
+- `npm run qa`: aprobado; 12 perfiles, 45/45 cambios, CLS de barrido < 0.25, contraste ≥ 4.5, selección móvil en 667/768, ciclos del interruptor y objetivos táctiles.

@@ -1,0 +1,21 @@
+{
+  "verdict": "APROBADA CON CORRECCIONES MENORES",
+  "score": 8.85,
+  "criteria": {
+    "concepto_y_narrativa": { "weight": 0.15, "score": 8.8 },
+    "tipografia": { "weight": 0.15, "score": 8.7 },
+    "composicion_y_espacio": { "weight": 0.10, "score": 8.5 },
+    "color_y_atmosfera": { "weight": 0.10, "score": 8.8 },
+    "movimiento_y_scroll": { "weight": 0.15, "score": 8.9 },
+    "reduce_y_accesibilidad": { "weight": 0.10, "score": 9.2 },
+    "rendimiento": { "weight": 0.10, "score": 9.4 },
+    "detalle_y_craft": { "weight": 0.10, "score": 8.8 },
+    "contenido_y_conversion": { "weight": 0.05, "score": 8.4 }
+  },
+  "blocking_fixes": [],
+  "nice_to_have": [
+    "Sustituir las ventanas de blend visibles por interpolacion optica o material continuo sin rebasar razon 3.5.",
+    "Cambiar los ocho CTA intermedios de #servicios a WhatsApp si el requisito se interpreta literalmente por capitulo.",
+    "Etiquetar clsScroll del barrido programatico como diagnostico de pin y mantener clsInitial como puerta Web Vital."
+  ]
+}

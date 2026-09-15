@@ -9,14 +9,13 @@ import {
   footer,
   intersticio,
   manifiesto,
-  metodo,
   nav,
   pacientes,
   servicios,
   visita,
   waUrl,
 } from './businessConfig'
-import { arcoFirma, arcosActo } from './lib/arco'
+import { arcoFirma } from './lib/arco'
 
 const ICONO_WA = `<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.65 15.02L2 22l5.13-1.32A10 10 0 1 0 12 2Zm0 1.8a8.2 8.2 0 1 1-4.18 15.26l-.3-.18-3.04.78.8-2.96-.2-.31A8.2 8.2 0 0 1 12 3.8Zm-3.12 4.1c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.1 3.35 5.18 4.56 2.56 1 3.08.8 3.64.75.55-.05 1.78-.73 2.03-1.43.25-.7.25-1.3.18-1.43-.08-.12-.28-.2-.58-.35-.3-.15-1.78-.88-2.06-.98-.27-.1-.47-.15-.67.15-.2.3-.77.98-.95 1.18-.17.2-.35.22-.65.07a8.2 8.2 0 0 1-2.4-1.49 9 9 0 0 1-1.67-2.07c-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.53.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.66-1.6-.91-2.19-.24-.57-.49-.5-.67-.5h-.58Z"/></svg>`
 
@@ -59,45 +58,6 @@ const manifiestoHtml = () => `
       </div>
     </div>
   </section>`
-
-const actoHtml = () => `
-  <section class="seccion seccion--oscura acto" id="metodo" aria-labelledby="t-metodo">
-    <div class="acto__pin">
-      ${arcosActo()}
-      <div class="shell acto__cabeza">
-        ${numSec(metodo.numero, metodo.etiqueta)}
-        <h2 class="display d-md" id="t-metodo">${metodo.titulo}</h2>
-        <p class="body" style="margin-top:1rem">${metodo.intro}</p>
-      </div>
-      <div class="shell acto__pasos">
-        ${metodo.pasos
-          .map(
-            (p, i) => `
-        <article class="paso" data-paso="${i}">
-          <div>
-            <div class="paso__num" aria-hidden="true">0${i + 1}</div>
-            <p class="label paso__minutos">Minuto ${p.desde} — ${p.hasta}</p>
-          </div>
-          <div>
-            <h3 class="display d-md paso__titulo">${p.titulo}</h3>
-            <p class="body paso__texto">${p.texto}</p>
-          </div>
-        </article>`,
-          )
-          .join('')}
-      </div>
-      <div class="shell acto__cta-fila">
-        <p class="acto__cierre">${metodo.cierre}</p>
-        <a class="boton" href="${waUrl()}" target="_blank" rel="noopener">${ICONO_WA} ${metodo.cta}</a>
-      </div>
-      <div class="shell acto__rail" aria-hidden="true">
-        <span class="label r-min" data-minuto>0'</span>
-        <div class="rail__pista"><div class="rail__avance"></div></div>
-        <span class="label">45'</span>
-      </div>
-    </div>
-  </section>`
-void actoHtml
 
 const capitulos = [
   ['Materia', 'Capa por capa.', 'El nácar no se pinta: se forma. Una sonrisa bien hecha, también.'],

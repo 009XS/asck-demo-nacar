@@ -1,0 +1,28 @@
+{
+  "initial": {
+    "cls": 0.19838985160560932,
+    "lcp": 748,
+    "shifts": [
+      {
+        "value": 0.0006504421134595658,
+        "time": 872.4000000003725
+      },
+      {
+        "value": 0.19773940949214974,
+        "time": 1463
+      }
+    ],
+    "scrollHeight": 28365,
+    "bodyScreens": 33.61
+  },
+  "focus": {
+    "outline": "rgb(27, 26, 24) solid 2px",
+    "outlineOffset": "3px",
+    "width": 149.90625,
+    "height": 30.59375,
+    "text": "Quitar movimiento",
+    "ariaLabel": null
+  },
+  "mobileScrollProofUnthrottledAfterWarmup": 45,
+  "errors": []
+}
