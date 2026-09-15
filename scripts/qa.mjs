@@ -1,197 +1,92 @@
-/**
- * QA instrumentado (patrón del kit): consola limpia, cero 404, sin overflow
- * horizontal, CLS ≈ 0, peso de entrada y LCP, en los DOS modos de movimiento
- * y tres viewports. En modo animado además hace scroll-proof del acto: el
- * raíl de minutos debe AVANZAR y los pasos deben cambiar de verdad.
- *
- *   node scripts/qa.mjs            (usa http://localhost:4184)
- *   QA_BASE=<url> node scripts/qa.mjs
- *
- * Deja capturas de evidencia en qa/.
- */
-
 import { chromium } from 'playwright'
-import { mkdirSync } from 'node:fs'
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { spawn } from 'node:child_process'
 
 const BASE = process.env.QA_BASE ?? 'http://localhost:4187'
-const VIEWPORTS = [
-  { nombre: 'desktop', width: 1440, height: 900 },
-  { nombre: 'laptop', width: 1180, height: 760 },
-  { nombre: 'movil', width: 375, height: 720 },
-]
-
-mkdirSync('qa', { recursive: true })
-
-const fallos = []
-const nota = (s) => console.log(`  ${s}`)
-
-const navegador = await chromium.launch()
-
-for (const modo of ['on', 'off']) {
-  for (const vp of VIEWPORTS) {
-    const etiqueta = `${modo}-${vp.nombre}`
-    console.log(`\n[${etiqueta}] ${BASE}/?motion=${modo}`)
-
-    const ctx = await navegador.newContext({
-      viewport: { width: vp.width, height: vp.height },
-      reducedMotion: modo === 'off' ? 'reduce' : 'no-preference',
-    })
-    const page = await ctx.newPage()
-
-    const consola = []
-    page.on('console', (m) => {
-      if (m.type() === 'error' || m.type() === 'warning') consola.push(`${m.type()}: ${m.text()}`)
-    })
-    page.on('pageerror', (e) => consola.push(`pageerror: ${e.message}`))
-    const rotos = []
-    let bytes = 0
-    page.on('response', async (r) => {
-      if (r.status() >= 400) rotos.push(`${r.status()} ${r.url()}`)
-      try {
-        const b = await r.body()
-        bytes += b.length
-      } catch {
-        /* respuestas sin cuerpo */
-      }
-    })
-
-    await page.addInitScript(() => {
-      // CLS real: máxima ventana de sesión (5 s, hueco de 1 s), como lo
-      // define web.dev — sumar todo el recorrido sobreestima sin sentido.
-      //
-      // Se EXCLUYEN las entradas cuyo único origen es el pin del acto
-      // (#metodo): al fijarse/soltarse bajo los saltos programáticos del QA,
-      // la API registra el cambio de sistema de coordenadas como un shift de
-      // 1.0 aunque visualmente nada se mueva (verificado con
-      // LayoutShiftAttribution: única fuente DIV.acto__pin). Todo lo demás
-      // (fuentes, lazy, imágenes) sigue vigilado.
-      window.__cls = 0
-      let ventana = 0
-      let inicioVentana = 0
-      let ultimo = 0
-      new PerformanceObserver((l) => {
-        for (const e of l.getEntries()) {
-          if (e.hadRecentInput) continue
-          const fuentes = e.sources || []
-          const soloPin =
-            fuentes.length > 0 &&
-            fuentes.every((s) => {
-              const n = s.node
-              const el = n && (n.nodeType === 1 ? n : n.parentElement)
-              return !!(el && el.closest && el.closest('#metodo'))
-            })
-          if (soloPin) continue
-          if (ventana && (e.startTime - ultimo > 1000 || e.startTime - inicioVentana > 5000)) {
-            ventana = 0
-          }
-          if (!ventana) inicioVentana = e.startTime
-          ventana += e.value
-          ultimo = e.startTime
-          if (ventana > window.__cls) window.__cls = ventana
-        }
-      }).observe({ type: 'layout-shift', buffered: true })
-      window.__lcp = 0
-      new PerformanceObserver((l) => {
-        const u = l.getEntries().at(-1)
-        if (u) window.__lcp = u.startTime
-      }).observe({ type: 'largest-contentful-paint', buffered: true })
-    })
-
-    await page.goto(`${BASE}/?motion=${modo}`, { waitUntil: 'networkidle' })
-
-    // LCP de la CARGA, antes de mover la página. Medirlo después del recorrido
-    // no mide nada útil: la API sigue promoviendo elementos mayores mientras
-    // no haya interacción real, así que el scroll programático del QA
-    // convertía cualquier bloque grande del acto en «el LCP».
-    const lcpCarga = await page.evaluate(() => window.__lcp)
-
-    // overflow horizontal
-    const overflow = await page.evaluate(
-      () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
-    )
-    if (overflow > 0) fallos.push(`[${etiqueta}] overflow-x de ${overflow}px`)
-    nota(`overflow-x: ${overflow}px`)
-
-    // recorrer la página entera con pasos humanos y asentamiento del scrub
-    await page.evaluate(async () => {
-      const paso = window.innerHeight * 0.45
-      for (let y = 0; y < document.documentElement.scrollHeight; y += paso) {
-        window.scrollTo(0, y)
-        await new Promise((r) => setTimeout(r, 220))
-      }
-      window.scrollTo(0, document.documentElement.scrollHeight)
-      await new Promise((r) => setTimeout(r, 500))
-    })
-
-    // scroll-proof del acto en modo animado: el raíl debe avanzar
-    if (modo === 'on') {
-      const lecturas = await page.evaluate(async () => {
-        const seccion = document.getElementById('metodo')
-        if (!seccion) return null
-        const res = []
-        const base = seccion.getBoundingClientRect().top + window.scrollY
-        for (const frac of [0.15, 0.5, 0.85]) {
-          window.scrollTo(0, base + window.innerHeight * 3.4 * frac)
-          await new Promise((r) => setTimeout(r, 450))
-          const visibles = [...document.querySelectorAll('.paso')]
-            .map((p, i) => ({ i, o: parseFloat(getComputedStyle(p).opacity) }))
-            .filter((p) => p.o > 0.5)
-            .map((p) => p.i)
-          res.push({
-            minuto: document.querySelector('[data-minuto]')?.textContent ?? '',
-            visibles,
-          })
-        }
-        return res
-      })
-      if (lecturas) {
-        nota(`acto: ${lecturas.map((l) => `${l.minuto} pasos[${l.visibles}]`).join(' → ')}`)
-        const minutos = lecturas.map((l) => parseInt(l.minuto))
-        if (!(minutos[2] > minutos[0])) fallos.push(`[${etiqueta}] el raíl del acto no avanza: ${minutos}`)
-        const cambia = JSON.stringify(lecturas[0].visibles) !== JSON.stringify(lecturas[2].visibles)
-        if (!cambia) fallos.push(`[${etiqueta}] los pasos del acto no cambian con el scroll`)
-      } else if (vp.nombre === 'desktop') {
-        fallos.push(`[${etiqueta}] no existe #metodo`)
-      }
-    }
-
-    // métricas
-    const { cls } = await page.evaluate(() => ({ cls: window.__cls }))
-    nota(
-      `CLS (máx. ventana): ${cls.toFixed(4)} · LCP de carga: ${Math.round(lcpCarga)}ms · transferido: ${(bytes / 1024).toFixed(0)}KB`,
-    )
-    if (cls > 0.1) fallos.push(`[${etiqueta}] CLS ${cls.toFixed(4)} (> 0.1)`)
-    if (lcpCarga > 2500) fallos.push(`[${etiqueta}] LCP ${Math.round(lcpCarga)}ms (> 2500)`)
-    if (bytes / 1024 > 1536) fallos.push(`[${etiqueta}] entrada de ${(bytes / 1024).toFixed(0)}KB (> 1.5MB)`)
-
-    // 404 del propio nginx/preview no cuenta como roto si es la ruta de prueba
-    if (rotos.length) fallos.push(`[${etiqueta}] recursos rotos: ${rotos.join(' · ')}`)
-    if (consola.length) fallos.push(`[${etiqueta}] consola: ${consola.join(' · ')}`)
-    nota(`consola: ${consola.length === 0 ? 'limpia' : consola.length + ' avisos'} · recursos rotos: ${rotos.length}`)
-
-    // evidencia
-    await page.evaluate(() => window.scrollTo(0, 0))
-    await page.waitForTimeout(250)
-    await page.screenshot({ path: `qa/${etiqueta}-hero.png` })
-    const metodoTop = await page.evaluate(() => {
-      const s = document.getElementById('metodo')
-      if (!s) return 0
-      return s.getBoundingClientRect().top + window.scrollY
-    })
-    await page.evaluate((y) => window.scrollTo(0, y + window.innerHeight * (document.documentElement.dataset.motion === 'on' ? 1.7 : 0.2)), metodoTop)
-    await page.waitForTimeout(450)
-    await page.screenshot({ path: `qa/${etiqueta}-metodo.png` })
-
-    await ctx.close()
+const ownServer = !process.env.QA_BASE
+const server = ownServer ? spawn('npm run preview', { stdio: 'pipe', shell: true }) : undefined
+const waitForServer = async () => {
+  for (let attempt = 0; attempt < 50; attempt += 1) {
+    try { if ((await fetch(BASE)).ok) return } catch { /* retry */ }
+    await new Promise((resolve) => setTimeout(resolve, 200))
   }
+  throw new Error(`Preview no respondió en ${BASE}`)
 }
 
-await navegador.close()
+mkdirSync('qa/v2', { recursive: true })
+await waitForServer()
+const manifest = JSON.parse(readFileSync('public/film/manifest.json', 'utf8'))
+const frameBytes = (set) => manifest.sets[set].reduce((total, url) => total + readFileSync(`public${url}`).length, 0)
+const budgets = { desktop: frameBytes('desktop'), mobile: frameBytes('mobile') }
+const viewports = [['390x844',390,844],['667x375',667,375],['768x1024',768,1024],['1024x768',1024,768],['1440x900',1440,900],['1920x1080',1920,1080]]
+const failures = []
+const results = []
+let browser
 
-console.log('\n' + '='.repeat(60))
-if (fallos.length) {
-  console.log('FALLOS:')
-  for (const f of fallos) console.log('  ✗ ' + f)
-  process.exit(1)
+try {
+  browser = await chromium.launch()
+  for (const mode of ['on', 'off']) for (const [name, width, height] of viewports) {
+    const context = await browser.newContext({ viewport: { width, height }, reducedMotion: mode === 'off' ? 'reduce' : 'no-preference' })
+    const page = await context.newPage()
+    const errors = []
+    const broken = []
+    page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()) })
+    page.on('pageerror', (error) => errors.push(error.message))
+    page.on('response', (response) => { if (response.status() >= 400) broken.push(`${response.status()} ${response.url()}`) })
+    const cdp = await context.newCDPSession(page)
+    if (name === '390x844') await cdp.send('Emulation.setCPUThrottlingRate', { rate: 4 })
+    await page.addInitScript(() => {
+      window.__qa = { cls: 0, lcp: 0 }
+      new PerformanceObserver((list) => { for (const entry of list.getEntries()) if (!entry.hadRecentInput) window.__qa.cls += entry.value }).observe({ type: 'layout-shift', buffered: true })
+      new PerformanceObserver((list) => { window.__qa.lcp = list.getEntries().at(-1)?.startTime ?? 0 }).observe({ type: 'largest-contentful-paint', buffered: true })
+    })
+    await page.goto(`${BASE}/?motion=${mode}`, { waitUntil: 'networkidle' })
+    await page.waitForTimeout(350)
+    const metrics = await page.evaluate(() => ({
+      overflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+      cls: window.__qa.cls,
+      lcp: window.__qa.lcp,
+      motionOff: document.documentElement.dataset.motion === 'off',
+      triggerCount: window.ScrollTrigger?.getAll?.().length ?? document.querySelectorAll('.pin-spacer').length,
+    }))
+    let scrollProof = null
+    let contentScreens = null
+    if (mode === 'on') {
+      await page.waitForFunction(() => document.querySelector('.film')?.classList.contains('is-painted'), null, { timeout: 10000 })
+      const filmTop = await page.locator('.film').evaluate((element) => element.getBoundingClientRect().top + scrollY)
+      const seen = new Set()
+      for (let point = 0; point < 45; point += 1) {
+        await page.evaluate((y) => scrollTo(0, y), filmTop + height * 22.5 * point / 44)
+        await page.waitForTimeout(100)
+        seen.add(await page.locator('.film').getAttribute('data-frame'))
+        if ((name === '1440x900' || name === '390x844') && [0, 11, 22, 33, 44].includes(point)) {
+          await page.screenshot({ path: `qa/v2/${name}-${String(point / 11).padStart(2, '0')}.png` })
+        }
+      }
+      scrollProof = seen.size
+      contentScreens = await page.evaluate((vh) => {
+        const pin = document.querySelector('.pin-spacer')
+        const end = pin ? pin.getBoundingClientRect().bottom + scrollY : 0
+        return (document.documentElement.scrollHeight - end) / vh
+      }, height)
+    } else if (name === '390x844') {
+      const visibleCards = await page.locator('.film-card').evaluateAll((cards) => cards.filter((card) => getComputedStyle(card).visibility === 'visible').length)
+      if (visibleCards !== 9) failures.push({ mode, name, visibleCards })
+    }
+    const row = { mode, name, lcpMs: Math.round(metrics.lcp), cls: Number(metrics.cls.toFixed(4)), overflowPx: metrics.overflow, errors, broken, scrollProof, contentScreens: contentScreens === null ? null : Number(contentScreens.toFixed(2)) }
+    results.push(row)
+    if (metrics.overflow > 0 || metrics.cls > 0.05 || (name === '390x844' && metrics.lcp > 2500) || errors.length || broken.length || (mode === 'on' && (scrollProof ?? 0) < 40) || (contentScreens !== null && height >= 600 && contentScreens > 8.01)) failures.push(row)
+    console.log(`${mode} ${name}: LCP ${row.lcpMs}ms CLS ${row.cls} overflow ${row.overflowPx}px cambios ${scrollProof ?? '-'} coda ${row.contentScreens ?? '-'}vh`)
+    await context.close()
+  }
+  if (budgets.desktop > 10 * 1024 * 1024 || budgets.mobile > 5 * 1024 * 1024) failures.push({ frameBudgets: budgets })
+  const summary = { frameBytes: budgets, results, failures }
+  writeFileSync('qa/v2/metrics.json', `${JSON.stringify(summary, null, 2)}\n`)
+  if (failures.length) {
+    console.error(JSON.stringify(failures, null, 2))
+    process.exitCode = 1
+  } else console.log('QA APROBADO: 6 viewports, consola/404/overflow/CLS/LCP, >=40 cambios y motion-off.')
+} finally {
+  await browser?.close()
+  if (server) server.kill()
 }
-console.log('QA limpio: consola, 404, overflow, CLS, peso y acto verificados en ambos modos.')

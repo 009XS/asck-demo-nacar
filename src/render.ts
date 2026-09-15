@@ -97,6 +97,35 @@ const actoHtml = () => `
       </div>
     </div>
   </section>`
+void actoHtml
+
+const capitulos = [
+  ['Materia', 'Capa por capa.', 'El nácar no se pinta: se forma. Una sonrisa bien hecha, también.'],
+  ['Diagnóstico', 'Mirar antes de tocar.', 'Escuchamos, medimos y mostramos lo que vemos. Nada empieza sin contexto.'],
+  ['Esmalte', 'Lo natural no se impone.', 'Forma, tono y función se planean para que el resultado parezca inevitable.'],
+  ['Llegada', 'Un espacio que baja el pulso.', 'Luz cálida, tiempos reales y una visita sin prisa.'],
+  ['Consulta', 'Tu primera cita, minuto a minuto.', '0–10 escuchar · 10–25 escanear · 25–40 planear · 40–45 decidir.'],
+  ['Plan', 'Ves lo que vemos.', 'Tu boca en pantalla, cada opción en orden y el costo completo por escrito.'],
+  ['Precisión', 'La diferencia vive en milímetros.', 'Instrumental impecable y manos especializadas para cada capa del tratamiento.'],
+  ['Claridad', 'Sin letra chica.', 'Sales con tratamientos, sesiones, fechas y precio cerrado. Tú decides.'],
+  ['Cierre', 'Volver a sonreír sin pensarlo.', 'La valoración no tiene costo. El primer paso es un mensaje.'],
+]
+
+const tramos = [
+  [0, 0.12], [0.105, 0.23], [0.215, 0.34], [0.325, 0.45], [0.435, 0.56],
+  [0.545, 0.67], [0.655, 0.78], [0.765, 0.89], [0.875, 1],
+]
+
+const filmHtml = () => `
+  <section class="film" id="metodo" aria-labelledby="film-title" aria-label="Recorrido de nueve capítulos: del nácar al estudio dental y de vuelta a la materia">
+    <canvas aria-hidden="true"></canvas><img class="film__poster" src="/film/poster.jpg" width="960" height="540" alt="Capas de nácar iluminadas en tonos porcelana, jade y oro" />
+    <div class="film__scrim" aria-hidden="true"></div>
+    <div class="film__hud"><span><b data-film-count>01</b> / 09</span><span>NÁCAR — RECORRIDO</span><i></i></div>
+    <div class="film__cards">
+      ${capitulos.map((c,i)=>`<article class="film-card" data-film-card="${i}" data-from="${tramos[i][0]}" data-to="${tramos[i][1]}"><p class="label">${String(i+1).padStart(2,'0')} — ${c[0]}</p><h2 class="display d-lg" ${i===0?'id="film-title"':''}>${c[1]}</h2><p>${c[2]}</p><a class="film-card__cta" href="${i === 8 ? waUrl() : '#servicios'}" ${i === 8 ? 'target="_blank" rel="noopener"' : ''}>${i === 8 ? 'Agendar valoración' : 'Conocer tratamientos'} <span aria-hidden="true">→</span></a></article>`).join('')}
+    </div>
+    <ol class="visually-hidden">${capitulos.map(c=>`<li>${c[0]}: ${c[1]} ${c[2]}</li>`).join('')}</ol>
+  </section>`
 
 const serviciosHtml = () => `
   <section class="seccion servicios" id="servicios" aria-labelledby="t-servicios">
@@ -250,7 +279,7 @@ export function render(root: HTMLElement): void {
     ${navHtml()}
     <main id="contenido">
       ${manifiestoHtml()}
-      ${actoHtml()}
+      ${filmHtml()}
       ${serviciosHtml()}
       ${intersticioHtml()}
       ${pacientesHtml()}

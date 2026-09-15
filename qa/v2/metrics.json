@@ -1,0 +1,141 @@
+{
+  "frameBytes": {
+    "desktop": 7512862,
+    "mobile": 3493070
+  },
+  "results": [
+    {
+      "mode": "on",
+      "name": "390x844",
+      "lcpMs": 516,
+      "cls": 0,
+      "overflowPx": 0,
+      "errors": [],
+      "broken": [],
+      "scrollProof": 45,
+      "contentScreens": 7.64
+    },
+    {
+      "mode": "on",
+      "name": "667x375",
+      "lcpMs": 128,
+      "cls": 0,
+      "overflowPx": 0,
+      "errors": [],
+      "broken": [],
+      "scrollProof": 45,
+      "contentScreens": 14.78
+    },
+    {
+      "mode": "on",
+      "name": "768x1024",
+      "lcpMs": 148,
+      "cls": 0,
+      "overflowPx": 0,
+      "errors": [],
+      "broken": [],
+      "scrollProof": 45,
+      "contentScreens": 6.31
+    },
+    {
+      "mode": "on",
+      "name": "1024x768",
+      "lcpMs": 140,
+      "cls": 0,
+      "overflowPx": 0,
+      "errors": [],
+      "broken": [],
+      "scrollProof": 45,
+      "contentScreens": 6.21
+    },
+    {
+      "mode": "on",
+      "name": "1440x900",
+      "lcpMs": 152,
+      "cls": 0,
+      "overflowPx": 0,
+      "errors": [],
+      "broken": [],
+      "scrollProof": 45,
+      "contentScreens": 5.93
+    },
+    {
+      "mode": "on",
+      "name": "1920x1080",
+      "lcpMs": 176,
+      "cls": 0,
+      "overflowPx": 0,
+      "errors": [],
+      "broken": [],
+      "scrollProof": 45,
+      "contentScreens": 5.39
+    },
+    {
+      "mode": "off",
+      "name": "390x844",
+      "lcpMs": 484,
+      "cls": 0,
+      "overflowPx": 0,
+      "errors": [],
+      "broken": [],
+      "scrollProof": null,
+      "contentScreens": null
+    },
+    {
+      "mode": "off",
+      "name": "667x375",
+      "lcpMs": 124,
+      "cls": 0,
+      "overflowPx": 0,
+      "errors": [],
+      "broken": [],
+      "scrollProof": null,
+      "contentScreens": null
+    },
+    {
+      "mode": "off",
+      "name": "768x1024",
+      "lcpMs": 128,
+      "cls": 0,
+      "overflowPx": 0,
+      "errors": [],
+      "broken": [],
+      "scrollProof": null,
+      "contentScreens": null
+    },
+    {
+      "mode": "off",
+      "name": "1024x768",
+      "lcpMs": 144,
+      "cls": 0,
+      "overflowPx": 0,
+      "errors": [],
+      "broken": [],
+      "scrollProof": null,
+      "contentScreens": null
+    },
+    {
+      "mode": "off",
+      "name": "1440x900",
+      "lcpMs": 160,
+      "cls": 0,
+      "overflowPx": 0,
+      "errors": [],
+      "broken": [],
+      "scrollProof": null,
+      "contentScreens": null
+    },
+    {
+      "mode": "off",
+      "name": "1920x1080",
+      "lcpMs": 164,
+      "cls": 0,
+      "overflowPx": 0,
+      "errors": [],
+      "broken": [],
+      "scrollProof": null,
+      "contentScreens": null
+    }
+  ],
+  "failures": []
+}

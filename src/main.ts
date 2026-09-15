@@ -7,7 +7,8 @@ import { alCambiar, animar, aplicarEstado, elegir } from './lib/motion'
 import { montarReveals } from './lib/reveal'
 import { montarActo } from './lib/acto'
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
+(window as unknown as { ScrollTrigger: typeof ScrollTrigger }).ScrollTrigger = ScrollTrigger
 
 declare const __BUILD_ID__: string
 ;(window as unknown as { __BUILD_ID__: string }).__BUILD_ID__ = __BUILD_ID__

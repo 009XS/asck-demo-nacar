@@ -78,3 +78,20 @@ exactamente qué pasará (la objeción #1) → servicios: qué vendemos, con ben
 pacientes: prueba → equipo: quién responde → visita: fricción cero → cierre: CTA final.
 WhatsApp es el único canal de captación (píldora flotante + 4 CTAs). Sin formularios
 falsos: todo CTA lleva a `wa.me` con mensaje precargado.
+
+## V2 — El recorrido de la materia
+
+La firma deja de ser dibujo y se vuelve película: macro de nácar → esmalte → umbral → sala → sillón → instrumental → radiografía abstracta → nácar iluminado. Son nueve capítulos sobre una secuencia real de 264 fotogramas por tamaño dentro de una sola pieza pinneada de 22.5 pantallas. El canvas usa `round(progreso × 263)` y solo funde durante 3 fotogramas tras cada corte (1.14% del recorrido), con `smoothstep` y sombra máxima de 35%.
+
+El capítulo central conserva la promesa comercial: **Tu primera cita, minuto a minuto** (escuchar, escanear, planear, decidir). El modo quieto sirve las mismas nueve imágenes y el mismo copy como láminas de 88svh. Fuentes, paleta y prohibiciones originales permanecen intactas.
+
+### Producción de clips y cortes
+
+- `c01` — **nácar → esmalte**: macro continua de estratos translúcidos; avance de cámara hacia una superficie de esmalte pulido, misma luz y grado.
+- `c02` — **umbral → sala**: la cámara cruza físicamente el marco de roble hacia un estudio dental vacío; travertino, cortina de lino y luz cálida, sin doble exposición.
+- `c03` — **sillón → instrumental**: travelling cercano desde el sillón jade hacia instrumental de precisión sobre piedra; latón envejecido y fondo petróleo.
+- `c04` — **radiografía → nácar oro**: la pantalla abstracta se resuelve en arcos luminosos y capas de nácar encendidas desde dentro con oro antiguo.
+
+Los cortes declarados son `c01-066 → c02-001`, `c02-066 → c03-001` y `c03-066 → c04-001`. El manifiesto conserva orden, capítulos y cortes para ambos sets. Los WebP existentes son 1440 px desktop / 800 px móvil, 10 fps; peso total medido: 7,512,862 B / 3,493,070 B. El modo `motion-off` mantiene las nueve JPG maestras como láminas fijas.
+
+La comprobación perceptual detecta además picos internos (máximo tras el índice 95): razón 6.798 desktop y 6.752 móvil frente al límite 3.5. No se reclasifican como cortes porque el manifiesto solo admite los tres cambios de plano reales; queda como deuda de continuidad del material fuente.

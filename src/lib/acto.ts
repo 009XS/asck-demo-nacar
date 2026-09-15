@@ -1,127 +1,124 @@
-/**
- * «02 — El método»: la pieza pinneada (estructura B del kit). UN solo
- * ScrollTrigger gobierna pin, arcos, tarjetas y raíl — crear un segundo sobre
- * el elemento pinneado hace que GSAP mida start/end sobre una posición
- * alterada (error ya pagado en UMBRAL).
- *
- * El `end` va en PÍXELES DE VIEWPORT y como función, no en `+=X%`: el
- * porcentaje es relativo a la altura medida del trigger y se rompe donde
- * `100svh` no coincide con `innerHeight` (lección medida del kit).
- *
- * En modo quieto este módulo no hace nada: el CSS apila los mismos pasos con
- * los arcos ya trazados — misma obra, otra mecánica.
- */
-
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-/** ≈ 85 vh de recorrido por paso: lectura cómoda sin hacer eterno el acto. */
-const PIN_VH = 340
+type FilmManifest = {
+  fps: number
+  pinVh: number
+  sets: { desktop: string[]; mobile: string[] }
+  cuts: Array<{ after: number; from: string; to: string }>
+}
+
+const MOBILE_QUERY = '(max-width: 640px)'
+const BATCH = 12
+
+function drawCover(ctx: CanvasRenderingContext2D, image: HTMLImageElement): void {
+  const scale = Math.max(ctx.canvas.width / image.naturalWidth, ctx.canvas.height / image.naturalHeight)
+  const width = image.naturalWidth * scale
+  const height = image.naturalHeight * scale
+  ctx.drawImage(image, (ctx.canvas.width - width) / 2, (ctx.canvas.height - height) / 2, width, height)
+}
 
 export function montarActo(animar: boolean): gsap.Context {
   return gsap.context(() => {
-    const pin = document.querySelector<HTMLElement>('.acto__pin')
-    if (!pin || !animar) return
+    const root = document.querySelector<HTMLElement>('.film')
+    const canvas = root?.querySelector<HTMLCanvasElement>('canvas')
+    if (!root || !canvas || !animar) return
+    const ctx = canvas.getContext('2d', { alpha: false })
+    if (!ctx) return
 
-    const arcos = gsap.utils.toArray<SVGPathElement>('.arco', pin)
-    arcos.forEach((p) => {
-      const len = p.getTotalLength()
-      gsap.set(p, { strokeDasharray: len, strokeDashoffset: len })
-    })
-    const piezas = gsap.utils.toArray<SVGCircleElement>('.arco-pieza', pin)
-    gsap.set(piezas, { opacity: 0 })
+    let progress = 0
+    let lastFrame = -1
+    let manifest: FilmManifest | undefined
+    let frames: string[] = []
+    let images: Array<HTMLImageElement | undefined> = []
 
-    const pasos = gsap.utils.toArray<HTMLElement>('.paso', pin)
-    const cabeza = pin.querySelector('.acto__cabeza')
-    const ctaFila = pin.querySelector('.acto__cta-fila')
-    const avance = pin.querySelector('.rail__avance')
-    const minuto = pin.querySelector('[data-minuto]')
-
-    const tl = gsap.timeline({
-      defaults: { ease: 'none' },
-      scrollTrigger: {
-        trigger: pin,
-        start: 'top top',
-        end: () => '+=' + Math.round((PIN_VH / 100) * window.innerHeight),
-        scrub: 0.5,
-        pin: true,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-      },
-    })
-
-    // La cabecera cede el escenario en cuanto arranca el primer paso.
-    if (cabeza) tl.to(cabeza, { autoAlpha: 0, y: -24, duration: 0.06 }, 0.05)
-
-    // Los tres arcos se trazan a lo largo de todo el acto, en capas.
-    tl.to('.arco-a', { strokeDashoffset: 0, duration: 0.85 }, 0)
-    tl.to('.arco-b', { strokeDashoffset: 0, duration: 0.85 }, 0.05)
-    tl.to('.arco-c', { strokeDashoffset: 0, duration: 0.85 }, 0.1)
-    tl.to(piezas, { opacity: 1, duration: 0.02, stagger: 0.045 }, 0.12)
-
-    // Raíl de minutos: el tiempo de la cita ES el progreso del scroll.
-    if (avance) tl.fromTo(avance, { scaleX: 0 }, { scaleX: 1, duration: 0.89 }, 0.06)
-    if (minuto) {
-      const m = { v: 0 }
-      tl.to(
-        m,
-        {
-          v: 45,
-          duration: 0.89,
-          onUpdate: () => {
-            minuto.textContent = `${Math.round(m.v)}'`
-          },
-        },
-        0.06,
-      )
+    const paint = (force = false): void => {
+      if (!manifest || !frames.length) return
+      const raw = progress * (frames.length - 1)
+      const index = Math.round(raw)
+      if (!force && index === lastFrame) return
+      const image = images[index]
+      if (!image?.complete || !image.naturalWidth) return
+      ctx.fillStyle = '#10201c'
+      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      const cut = manifest.cuts.find(({ after }) => raw > after && raw <= after + 3)
+      if (cut) {
+        const outgoing = images[cut.after]
+        const incoming = images[cut.after + 1]
+        if (outgoing?.complete && incoming?.complete) {
+          drawCover(ctx, outgoing)
+          const t = Math.min(1, Math.max(0, (raw - cut.after) / 3))
+          const smooth = t * t * (3 - 2 * t)
+          ctx.fillStyle = `rgba(16,32,28,${Math.sin(smooth * Math.PI) * 0.35})`
+          ctx.fillRect(0, 0, canvas.width, canvas.height)
+          ctx.globalAlpha = smooth
+          drawCover(ctx, incoming)
+          ctx.globalAlpha = 1
+        } else drawCover(ctx, image)
+      } else drawCover(ctx, image)
+      lastFrame = index
+      root.dataset.frame = String(index)
+      root.style.setProperty('--film-progress', String(progress))
+      root.classList.add('is-painted')
     }
 
-    // Tarjetas con tramos propios (independientes del trazado — regla del
-    // kit). El último paso se queda en escena y recibe al CTA.
-    const tramos = [
-      { entra: 0.06, sale: 0.27 },
-      { entra: 0.29, sale: 0.5 },
-      { entra: 0.52, sale: 0.73 },
-      { entra: 0.75, sale: -1 },
-    ]
-
-    // «Capa por capa» dejado de ser sólo copy: cada paso ILUMINA su capa del
-    // arco (esmalte → dentina → nervio → las tres) y atenúa las demás. Es el
-    // concepto de la marca convertido en la mecánica del scroll.
-    const capas = ['.arco-a', '.arco-b', '.arco-c']
-    const foco = [
-      [1, 0.35, 0.25],
-      [0.3, 1, 0.3],
-      [0.25, 0.35, 1],
-      [0.85, 0.85, 0.85],
-    ]
-
-    pasos.forEach((paso, i) => {
-      const t = tramos[i]
-      if (!t) return
-      const num = paso.querySelector('.paso__num')
-      const tit = paso.querySelector('.paso__titulo')
-      tl.fromTo(paso, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.055 }, t.entra)
-      if (num) tl.fromTo(num, { yPercent: 26 }, { yPercent: 0, duration: 0.075 }, t.entra)
-      if (tit) tl.fromTo(tit, { y: 34 }, { y: 0, duration: 0.075 }, t.entra)
-
-      const pesos = foco[i]
-      if (pesos) {
-        capas.forEach((capa, c) => {
-          const el = pin.querySelector(capa)
-          if (el) tl.to(el, { opacity: pesos[c], duration: 0.05 }, t.entra)
-        })
+    const loadBatch = (index: number): void => {
+      const first = Math.max(0, Math.floor(index / BATCH) * BATCH)
+      for (let i = first; i < Math.min(first + BATCH * 2, frames.length); i += 1) {
+        if (images[i]) continue
+        const image = new Image()
+        image.decoding = 'async'
+        images[i] = image
+        image.src = frames[i]
+        void image.decode().then(() => paint(true)).catch(() => undefined)
       }
+    }
 
-      if (t.sale > 0) tl.to(paso, { autoAlpha: 0, y: -28, duration: 0.05 }, t.sale)
-    })
+    const resize = (): void => {
+      const dpr = Math.min(devicePixelRatio, 2)
+      canvas.width = Math.round(root.clientWidth * dpr)
+      canvas.height = Math.round(root.clientHeight * dpr)
+      lastFrame = -1
+      paint(true)
+    }
 
-    if (ctaFila) tl.fromTo(ctaFila, { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.06 }, 0.86)
+    void fetch('/film/manifest.json').then((response) => {
+      if (!response.ok) throw new Error(`Film manifest ${response.status}`)
+      return response.json() as Promise<FilmManifest>
+    }).then((data) => {
+      manifest = data
+      frames = data.sets[matchMedia(MOBILE_QUERY).matches ? 'mobile' : 'desktop']
+      images = new Array(frames.length)
+      loadBatch(0)
+      const cards = gsap.utils.toArray<HTMLElement>('.film-card', root)
+      const count = root.querySelector<HTMLElement>('[data-film-count]')
+      const timeline = gsap.timeline()
+      cards.forEach((card, index) => {
+        const from = Number(card.dataset.from)
+        const to = Number(card.dataset.to)
+        const span = to - from
+        timeline.fromTo(card, { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: span * 0.18, ease: 'power2.out' }, from + span * 0.06)
+        if (index < cards.length - 1) timeline.to(card, { autoAlpha: 0, y: -20, duration: span * 0.14, ease: 'power2.in' }, to - span * 0.2)
+      })
+      timeline.set({}, {}, 1)
+      ScrollTrigger.create({
+        trigger: root, start: 'top top', end: () => `+=${Math.round(data.pinVh * innerHeight)}`,
+        pin: true, pinSpacing: true, scrub: 0.5, anticipatePin: 1, invalidateOnRefresh: true,
+        animation: timeline,
+        onUpdate: ({ progress: next }) => {
+          progress = next
+          const index = Math.round(progress * (frames.length - 1))
+          loadBatch(index)
+          paint()
+          if (count) count.textContent = String(Math.min(9, Math.floor(progress * 9) + 1)).padStart(2, '0')
+        },
+      })
+      ScrollTrigger.addEventListener('refresh', resize)
+      resize()
+      ScrollTrigger.refresh()
+    }).catch((error: unknown) => console.error(error))
 
-    // Ancla la duración total en 1.0: así cada posición del timeline equivale
-    // exactamente a esa fracción del recorrido de scroll.
-    tl.set({}, {}, 1)
   })
 }
