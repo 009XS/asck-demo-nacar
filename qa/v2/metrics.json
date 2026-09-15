@@ -1,0 +1,595 @@
+{
+  "frameBytes": {
+    "desktop": 7715718,
+    "mobile": 2684960
+  },
+  "limits": {
+    "desktop": 8000000,
+    "mobile": 3000000
+  },
+  "results": [
+    {
+      "mode": "on",
+      "name": "390x844",
+      "lcpMs": 756,
+      "clsInitial": 0,
+      "clsScrollDiagnostico": 2,
+      "overflowPx": 0,
+      "errors": [],
+      "broken": [],
+      "scrollProof": 45,
+      "contentScreens": 7.62,
+      "motionToggle": {
+        "width": 155.578125,
+        "height": 44,
+        "pressed": "true"
+      },
+      "shifts": [
+        {
+          "phase": "scroll",
+          "value": 1,
+          "startTime": 4595,
+          "sources": [
+            {
+              "node": "canvas",
+              "previousRect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "currentRect": {
+                "x": 0,
+                "y": 0.484375,
+                "width": 390,
+                "height": 843.515625,
+                "top": 0.484375,
+                "right": 390,
+                "bottom": 844,
+                "left": 0
+              }
+            }
+          ]
+        },
+        {
+          "phase": "scroll",
+          "value": 1,
+          "startTime": 9673,
+          "sources": [
+            {
+              "node": "canvas",
+              "previousRect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "currentRect": {
+                "x": 0,
+                "y": 0.484375,
+                "width": 390,
+                "height": 843.515625,
+                "top": 0.484375,
+                "right": 390,
+                "bottom": 844,
+                "left": 0
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "on",
+      "name": "667x375",
+      "lcpMs": 124,
+      "clsInitial": 0,
+      "clsScrollDiagnostico": 2,
+      "overflowPx": 0,
+      "errors": [],
+      "broken": [],
+      "scrollProof": 45,
+      "contentScreens": 14.78,
+      "motionToggle": {
+        "width": 169.90625,
+        "height": 44,
+        "pressed": "true"
+      },
+      "shifts": [
+        {
+          "phase": "scroll",
+          "value": 1,
+          "startTime": 1052,
+          "sources": [
+            {
+              "node": "#metodo",
+              "previousRect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "currentRect": {
+                "x": 0,
+                "y": 0.265625,
+                "width": 667,
+                "height": 374.734375,
+                "top": 0.265625,
+                "right": 667,
+                "bottom": 375,
+                "left": 0
+              }
+            }
+          ]
+        },
+        {
+          "phase": "scroll",
+          "value": 1,
+          "startTime": 5869,
+          "sources": [
+            {
+              "node": "canvas",
+              "previousRect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "currentRect": {
+                "x": 0,
+                "y": 0.265625,
+                "width": 667,
+                "height": 374.734375,
+                "top": 0.265625,
+                "right": 667,
+                "bottom": 375,
+                "left": 0
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "on",
+      "name": "768x1024",
+      "lcpMs": 128,
+      "clsInitial": 0,
+      "clsScrollDiagnostico": 2,
+      "overflowPx": 0,
+      "errors": [],
+      "broken": [],
+      "scrollProof": 45,
+      "contentScreens": 6.27,
+      "motionToggle": {
+        "width": 169.90625,
+        "height": 44,
+        "pressed": "true"
+      },
+      "shifts": [
+        {
+          "phase": "scroll",
+          "value": 1,
+          "startTime": 1052,
+          "sources": [
+            {
+              "node": "#metodo",
+              "previousRect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "currentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 768,
+                "height": 1023.875,
+                "top": 0,
+                "right": 768,
+                "bottom": 1023.875,
+                "left": 0
+              }
+            }
+          ]
+        },
+        {
+          "phase": "scroll",
+          "value": 1,
+          "startTime": 5869,
+          "sources": [
+            {
+              "node": "canvas",
+              "previousRect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "currentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 768,
+                "height": 1023.875,
+                "top": 0,
+                "right": 768,
+                "bottom": 1023.875,
+                "left": 0
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "on",
+      "name": "1024x768",
+      "lcpMs": 128,
+      "clsInitial": 0,
+      "clsScrollDiagnostico": 2,
+      "overflowPx": 0,
+      "errors": [],
+      "broken": [],
+      "scrollProof": 45,
+      "contentScreens": 6.14,
+      "motionToggle": {
+        "width": 169.90625,
+        "height": 44,
+        "pressed": "true"
+      },
+      "shifts": [
+        {
+          "phase": "scroll",
+          "value": 1,
+          "startTime": 1054,
+          "sources": [
+            {
+              "node": "#metodo",
+              "previousRect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "currentRect": {
+                "x": 0,
+                "y": 0.078125,
+                "width": 1024,
+                "height": 767.921875,
+                "top": 0.078125,
+                "right": 1024,
+                "bottom": 768,
+                "left": 0
+              }
+            }
+          ]
+        },
+        {
+          "phase": "scroll",
+          "value": 1,
+          "startTime": 5886,
+          "sources": [
+            {
+              "node": "canvas",
+              "previousRect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "currentRect": {
+                "x": 0,
+                "y": 0.078125,
+                "width": 1024,
+                "height": 767.921875,
+                "top": 0.078125,
+                "right": 1024,
+                "bottom": 768,
+                "left": 0
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "on",
+      "name": "1440x900",
+      "lcpMs": 152,
+      "clsInitial": 0,
+      "clsScrollDiagnostico": 2,
+      "overflowPx": 0,
+      "errors": [],
+      "broken": [],
+      "scrollProof": 45,
+      "contentScreens": 5.85,
+      "motionToggle": {
+        "width": 169.90625,
+        "height": 44,
+        "pressed": "true"
+      },
+      "shifts": [
+        {
+          "phase": "scroll",
+          "value": 1,
+          "startTime": 1502,
+          "sources": [
+            {
+              "node": "canvas",
+              "previousRect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "currentRect": {
+                "x": 0,
+                "y": 0.171875,
+                "width": 1440,
+                "height": 899.828125,
+                "top": 0.171875,
+                "right": 1440,
+                "bottom": 900,
+                "left": 0
+              }
+            }
+          ]
+        },
+        {
+          "phase": "scroll",
+          "value": 1,
+          "startTime": 7101,
+          "sources": [
+            {
+              "node": "canvas",
+              "previousRect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "currentRect": {
+                "x": 0,
+                "y": 0.171875,
+                "width": 1440,
+                "height": 899.828125,
+                "top": 0.171875,
+                "right": 1440,
+                "bottom": 900,
+                "left": 0
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "on",
+      "name": "1920x1080",
+      "lcpMs": 164,
+      "clsInitial": 0,
+      "clsScrollDiagnostico": 1.9911,
+      "overflowPx": 0,
+      "errors": [],
+      "broken": [],
+      "scrollProof": 45,
+      "contentScreens": 5.32,
+      "motionToggle": {
+        "width": 169.90625,
+        "height": 44,
+        "pressed": "true"
+      },
+      "shifts": [
+        {
+          "phase": "scroll",
+          "value": 0.9911458333333333,
+          "startTime": 1190,
+          "sources": [
+            {
+              "node": "canvas",
+              "previousRect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "currentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 1920,
+                "height": 1079.84375,
+                "top": 0,
+                "right": 1920,
+                "bottom": 1079.84375,
+                "left": 0
+              }
+            }
+          ]
+        },
+        {
+          "phase": "scroll",
+          "value": 1,
+          "startTime": 5881,
+          "sources": [
+            {
+              "node": "canvas",
+              "previousRect": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "currentRect": {
+                "x": 0,
+                "y": 0,
+                "width": 1920,
+                "height": 1079.84375,
+                "top": 0,
+                "right": 1920,
+                "bottom": 1079.84375,
+                "left": 0
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "off",
+      "name": "390x844",
+      "lcpMs": 708,
+      "clsInitial": 0,
+      "clsScrollDiagnostico": 0,
+      "overflowPx": 0,
+      "errors": [],
+      "broken": [],
+      "scrollProof": null,
+      "contentScreens": null,
+      "motionToggle": {
+        "width": 165.421875,
+        "height": 44,
+        "pressed": "false"
+      },
+      "shifts": []
+    },
+    {
+      "mode": "off",
+      "name": "667x375",
+      "lcpMs": 124,
+      "clsInitial": 0,
+      "clsScrollDiagnostico": 0,
+      "overflowPx": 0,
+      "errors": [],
+      "broken": [],
+      "scrollProof": null,
+      "contentScreens": null,
+      "motionToggle": {
+        "width": 179.484375,
+        "height": 44,
+        "pressed": "false"
+      },
+      "shifts": []
+    },
+    {
+      "mode": "off",
+      "name": "768x1024",
+      "lcpMs": 120,
+      "clsInitial": 0,
+      "clsScrollDiagnostico": 0,
+      "overflowPx": 0,
+      "errors": [],
+      "broken": [],
+      "scrollProof": null,
+      "contentScreens": null,
+      "motionToggle": {
+        "width": 179.484375,
+        "height": 44,
+        "pressed": "false"
+      },
+      "shifts": []
+    },
+    {
+      "mode": "off",
+      "name": "1024x768",
+      "lcpMs": 124,
+      "clsInitial": 0,
+      "clsScrollDiagnostico": 0,
+      "overflowPx": 0,
+      "errors": [],
+      "broken": [],
+      "scrollProof": null,
+      "contentScreens": null,
+      "motionToggle": {
+        "width": 179.484375,
+        "height": 44,
+        "pressed": "false"
+      },
+      "shifts": []
+    },
+    {
+      "mode": "off",
+      "name": "1440x900",
+      "lcpMs": 132,
+      "clsInitial": 0,
+      "clsScrollDiagnostico": 0,
+      "overflowPx": 0,
+      "errors": [],
+      "broken": [],
+      "scrollProof": null,
+      "contentScreens": null,
+      "motionToggle": {
+        "width": 179.484375,
+        "height": 44,
+        "pressed": "false"
+      },
+      "shifts": []
+    },
+    {
+      "mode": "off",
+      "name": "1920x1080",
+      "lcpMs": 144,
+      "clsInitial": 0,
+      "clsScrollDiagnostico": 0,
+      "overflowPx": 0,
+      "errors": [],
+      "broken": [],
+      "scrollProof": null,
+      "contentScreens": null,
+      "motionToggle": {
+        "width": 179.484375,
+        "height": 44,
+        "pressed": "false"
+      },
+      "shifts": []
+    }
+  ],
+  "failures": []
+}

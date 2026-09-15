@@ -19,8 +19,8 @@ export const whatsapp = {
   telVisible: '+52 55 1487 9836',
 }
 
-export const waUrl = () =>
-  `https://wa.me/${whatsapp.numero}?text=${encodeURIComponent(whatsapp.mensaje)}`
+export const waUrl = (mensaje = whatsapp.mensaje) =>
+  `https://wa.me/${whatsapp.numero}?text=${encodeURIComponent(mensaje)}`
 
 export const nav = {
   enlaces: [
