@@ -23,12 +23,24 @@ async function inspect(directory) {
   }
   const middle = median(diffs.map(({ mean }) => mean))
   const peak = [...diffs].sort((a, b) => b.mean - a.mean)[0]
+  const neighbors = diffs.filter(({ after }) => after !== peak.after && Math.abs(after - peak.after) <= 3)
+  const neighborMean = neighbors.reduce((total, { mean }) => total + mean, 0) / neighbors.length
+  const saltosRangoMasPermisivo = diffs.flatMap((item) => {
+    const around = diffs.filter(({ after }) => after !== item.after && Math.abs(after - item.after) <= 3)
+    const aroundMean = around.reduce((total, { mean }) => total + mean, 0) / around.length
+    const razon = item.mean / middle
+    const aislamiento = item.mean / aroundMean
+    return razon > 3 && aislamiento > 1.8 ? [{ after: item.after, razon: Number(razon.toFixed(3)), aislamiento: Number(aislamiento.toFixed(3)) }] : []
+  })
   return {
     frames: files.length,
     mediana: Number(middle.toFixed(3)),
     pico: Number(peak.mean.toFixed(3)),
     picoAfter: peak.after,
     razon: Number((peak.mean / middle).toFixed(3)),
+    mediaVecinos: Number(neighborMean.toFixed(3)),
+    aislamiento: Number((peak.mean / neighborMean).toFixed(3)),
+    saltosRangoMasPermisivo,
   }
 }
 
