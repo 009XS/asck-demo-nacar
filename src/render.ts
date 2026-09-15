@@ -111,6 +111,17 @@ const capitulos = [
   ['Cierre', 'Volver a sonreír sin pensarlo.', 'La valoración no tiene costo. El primer paso es un mensaje.'],
 ]
 
+const mensajesCapitulo = [
+  'Quiero saber cómo construyen mi sonrisa capa por capa desde el material.',
+  'Quiero entender cómo realizan mi diagnóstico antes de iniciar cualquier tratamiento.',
+  'Quiero conocer cómo cuidan el esmalte y mantienen un resultado natural.',
+  'Quiero visitar la clínica y conocer su ambiente antes de agendar.',
+  'Quiero saber qué incluye mi primera consulta y cuánto tiempo toma.',
+  'Quiero revisar mi plan dental, sus etapas y el costo completo.',
+  'Quiero conocer cómo aplican precisión clínica en cada parte del tratamiento.',
+  'Quiero entender qué revela mi radiografía y recibir opciones claras de tratamiento.',
+]
+
 const tramos = [
   [0, 0.12], [0.105, 0.23], [0.215, 0.34], [0.325, 0.45], [0.435, 0.56],
   [0.545, 0.67], [0.655, 0.78], [0.765, 0.89], [0.875, 1],
@@ -122,7 +133,7 @@ const filmHtml = () => `
     <div class="film__scrim" aria-hidden="true"></div>
     <div class="film__hud"><span><b data-film-count>01</b> / 09</span><span>NÁCAR — RECORRIDO</span><i></i></div>
     <div class="film__cards">
-      ${capitulos.map((c,i)=>`<article class="film-card" data-film-card="${i}" data-from="${tramos[i][0]}" data-to="${tramos[i][1]}"><p class="label">${String(i+1).padStart(2,'0')} — ${c[0]}</p><h2 class="display d-lg" ${i===0?'id="film-title"':''}>${c[1]}</h2><p>${c[2]}</p><a class="film-card__cta" href="${i === 8 ? waUrl() : '#servicios'}" ${i === 8 ? 'target="_blank" rel="noopener"' : ''}>${i === 8 ? 'Agendar valoración' : 'Conocer tratamientos'} <span aria-hidden="true">→</span></a></article>`).join('')}
+      ${capitulos.map((c,i)=>`<article class="film-card" data-film-card="${i}" data-from="${tramos[i][0]}" data-to="${tramos[i][1]}"><p class="label">${String(i+1).padStart(2,'0')} — ${c[0]}</p><h2 class="display d-lg" ${i===0?'id="film-title"':''}>${c[1]}</h2><p>${c[2]}</p><a class="film-card__cta" href="${i === 8 ? waUrl() : waUrl(mensajesCapitulo[i])}" target="_blank" rel="noopener">${i === 8 ? 'Agendar valoración' : 'Hablar con el equipo'} <span aria-hidden="true">→</span></a></article>`).join('')}
     </div>
     <ol class="visually-hidden">${capitulos.map(c=>`<li>${c[0]}: ${c[1]} ${c[2]}</li>`).join('')}</ol>
   </section>`

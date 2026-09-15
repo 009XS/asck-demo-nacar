@@ -47,7 +47,7 @@ try {
       })
     }
     await page.addInitScript(() => {
-      window.__qa = { clsInitial: 0, clsScroll: 0, phase: 'initial', lcp: 0, shifts: [] }
+      window.__qa = { clsInitial: 0, clsScrollDiagnostico: 0, phase: 'initial', lcp: 0, shifts: [] }
       const selector = (node) => {
         if (!(node instanceof Element)) return null
         if (node.id) return `#${node.id}`
@@ -59,7 +59,7 @@ try {
           if (entry.hadRecentInput) continue
           const phase = window.__qa.phase
           if (phase === 'initial') window.__qa.clsInitial += entry.value
-          else window.__qa.clsScroll += entry.value
+          else window.__qa.clsScrollDiagnostico += entry.value
           window.__qa.shifts.push({
             phase,
             value: entry.value,
@@ -111,12 +111,12 @@ try {
       const visibleCards = await page.locator('.film-card').evaluateAll((cards) => cards.filter((card) => getComputedStyle(card).visibility === 'visible').length)
       if (visibleCards !== 9) failures.push({ mode, name, visibleCards })
     }
-    const postScroll = await page.evaluate(() => ({ clsScroll: window.__qa.clsScroll, shifts: window.__qa.shifts }))
-    const row = { mode, name, lcpMs: Math.round(metrics.lcp), clsInitial: Number(metrics.clsInitial.toFixed(4)), clsScroll: Number(postScroll.clsScroll.toFixed(4)), overflowPx: metrics.overflow, errors, broken, scrollProof, contentScreens: contentScreens === null ? null : Number(contentScreens.toFixed(2)), motionToggle: metrics.motionToggle, shifts: postScroll.shifts }
+    const postScroll = await page.evaluate(() => ({ clsScrollDiagnostico: window.__qa.clsScrollDiagnostico, shifts: window.__qa.shifts }))
+    const row = { mode, name, lcpMs: Math.round(metrics.lcp), clsInitial: Number(metrics.clsInitial.toFixed(4)), clsScrollDiagnostico: Number(postScroll.clsScrollDiagnostico.toFixed(4)), overflowPx: metrics.overflow, errors, broken, scrollProof, contentScreens: contentScreens === null ? null : Number(contentScreens.toFixed(2)), motionToggle: metrics.motionToggle, shifts: postScroll.shifts }
     results.push(row)
     const invalidToggle = metrics.motionToggle.width < 44 || metrics.motionToggle.height < 44 || metrics.motionToggle.pressed !== String(mode === 'on')
     if (metrics.overflow > 0 || metrics.clsInitial > 0.05 || invalidToggle || (name === '390x844' && metrics.lcp > 2500) || errors.length || broken.length || (mode === 'on' && (scrollProof ?? 0) < 40) || (contentScreens !== null && height >= 600 && contentScreens > 8.01)) failures.push(row)
-    console.log(`${mode} ${name}: LCP ${row.lcpMs}ms CLS inicial ${row.clsInitial} CLS scroll ${row.clsScroll} overflow ${row.overflowPx}px cambios ${scrollProof ?? '-'} coda ${row.contentScreens ?? '-'}vh`)
+    console.log(`${mode} ${name}: LCP ${row.lcpMs}ms CLS inicial ${row.clsInitial} CLS barrido diagnóstico ${row.clsScrollDiagnostico} overflow ${row.overflowPx}px cambios ${scrollProof ?? '-'} coda ${row.contentScreens ?? '-'}vh`)
     await context.close()
   }
   if (budgets.desktop > limits.desktop || budgets.mobile > limits.mobile) failures.push({ frameBudgets: budgets, limits })
