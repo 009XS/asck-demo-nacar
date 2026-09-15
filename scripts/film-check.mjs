@@ -3,6 +3,7 @@ import sharp from 'sharp'
 
 const manifest = JSON.parse(readFileSync('public/film/manifest.json', 'utf8'))
 const declaredCuts = new Set(manifest.cuts.map(({ after }) => after))
+const LIMITS = { desktop: 8_000_000, mobile: 3_000_000 }
 const absolute = (url) => `public${url}`
 const sum = (values) => values.reduce((total, value) => total + value, 0)
 const median = (values) => {
@@ -19,11 +20,8 @@ async function inspect(set) {
   const frames = manifest.sets[set]
   if (frames.length !== 264) throw new Error(`${set}: ${frames.length} frames; se esperaban 264`)
   const sampled = []
-  for (let index = 2; index < frames.length - 1; index += 3) {
+  for (let index = 0; index < frames.length - 1; index += 1) {
     sampled.push({ index, left: await pixels(frames[index]), right: await pixels(frames[index + 1]) })
-  }
-  for (const cut of declaredCuts) {
-    if (!sampled.some(({ index }) => index === cut)) sampled.push({ index: cut, left: await pixels(frames[cut]), right: await pixels(frames[cut + 1]) })
   }
   const diffs = []
   const cuts = []
@@ -46,6 +44,7 @@ async function inspect(set) {
     pico: Number(peak.toFixed(3)),
     picoAfter: peakItem.index,
     razonCorte: Number((peak / middle).toFixed(3)),
+    paresSobreLimite: diffs.filter(({ mean }) => mean / middle > 3.5).map(({ index, mean }) => ({ after: index, razon: Number((mean / middle).toFixed(3)) })),
     cortesDeclarados: cuts,
   }
 }
@@ -63,8 +62,8 @@ const failures = []
 if (manifest.pinVh < 20) failures.push(`pin ${manifest.pinVh} < 20 pantallas`)
 if (report.desktop.razonCorte > 3.5) failures.push(`desktop razonCorte ${report.desktop.razonCorte} > 3.5`)
 if (report.mobile.razonCorte > 3.5) failures.push(`mobile razonCorte ${report.mobile.razonCorte} > 3.5`)
-if (report.desktop.bytes > 10 * 1024 * 1024) failures.push('desktop > 10 MB')
-if (report.mobile.bytes > 5 * 1024 * 1024) failures.push('mobile > 5 MB')
+if (report.desktop.bytes > LIMITS.desktop) failures.push(`desktop ${report.desktop.bytes} B > ${LIMITS.desktop} B`)
+if (report.mobile.bytes > LIMITS.mobile) failures.push(`mobile ${report.mobile.bytes} B > ${LIMITS.mobile} B`)
 if (failures.length) {
   console.error(`FILM-CHECK FALLÓ: ${failures.join('; ')}`)
   process.exit(1)

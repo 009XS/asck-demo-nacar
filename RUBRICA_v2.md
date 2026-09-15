@@ -1,39 +1,25 @@
-# Rúbrica NÁCAR v2 — evidencia final
+# Rúbrica NÁCAR v2 — remedición C12
 
-Evaluación contra la rúbrica de `doctrina-diseno`. Fecha de medición: 2026-09-14.
+Evaluación adversarial posterior a R1. Fecha: 2026-09-15. Evidencia reproducible en `qa/v2/metrics.json` y `npm run film-check`.
 
-| Criterio | Nota | Evidencia medida |
-|---|---:|---|
-| Concepto y narrativa (15%) | 9.4 | La materia se transforma en consulta y vuelve al nácar a través de 4 clips/264 fotogramas; 9 capítulos conservan antetítulo, titular, cuerpo y CTA. |
-| Tipografía (15%) | 9.0 | Dos familias autoalojadas WOFF2: Cormorant Garamond e Inter; escala `clamp()` y display de hasta 10rem. |
-| Composición y espacio (10%) | 9.0 | Canvas a sangre, copy asimétrico, HUD editorial y coda en retícula; 0 px de overflow en los 6 tamaños. |
-| Color y atmósfera (10%) | 9.2 | Tokens porcelana/jade/oro/petróleo, scrim direccional y ausencia de #000/#fff como base. |
-| Movimiento y scroll (15%) | 8.4 | Un solo ScrollTrigger, `scrub: 0.5`, pin de 22.5 pantallas, índice real 0–263 y fundidos de 3 fotogramas en cortes. Penaliza continuidad interna: razón de corte 6.798 desktop / 6.752 móvil, superior a 3.5. |
-| Fallback reduce + accesibilidad (10%) | 9.2 | `?motion=off` mostró 9 láminas; toggle, localStorage seguro, foco, skip link y `<ol>` alternativo. |
-| Rendimiento (10%) | 9.1 | LCP móvil CPU 4×: 516 ms; CLS 0; frames 7,512,862 B desktop y 3,493,070 B móvil. |
-| Detalle / craft (10%) | 8.9 | HUD, progreso, foco, hover y 404 coherentes; 12 perfiles on/off sin consola ni 404. |
-| Contenido y conversión (5%) | 9.2 | CTAs funcionales en cada capítulo; WhatsApp con mensaje precargado y disclaimer de demo. |
+| Criterio | Peso | Nota | Evidencia medida |
+|---|---:|---:|---|
+| Concepto y narrativa | 15% | 8.8 | Se conservan cuatro clips, 264 fotogramas y nueve capítulos. Los tramos interpolados corrigen la continuidad, aunque reducen algo de variedad de movimiento. |
+| Tipografía | 15% | 8.7 | Cormorant Garamond e Inter autoalojadas, precargadas y con fallbacks métricos; `font-display: optional` elimina el reflow de carga fría. |
+| Composición y espacio | 10% | 8.5 | Canvas a sangre y coda asimétrica; 0 px de overflow en 12 perfiles. |
+| Color y atmósfera | 10% | 8.8 | Paleta porcelana/jade/oro/petróleo y scrims consistentes. |
+| Movimiento y scroll | 15% | 9.0 | 45/45 cambios en seis tamaños; 263 pares/set comprobados. Razón máxima 3.450 desktop y 3.338 móvil; ningún par interno sobre 3.5. Precarga direccional de 12 frames. |
+| Reduce + accesibilidad | 10% | 9.2 | Nueve láminas en motion-off; control de 44 px de alto, foco visible y `aria-pressed` sincronizado en on/off. |
+| Rendimiento | 10% | 9.3 | Carga fría 390×844, CPU 4×, 100 ms/1.6 Mbps: LCP 768 ms y CLS inicial 0.0000. Sets: 7,715,718 B desktop y 2,684,960 B móvil. |
+| Detalle / craft | 10% | 9.0 | Consola y respuestas HTTP limpias, 0 overflow, presupuestos y continuidad codificados como regresiones. |
+| Contenido y conversión | 5% | 8.4 | Copy específico y WhatsApp funcional; se mantiene la limitación R1 de que ocho CTA intermedios enlazan a servicios, no directamente a WhatsApp. |
 
-Puntuación ponderada: **8.98 / 10**. Sin topes activos. El objetivo ≥ 9.0 no se alcanza: faltan **0.02 puntos**, causados por los picos internos de continuidad de los clips.
+Puntuación ponderada: **8.88 / 10**. La revisión técnica queda aprobada, pero no se infla a 9.0: la conversión de los CTA intermedios y la menor variedad de los tramos interpolados siguen limitando la nota.
 
-## Checklist de agencia
+## Puerta objetiva
 
-1. Sí — mini-biblia en `DIRECCION.md`.
-2. Sí — momento firma: recorrido nácar → clínica → nácar oro.
-3. Sí — dos familias autoalojadas.
-4. Sí — ratio display:cuerpo superior a 8:1 en desktop.
-5. Sí — sin negro/blanco puros como base; paleta tokenizada.
-6. Sí — copy lateral y coda con rupturas asimétricas.
-7. Sí — una sola pieza scrub.
-8. Sí — `end` funcional en px, 22.5 viewport, scrub 0.5.
-9. Sí — no hay `ease`/`linear` por defecto en la pieza.
-10. Sí — motion on/off y capturas en `qa/v2/`.
-11. Sí — 390 px sin overflow y targets de 44 px.
-12. Sí — LCP 516 ms, CLS 0, presupuestos de frames cumplidos.
-13. Sí — consola y 404 limpios en 12 perfiles.
-14. Sí — foco, skip link y alternativa textual.
-15. No aplica — no hay 3D/WebGL.
-16. Parcial — QA aprueba; film-check falla continuidad 3.5.
-17. Sí — regresiones ejecutables en `scripts/qa.mjs` y `scripts/film-check.mjs`.
-18. Sí — cifras concretas y CTAs que explican el siguiente paso.
-19. Sí — 8.98, superior al umbral 7.5.
+- `npm run typecheck`: aprobado.
+- `npm run build`: aprobado.
+- `npm run film-check`: aprobado, límites exactos 8,000,000 B desktop / 3,000,000 B móvil.
+- `npm run qa`: aprobado en seis tamaños, motion on/off; LCP móvil <2.5 s, CLS inicial <0.05, consola limpia, overflow 0 y scroll-proof 45.
+- Capturas: cinco puntos de scroll para 390×844 y cinco para 1440×900 en `qa/v2/`.

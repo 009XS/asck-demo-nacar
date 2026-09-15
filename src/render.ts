@@ -118,7 +118,7 @@ const tramos = [
 
 const filmHtml = () => `
   <section class="film" id="metodo" aria-labelledby="film-title" aria-label="Recorrido de nueve capítulos: del nácar al estudio dental y de vuelta a la materia">
-    <canvas aria-hidden="true"></canvas><img class="film__poster" src="/film/poster.jpg" width="960" height="540" alt="Capas de nácar iluminadas en tonos porcelana, jade y oro" />
+    <canvas width="1600" height="900" aria-hidden="true"></canvas><img class="film__poster" src="/film/poster.jpg" width="960" height="540" alt="Capas de nácar iluminadas en tonos porcelana, jade y oro" />
     <div class="film__scrim" aria-hidden="true"></div>
     <div class="film__hud"><span><b data-film-count>01</b> / 09</span><span>NÁCAR — RECORRIDO</span><i></i></div>
     <div class="film__cards">
@@ -272,7 +272,7 @@ const flotantesHtml = () => `
   <a class="wa-pill" data-oculta href="${waUrl()}" target="_blank" rel="noopener" aria-label="Agendar valoración por WhatsApp">
     ${ICONO_WA}<span>WhatsApp</span>
   </a>
-  <button class="motion-pill" type="button" data-motion-toggle aria-live="polite"></button>`
+  <button class="motion-pill" type="button" data-motion-toggle aria-live="polite" aria-pressed="false"></button>`
 
 export function render(root: HTMLElement): void {
   root.innerHTML = `

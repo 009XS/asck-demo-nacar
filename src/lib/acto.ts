@@ -11,7 +11,7 @@ type FilmManifest = {
 }
 
 const MOBILE_QUERY = '(max-width: 640px)'
-const BATCH = 12
+const PREFETCH = 12
 
 function drawCover(ctx: CanvasRenderingContext2D, image: HTMLImageElement): void {
   const scale = Math.max(ctx.canvas.width / image.naturalWidth, ctx.canvas.height / image.naturalHeight)
@@ -33,6 +33,7 @@ export function montarActo(animar: boolean): gsap.Context {
     let manifest: FilmManifest | undefined
     let frames: string[] = []
     let images: Array<HTMLImageElement | undefined> = []
+    let previousIndex = 0
 
     const paint = (force = false): void => {
       if (!manifest || !frames.length) return
@@ -64,15 +65,27 @@ export function montarActo(animar: boolean): gsap.Context {
       root.classList.add('is-painted')
     }
 
-    const loadBatch = (index: number): void => {
-      const first = Math.max(0, Math.floor(index / BATCH) * BATCH)
-      for (let i = first; i < Math.min(first + BATCH * 2, frames.length); i += 1) {
-        if (images[i]) continue
-        const image = new Image()
-        image.decoding = 'async'
-        images[i] = image
-        image.src = frames[i]
-        void image.decode().then(() => paint(true)).catch(() => undefined)
+    const loadFrame = (i: number): void => {
+      if (i < 0 || i >= frames.length || images[i]) return
+      const image = new Image()
+      image.decoding = 'async'
+      images[i] = image
+      image.src = frames[i]
+      void image.decode().then(() => paint(true)).catch(() => undefined)
+    }
+
+    const preloadDirection = (index: number, direction: number): void => {
+      loadFrame(index)
+      for (let step = 1; step <= PREFETCH; step += 1) {
+        loadFrame(index + step * direction)
+      }
+      // Conserva una pequeña reserva detrás para scroll inverso inmediato.
+      for (let step = 1; step <= 3; step += 1) loadFrame(index - step * direction)
+    }
+
+    const preloadKeyframes = (): void => {
+      for (let i = 0; i < frames.length; i += 22) {
+        loadFrame(i)
       }
     }
 
@@ -91,7 +104,8 @@ export function montarActo(animar: boolean): gsap.Context {
       manifest = data
       frames = data.sets[matchMedia(MOBILE_QUERY).matches ? 'mobile' : 'desktop']
       images = new Array(frames.length)
-      loadBatch(0)
+      preloadKeyframes()
+      preloadDirection(0, 1)
       const cards = gsap.utils.toArray<HTMLElement>('.film-card', root)
       const count = root.querySelector<HTMLElement>('[data-film-count]')
       const timeline = gsap.timeline()
@@ -110,7 +124,9 @@ export function montarActo(animar: boolean): gsap.Context {
         onUpdate: ({ progress: next }) => {
           progress = next
           const index = Math.round(progress * (frames.length - 1))
-          loadBatch(index)
+          const direction = index >= previousIndex ? 1 : -1
+          preloadDirection(index, direction)
+          previousIndex = index
           paint()
           if (count) count.textContent = String(Math.min(9, Math.floor(progress * 9) + 1)).padStart(2, '0')
         },

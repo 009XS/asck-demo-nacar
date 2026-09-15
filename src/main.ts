@@ -37,7 +37,10 @@ function desmontar(): void {
 const toggle = document.querySelector<HTMLButtonElement>('[data-motion-toggle]')
 
 function pintarToggle(): void {
-  if (toggle) toggle.textContent = animar() ? 'Quitar movimiento' : 'Ver con movimiento'
+  if (!toggle) return
+  const activo = animar()
+  toggle.textContent = activo ? 'Quitar movimiento' : 'Ver con movimiento'
+  toggle.setAttribute('aria-pressed', String(activo))
 }
 
 toggle?.addEventListener('click', () => {
