@@ -4,6 +4,9 @@ import { spawn } from 'node:child_process'
 
 const BASE = process.env.QA_BASE ?? 'http://localhost:4187'
 const ownServer = !process.env.QA_BASE
+// Intervalo entre muestras del barrido. 100 ms basta en local; en remoto se sube (p. ej. QA_STEP_MS=600) para que la secuencia precargue.
+const STEP_MS = Number(process.env.QA_STEP_MS ?? 100)
+if (!Number.isFinite(STEP_MS) || STEP_MS < 0) throw new Error('QA_STEP_MS invalido: ' + process.env.QA_STEP_MS)
 const server = ownServer ? spawn('npm run preview', { stdio: 'pipe', shell: true }) : undefined
 const waitForServer = async () => {
   for (let attempt = 0; attempt < 50; attempt += 1) {
@@ -95,7 +98,7 @@ try {
       const seen = new Set()
       for (let point = 0; point < 45; point += 1) {
         await page.evaluate((y) => scrollTo(0, y), filmTop + height * 22.5 * point / 44)
-        await page.waitForTimeout(100)
+        await page.waitForTimeout(STEP_MS)
         seen.add(await page.locator('.film').getAttribute('data-frame'))
         if ((name === '1440x900' || name === '390x844') && [0, 11, 22, 33, 44].includes(point)) {
           await page.screenshot({ path: `qa/v2/${name}-${String(point / 11).padStart(2, '0')}.png` })
