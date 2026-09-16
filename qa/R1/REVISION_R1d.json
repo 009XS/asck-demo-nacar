@@ -1,0 +1,87 @@
+{
+  "revision": "R1d",
+  "fecha": "2026-09-15",
+  "objeto": "https://nacar.asck.tech",
+  "commits": ["0862c7f", "d74f3f8"],
+  "antecedente": "qa/R1/REVISION_R1c.md (RECHAZADA 6.0, 5 bloqueantes)",
+  "verdict": "APROBADA_CON_RESERVAS",
+  "score": 8.3,
+  "score_ponderado_sin_topes": 8.305,
+  "topes_activos": [],
+  "umbral_entrega": 8.5,
+  "umbral_ensenable": 7.5,
+  "criteria": {
+    "concepto_y_narrativa": { "peso": 0.15, "nota": 8.2, "r1c": 8.0, "evidencia": "264 fotogramas, 9 capitulos, momento firma radiografia->nacar; clip 02 ya no sustituye mobiliario; copy de 2 de 9 capitulos no corresponde a la imagen; tres consultorios distintos entre cortes declarados" },
+    "tipografia": { "peso": 0.15, "nota": 8.5, "r1c": 8.5, "evidencia": "2 familias (Cormorant Garamond + Inter Variable), 4 woff2 autoalojadas 116770 B, h1 158.4 px vs cuerpo 18 px = ratio 8.8:1; mismo par que UMBRAL" },
+    "composicion_y_espacio": { "peso": 0.10, "nota": 7.5, "r1c": 7.5, "evidencia": "asimetria y numeracion editorial 01 —; los 9 capitulos repiten el bloque abajo-izquierda; 0 px de overflow en 7 anchos" },
+    "color_y_atmosfera": { "peso": 0.10, "nota": 8.5, "r1c": 6.5, "evidencia": "etiqueta 8.55-8.57:1 en 36 combinaciones medidas sin forzar estilos; cuerpo min 5.38:1; h2 display min 3.40:1 (>=3 para texto grande); ningun #000/#fff renderizado" },
+    "movimiento_y_scroll": { "peso": 0.15, "nota": 9.0, "r1c": 7.5, "evidencia": "1 pin, end en px de viewport, scrub .5, pinType transform; 45/45 cambios en 6 tamanos con dos instrumentos; CLS 0.0000; p50/p95 de fotograma 16.7/16.8 ms y 0 tareas largas con rueda real, tambien con CPU 4x; sin hijacking; sin ease/linear por defecto" },
+    "fallback_reduce_y_accesibilidad": { "peso": 0.10, "nota": 8.5, "r1c": 4.0, "evidencia": "on->off deja 9/9 tarjetas, 0 pin-spacer, 0 triggers, 0 inline; off->on->off y carreras de clics limpios; interruptor 156-176x44 con aria-pressed; persistencia en localStorage; skip link, focus-visible, ol oculta, tap >=44 en 390; pendientes: 8 de 13 CTA sin teclado en modo animado, nav 18 px con puntero grueso a 1024-1180, se pierde la posicion al conmutar" },
+    "rendimiento": { "peso": 0.10, "nota": 7.5, "r1c": 6.0, "evidencia": "LCP 390 CPU4x mediana 1000 ms (812-1312) con un valor en frio de 3508 ms; CLS 0 en 6 viewports; entrada movil 3365621 B (+34.6% sobre 2.5 MB de doctrina) y desktop 8369018 B (+4.6% sobre 8 MB); sets 7983510 / 2980502 B, mayores que en R1c" },
+    "detalle_craft": { "peso": 0.10, "nota": 8.0, "r1c": 7.0, "evidencia": "404 propio, foco por contexto, HUD, disolvencias con sombra 35%, DIRECCION.md realineada (5 datos verificados); 3085 B de CSS muerto (.acto/.paso/.rail, 12.5% del CSS) para 0 nodos; /film sin Cache-Control; puertas de QA debiles o ciegas" },
+    "contenido_y_conversion": { "peso": 0.05, "nota": 9.0, "r1c": 8.5, "evidencia": "13 enlaces wa.me, 13 con mensaje precargado por capitulo; tel propio; disclaimer de clinica ficticia y cedula (demo)" }
+  },
+  "r1c_hallazgos": {
+    "B1_interruptor_rompe_la_pieza": { "estado": "CORREGIDO", "prueba": "390x844 y 1440x900 en vivo: off = 9/9 tarjetas visibles, 0 pin-spacer, 0 ScrollTriggers, docH 15282/14062; on de nuevo = 1 pin y 10/9 fotogramas distintos en 12 muestras; clic antes del manifiesto y rafagas de 5 y 6 clics sin fugas ni errores" },
+    "B2_contraste_etiqueta": { "estado": "CORREGIDO", "prueba": "36/36 combinaciones (9 capitulos x 390/1440 x on/off) entre 8.55 y 8.57:1, medido sobre el estado real renderizado; antes 2.19 y 3.65:1" },
+    "B3_cls_del_pin": { "estado": "CORREGIDO", "prueba": "CLS de ciclo de vida 0.0000 en 390x844, 667x375, 768x1024, 1024x768, 1440x900 y 1920x1080; 0.0000 tambien con rueda real atravesando entrada y salida del pin; antes 2.0-4.0" },
+    "B4_continuidad_clip02": { "estado": "CORREGIDO", "prueba": "sobre los binarios en vivo: clip 2 mediana 6.748, pico 9.894 (indice 83), razon 1.466; maximo interno del set 25.385 < 32.33175; 12 fotogramas 85-107 inspeccionados: mismo sillon, taburete, suelo y cortina" },
+    "B5_set_por_pointer": { "estado": "CORREGIDO_CON_REGRESION_CIEGA", "prueba": "667x375 y 768x1024 cargan el set movil: 3365621 B (antes 8.27 MB). Pero la puerta de bytes de scripts/qa.mjs suma content-length y contra HTTP/2 lee 79661 B donde hay 3365621 B (251 de 274 respuestas sin esa cabecera): nunca puede dispararse en produccion" },
+    "N1_radiografia_literal": { "estado": "NO_CORREGIDO_POR_DECISION", "nota": "decision expresa de Kevin" },
+    "N2_copy_capitulos_02_y_06": { "estado": "NO_CORREGIDO_POR_DECISION", "nota": "cap 02 sobre macro de nacar (28-60); cap 06 'tu boca en pantalla' sobre instrumental (143-176), la pantalla aparece en 198" },
+    "N3_objetivos_tactiles": { "estado": "CORREGIDO", "prueba": "0 elementos <44 px en 390, 768 y 820; nuevo hallazgo: 4 enlaces de nav 18 px de alto con pointer coarse a 1024 y 1180" },
+    "N4_direccion_md_desactualizada": { "estado": "CORREGIDO", "prueba": "--pizarra #63625C, 1440/720 px, 10 fps, 7983510 / 2980502 B, pico 25.385, guardarrail 32.33175: los 6 datos coinciden con mi medicion" },
+    "N5_codigo_muerto": { "estado": "PARCIAL", "prueba": "actoHtml fuera del bundle (0 coincidencias); arcosActo() sigue en src/lib/arco.ts sin importadores y el CSS servido conserva 32 bloques .acto/.paso/.rail = 3085 B" },
+    "N6_correo_gmail": { "estado": "NO_CORREGIDO_POR_DECISION" },
+    "N7_cta_sin_teclado_en_animado": { "estado": "NO_CORREGIDO", "prueba": "12 focos recorridos a 1440 en modo on: ninguno es CTA de capitulo; en modo quieto las 13 son alcanzables" }
+  },
+  "blocking_fixes": [
+    "Peso movil fuera de presupuesto: entrada 3365621 B medida con CDP frente a 2500000 B de la doctrina (+34.6%); el set movil crecio de 2824596 a 2980502 B en v2.2. Bajar calidad, ancho (720->640) o numero de fotogramas en movil.",
+    "La puerta de bytes de scripts/qa.mjs no mide en produccion: suma content-length y sobre HTTP/2 obtiene 79661 B donde hay 3365621 B (0 B en 9 de 12 perfiles). Cambiar a Network.loadingFinished.encodedDataLength o performance.getEntriesByType('resource').transferSize; sin esto el bloqueante B5 no queda protegido.",
+    "Apretar la puerta de CLS de barrido de 0.25 a <0.1 y aplicarla a los seis viewports (el valor real medido es 0.0000, el cambio no cuesta nada).",
+    "La puerta de contraste fuerza visibility/opacity/transform en modo animado y compara percentiles de luminancia en vez de texto contra fondo: medir el estado real, navegando al progreso de cada capitulo."
+  ],
+  "nice_to_have": [
+    "Alcanzar con teclado las 8 CTA de capitulo en modo animado (o indice navegable por capitulos).",
+    "Subir a 44 px los 4 enlaces de nav cuando (pointer: coarse) y el ancho es 1024-1180.",
+    "Conservar la posicion de lectura al conmutar el movimiento: hoy el documento pasa de 28432 a 15282 px y el usuario cae en la coda.",
+    "Borrar los 32 bloques CSS .acto/.paso/.rail (3085 B, 12.5% del CSS) y arcosActo().",
+    "Cache-Control: public, max-age=31536000, immutable para /film/** en nginx.conf (hoy no lleva cabecera y depende de la heuristica de Last-Modified).",
+    "Densificar el scrim del capitulo 03 en modo quieto: h2 a 3.40:1, al filo del minimo de texto grande.",
+    "Romper la composicion repetida en 2 de los 9 capitulos.",
+    "Realinear el copy de los capitulos 02 y 06 con la imagen (decision de Kevin).",
+    "Vigilar el arranque en frio: 3508 ms de LCP en la primera visita tras una pausa larga.",
+    "Vigilar el 502 transitorio de plataforma: el npm run qa de hoy contra produccion fallo por 502 en /film/desktop/c01-005.webp, aunque 528/528 fotogramas responden 200 al reintentar en paralelo."
+  ],
+  "mediciones_clave": {
+    "cls_ciclo_completo": { "390x844": 0.0, "667x375": 0.0, "768x1024": 0.0, "1024x768": 0.0, "1440x900": 0.0, "1920x1080": 0.0, "rueda_1440": 0.0, "rueda_390_cpu4x": 0.0 },
+    "lcp_390x844_cpu4x_ms": { "frio": 3508, "mediana_5_repeticiones": 1000, "min": 812, "max": 1312 },
+    "entrada_bytes_recorrido_completo": { "390x844": 3365621, "667x375": 3365621, "768x1024": 3365621, "1024x768": 8368995, "1440x900": 8369018, "1920x1080": 8369018 },
+    "sets_bytes": { "desktop": 7983510, "mobile": 2980502, "limite_repo": { "desktop": 8000000, "mobile": 3000000 }, "limite_doctrina_entrada": { "desktop": 8000000, "mobile": 2500000 } },
+    "contraste_etiqueta": { "n": 36, "min": 8.55, "max": 8.57, "peor_pixel": 8.47 },
+    "contraste_h2": { "n": 36, "min": 3.4, "umbral_texto_grande": 3.0 },
+    "contraste_parrafo": { "n": 36, "min": 5.38, "umbral": 4.5 },
+    "continuidad": { "clip1": { "mediana": 4.275, "pico": 13.757 }, "clip2": { "mediana": 6.748, "pico": 9.894, "razon": 1.466 }, "clip3": { "mediana": 12.595, "pico": 25.385 }, "clip4": { "mediana": 6.754, "pico": 17.469 }, "cortes_declarados": [76.847, 98.211, 81.365], "guardarrail": 32.33175 },
+    "fluidez": { "p50_ms": 16.7, "p95_ms": 16.8, "tareas_largas": 0 },
+    "scroll_proof": { "data_frame": "45/45 en 6 viewports", "hash_canvas": "45/45 en 6 viewports" },
+    "consola": { "errores": 0, "http_4xx_5xx": 0, "combinaciones": 12, "frames_probados_en_paralelo": "528/528 HTTP 200" },
+    "conversion": { "wa_me": 13, "con_mensaje": 13 },
+    "integridad": { "manifest_identico": true, "frames_sha1_coincidentes": "24/24" }
+  },
+  "comparacion_referentes": {
+    "metodo": "Chromium sin cache, mismo dia; 390x844 con CPU 4x y 1.6 Mbps; barrido de 45 puntos a 1440x900; bytes por CDP encodedDataLength",
+    "NACAR": { "lcp_390": 1312, "lcp_1440": 1024, "cls_inicial_390": 0.0, "cls_barrido_1440": 0.0, "carga_inicial_390": 605711, "entrada_1440_tras_recorrer": 8368995, "pantallas_1440": 31.2, "pin": 1, "wa_me": 13, "interruptor": "170x44 con aria-pressed", "familias": "Cormorant Garamond + Inter", "errores": 0 },
+    "UMBRAL": { "lcp_390": 616, "lcp_1440": 664, "cls_inicial_390": 0.0, "cls_barrido_1440": 1.5361, "carga_inicial_390": 5666468, "entrada_1440_tras_recorrer": 20349544, "pantallas_1440": 38.2, "pin": 1, "wa_me": 0, "interruptor": "no encontrado", "familias": "Cormorant Garamond + Inter", "errores": 0 },
+    "DANZA": { "lcp_390": 1220, "lcp_1440": 752, "cls_inicial_390": 0.026, "cls_barrido_1440": 0.0001, "carga_inicial_390": 1156487, "entrada_1440_tras_recorrer": 2551401, "pantallas_1440": 10.7, "pin": 0, "wa_me": 6, "interruptor": "99x44 con aria-pressed", "familias": "Patrick Hand + Caveat", "errores": 0 },
+    "EXCAMORMAR": { "lcp_390": 3516, "lcp_1440": 1164, "cls_inicial_390": 0.0, "cls_barrido_1440": 0.0, "carga_inicial_390": 9535266, "entrada_1440_tras_recorrer": 34810495, "pantallas_1440": 33.7, "pin": 0, "wa_me": 0, "interruptor": "252x44 sin aria-pressed", "familias": "Archivo + Inter", "errores": 0 },
+    "veredicto": "NACAR supera a Entre lineas y a Excamormar y empata tecnicamente con UMBRAL: le gana en CLS (0.0000 vs 1.5361), peso (8.37 vs 20.35 MB), fallback con interruptor y conversion; le pierde en LCP (1024 vs 664 ms), identidad tipografica (mismo par heredado) y presupuesto movil (3.37 MB vs 2.5 MB de doctrina)."
+  },
+  "capturas": [
+    "qa/R1/r1d-01-interruptor-off-390.png",
+    "qa/R1/r1d-02-interruptor-off-1440.png",
+    "qa/R1/r1d-03-etiqueta-contraste.png",
+    "qa/R1/r1d-04-clip02-continuo-85-107.png",
+    "qa/R1/r1d-05-pelicula-1440-capitulo07.png",
+    "qa/R1/r1d-06-referentes-390.png"
+  ]
+}
