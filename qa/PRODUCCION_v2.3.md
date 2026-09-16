@@ -1,9 +1,10 @@
 # NÁCAR v2.3 en producción
 
 Fecha: 2026-09-15 · URL: https://nacar.asck.tech
-Commit desplegado: `e9cc21abd42ee55f4f00ec7f212305b18957dfd1` (merge de `a253143` en `main`)
+Commit desplegado: **`f67d0517` (`main`)** — corrige la regresión de punteros descrita en el §10.
+Despliegue anterior de la v2.3: `e9cc21abd42ee55f4f00ec7f212305b18957dfd1` (merge de `a253143`).
 Tag de respaldo: `respaldo-main-antes-v2.3-2026-09-15` → `d8e70f740fe770a290ffe995e00e81ca7fc8c233`
-Deployment Coolify: `vcd31whpnhwwxb5ldpwxbl3i` — `finished` a los 30 s.
+Deployments Coolify: `vcd31whpnhwwxb5ldpwxbl3i` (`finished`, 30 s) y **`jayklppycvsc16zlovsge5e9` (`finished`, 20 s)**.
 
 Todas las cifras de este documento salen de un comando ejecutado contra la URL en vivo después
 del despliegue. Evidencia cruda en `qa/PRODUCCION_v2.3/`.
@@ -40,23 +41,24 @@ también responde 200 con `immutable`; nada del sitio genera esas URLs, pero que
 
 ## 3. QA remota — `QA_BASE=https://nacar.asck.tech QA_STEP_MS=600 npm run qa`
 
-**Aprobada en la primera pasada**, `failures: []`, exit 0. Log completo en
+**Aprobada en la primera pasada** de cada uno de los dos despliegues, `failures: []`, exit 0. La
+tabla es la del build final (`f67d0517`). Log completo en
 `qa/PRODUCCION_v2.3/qa-remoto.log`; métricas en `qa/PRODUCCION_v2.3/metrics.json`.
 
 | Modo | Viewport | LCP | CLS inicial | CLS barrido | Entrada (cuerpo real) | Presupuesto | Contraste mín. | Overflow | Cambios |
 |---|---|---:|---:|---:|---:|---:|---:|---:|---:|
-| on | 390×844 | 3,536 ms (frío) | 0 | **0** | **2,461,726 B** | 2,500,000 | 6.80 | 0 | 45/45 |
-| on | 667×375 | 768 ms | 0 | **0** | **2,461,726 B** | 2,500,000 | — | 0 | 45/45 |
-| on | 768×1024 | 1,020 ms | 0 | **0** | **2,461,726 B** | 2,500,000 | — | 0 | 45/45 |
-| on | 1024×768 | 756 ms | 0 | **0** | 7,523,788 B | 8,000,000 | — | 0 | 45/45 |
-| on | 1440×900 | 908 ms | 0 | **0** | 7,523,788 B | 8,000,000 | 6.57 | 0 | 45/45 |
-| on | 1920×1080 | 828 ms | 0 | **0** | 7,523,788 B | 8,000,000 | — | 0 | 45/45 |
-| off | 390×844 | 1,208 ms | 0 | 0 | 1,034,429 B | 2,500,000 | 6.96 | 0 | — |
-| off | 667×375 | 780 ms | 0 | 0 | 1,034,429 B | 2,500,000 | — | 0 | — |
-| off | 768×1024 | 584 ms | 0 | 0 | 1,034,429 B | 2,500,000 | — | 0 | — |
-| off | 1024×768 | 928 ms | 0 | 0 | 1,256,388 B | 8,000,000 | — | 0 | — |
-| off | 1440×900 | 824 ms | 0 | 0 | 1,256,388 B | 8,000,000 | 6.85 | 0 | — |
-| off | 1920×1080 | 676 ms | 0 | 0 | 1,256,388 B | 8,000,000 | — | 0 | — |
+| on | 390×844 | 1,220 ms | 0 | **0** | **2,461,734 B** | 2,500,000 | 6.80 | 0 | 45/45 |
+| on | 667×375 | 664 ms | 0 | **0** | **2,461,734 B** | 2,500,000 | — | 0 | 45/45 |
+| on | 768×1024 | 896 ms | 0 | **0** | **2,461,734 B** | 2,500,000 | — | 0 | 45/45 |
+| on | 1024×768 | 1,028 ms | 0 | **0** | 7,523,796 B | 8,000,000 | — | 0 | 45/45 |
+| on | 1440×900 | 864 ms | 0 | **0** | 7,523,796 B | 8,000,000 | 6.57 | 0 | 45/45 |
+| on | 1920×1080 | 944 ms | 0 | **0** | 7,523,796 B | 8,000,000 | — | 0 | 45/45 |
+| off | 390×844 | 1,112 ms | 0 | 0 | 1,034,437 B | 2,500,000 | 6.96 | 0 | — |
+| off | 667×375 | 900 ms | 0 | 0 | 1,034,437 B | 2,500,000 | — | 0 | — |
+| off | 768×1024 | 824 ms | 0 | 0 | 1,034,437 B | 2,500,000 | — | 0 | — |
+| off | 1024×768 | 972 ms | 0 | 0 | 1,256,396 B | 8,000,000 | — | 0 | — |
+| off | 1440×900 | 788 ms | 0 | 0 | 1,256,396 B | 8,000,000 | 6.85 | 0 | — |
+| off | 1920×1080 | 956 ms | 0 | 0 | 1,256,396 B | 8,000,000 | — | 0 | — |
 
 0 errores de consola, 0 `pageerror`, 0 respuestas ≥ 400 y 0 respuestas 200 sin cuerpo en los
 doce perfiles.
@@ -67,26 +69,30 @@ Dos instrumentos independientes, caché deshabilitada, recorrido completo de la 
 
 | Perfil | Antes (R1d, v2.2) | Ahora, cuerpo real (`response.body()`) | Ahora, `encodedDataLength` (CDP) |
 |---|---:|---:|---:|
-| 390×844 | 3,365,621 B | **2,461,726 B** | **2,470,502 B** |
-| 667×375 | 3,365,621 B | **2,461,726 B** | **2,470,502 B** |
-| 768×1024 | 3,365,621 B | **2,461,726 B** | **2,470,502 B** |
+| 390×844 | 3,365,621 B | **2,461,734 B** | **2,470,502 B** |
+| 667×375 | 3,365,621 B | **2,461,734 B** | **2,470,502 B** |
+| 768×1024 | 3,365,621 B | **2,461,734 B** | **2,470,502 B** |
 
 Los tres quedan por debajo de los 2,500,000 B de la doctrina y de los 2.6 MB exigidos por la
 misión. Desglose del perfil móvil: 2,078,178 B de secuencia + 383,548 B de HTML, JS, CSS,
 fuentes, póster y manifiesto.
 
-Desktop: 8,369,018 B → **7,523,788 B**, también bajo los 8,000,000 B de la doctrina.
+Desktop: 8,369,018 B → **7,523,796 B**, también bajo los 8,000,000 B de la doctrina.
+(La medición del primer despliegue dio 2,461,726 / 7,523,788 B; los 8 B de diferencia son el
+`__BUILD_ID__` y el hash del bundle.)
 
 ## 5. LCP separado en frío y mediana
 
 ```
-LCP 390x844 CPU4x: frío 3536 ms | repeticiones 1120 / 860 / 1004 ms | mediana 1004 ms
+despliegue 1 (contenedor recién creado):  frío 3536 ms | 1120 / 860 / 1004 ms | mediana 1004 ms
+despliegue 2 (contenedor ya caliente):    frío 1220 ms |  876 / 892 /  928 ms | mediana  892 ms
 ```
 
-La primera visita del proceso, con el contenedor recién desplegado, mide **3,536 ms** — bajo el
-tope de 4,000 ms pero muy por encima del presupuesto. La mediana de tres visitas nuevas es
-**1,004 ms**, dentro del presupuesto de 2,500 ms. **El arranque en frío sigue abierto**: la puerta
-lo mide y lo publica en vez de esconderlo tras una segunda pasada.
+La primera visita **con el contenedor recién desplegado** mide **3,536 ms** — bajo el tope de
+4,000 ms pero muy por encima del presupuesto. Media hora después, con el contenedor caliente, la
+misma medición «en frío» da 1,220 ms. Las medianas de tres visitas nuevas (1,004 y 892 ms) están
+dentro del presupuesto de 2,500 ms en los dos casos. **El arranque en frío sigue abierto**: la
+puerta lo mide y lo publica en vez de esconderlo tras una segunda pasada.
 
 ## 6. Contraste medido sobre el estado real
 
@@ -112,16 +118,35 @@ teclado 390x844 (modo on): 13/13 enlaces wa.me alcanzados con Tab
 Antes: 5 de 13 (los 8 CTA de capítulo inactivos quedaban fuera del orden de tabulación porque
 `autoAlpha` apagaba la `visibility`).
 
-## 8. Evidencia
+```
+punteros 1440x900 (modo on): 9/9 CTA de capitulo reciben el clic; 0 tarjetas invisibles clicables
+```
+
+## 8. Una regresión propia, encontrada y corregida antes de cerrar
+
+Al comprobar en producción que los CTA siguieran siendo clicables **con el ratón** — el teclado ya
+daba 13/13 — la medición devolvió **0 de 9 CTA de capítulo recibiendo el clic y 1 tarjeta invisible
+que sí lo recibía**. Causa: al sustituir `autoAlpha` por `opacity`, los punteros se encendían desde
+el `onUpdate` de ScrollTrigger, que deja de dispararse en cuanto termina el scroll; con `scrub` la
+timeline sigue moviéndose después, así que la última sincronización ocurría con el capítulo todavía
+a opacidad baja y la tarjeta acababa visible con `pointer-events: none`.
+
+Corregido en `f67d0517`: `sincronizarPunteros` cuelga ahora del `onUpdate` de la **timeline**. Y se
+añadió la comprobación a `qa.mjs` como puerta: para cada uno de los 9 capítulos se navega a su
+tramo y se verifica con `elementFromPoint` que el CTA visible recibe el clic y que ninguna tarjeta
+invisible lo recibe. Verificado en vivo tras el segundo despliegue: **9/9 y 0 invisibles clicables**.
+
+## 9. Evidencia
 
 - Capturas de producción: `qa/PRODUCCION_v2.3/` (5 a 1440×900 y 5 a 390×844).
 - 36 recortes de etiqueta con el contraste medido: `qa/v2.3/contrast/`.
 - Video del recorrido regrabado contra producción: paquete de evidencia
   `PORTAFOLIO_EVIDENCIA_2026-09-14/nacar/video/nacar-v2-scroll-1080p.mp4` (H.264 High@4.0,
-  1920×1080, yuv420p, 25 fps, 56.000 s, 19,521,247 B, faststart, sin intervalos negros). El de la
-  v2.2 se conserva como `nacar-v2-scroll-1080p.v2.2.mp4`.
+  1920×1080, yuv420p, 25 fps, 1,402 fotogramas, 56.080 s, 19,286,428 B, faststart, sin intervalos
+  negros; grabado contra el build final). El de la v2.2 se conserva como
+  `nacar-v2-scroll-1080p.v2.2.mp4`.
 
-## 9. Lo que sigue abierto
+## 10. Lo que sigue abierto
 
 - Arranque en frío: 3,536 ms de LCP en la primera visita tras el despliegue.
 - Nav de escritorio a 18 px de alto con `(pointer: coarse)` entre 1024 y 1180 px.

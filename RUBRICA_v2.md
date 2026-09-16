@@ -16,7 +16,7 @@ Evidencia reproducible: `qa/v2/metrics.json`, `qa/v2.3/contrast/`, `qa/PRODUCCIO
 | Composición y espacio | 10% | 7.5 | **7.5** | Sin cambios: los nueve capítulos repiten el bloque abajo-izquierda. |
 | Color y atmósfera | 10% | 8.5 | **8.5** | Mismos colores. La medición ahora es más estricta, no más favorable: núcleo puro del glifo 8.27–8.51:1 y núcleo ancho (con antialias) 6.57–7.36:1 en las 36 combinaciones, todas ≥ 4.5. |
 | Movimiento y scroll | 15% | 9.0 | **9.0** | Sin cambios de mecánica. La puerta de CLS de barrido baja de 0.25 a 0.1 y pasa de 2 a 6 viewports; el valor medido sigue siendo 0.0000 en los seis. |
-| Fallback reduce + accesibilidad | 10% | 8.5 | **8.8** | Cerrado el hueco de teclado: **13/13 enlaces `wa.me` alcanzables con Tab en modo animado**, en 1440×900 y 390×844, con regresión en `qa.mjs`. Siguen abiertos la nav de 18 px con puntero grueso a 1024–1180 y la pérdida de posición de lectura al conmutar. |
+| Fallback reduce + accesibilidad | 10% | 8.5 | **8.8** | Cerrado el hueco de teclado: **13/13 enlaces `wa.me` alcanzables con Tab en modo animado**, en 1440×900 y 390×844, con regresión en `qa.mjs`, y **9/9 CTA de capítulo clicables con el ratón**. Siguen abiertos la nav de 18 px con puntero grueso a 1024–1180 y la pérdida de posición de lectura al conmutar. |
 | Rendimiento | 10% | 7.5 | **8.4** | Entrada móvil **2,461,821 B** y desktop **7,523,883 B** medidas por tamaño real de cuerpo: los dos presupuestos de la doctrina (2.5 MB / 8 MB) **se cumplen por primera vez** (antes 3,365,621 y 8,369,018). Sets 7,140,240 / 2,078,178 B. Sigue abierto el arranque en frío del contenedor. |
 | Detalle / craft | 10% | 8.0 | **9.0** | Los tres descuentos de R1d cerrados: 0 reglas `.acto/.paso/.rail` (−4,638 B de CSS fuente), `Cache-Control` explícito en `/film/**` con fotogramas versionados por huella, y puertas de QA que sí miden (bytes por cuerpo real, CLS a 0.1, contraste sobre el estado real). |
 | Contenido y conversión | 5% | 9.0 | **9.0** | Los mismos 13 CTA con mensaje por capítulo; ahora todos alcanzables sin ratón. |
@@ -46,4 +46,5 @@ Cálculo: 8.2·0.15 + 8.5·0.15 + 7.5·0.10 + 8.5·0.10 + 9.0·0.15 + 8.8·0.10 
 - `npm run qa`: aprobado, `failures: []` en 12 perfiles. Bytes de entrada por tamaño real de
   cuerpo contra el presupuesto de la doctrina, CLS de barrido < 0.1 en los seis viewports,
   contraste medido sobre el estado real (36/36 con la tarjeta realmente visible), LCP en frío y
-  mediana de tres, 13/13 CTA de WhatsApp con Tab, 45/45 cambios y ciclos del interruptor.
+  mediana de tres, 13/13 CTA de WhatsApp con Tab, **9/9 CTA de capítulo que reciben el clic del
+  ratón y 0 tarjetas invisibles clicables**, 45/45 cambios y ciclos del interruptor.

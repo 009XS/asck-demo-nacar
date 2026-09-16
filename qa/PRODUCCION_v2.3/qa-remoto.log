@@ -2,19 +2,21 @@
 > nacar-dental-landing@1.0.0 qa
 > node scripts/qa.mjs
 
-on 390x844: LCP 3536ms CLS inicial 0 CLS barrido 0 entrada 2461726 B / 2500000 contraste min 6.8 overflow 0px cambios 45 coda 7.67vh
-on 667x375: LCP 768ms CLS inicial 0 CLS barrido 0 entrada 2461726 B / 2500000 contraste min - overflow 0px cambios 45 coda 14.84vh
-on 768x1024: LCP 1020ms CLS inicial 0 CLS barrido 0 entrada 2461726 B / 2500000 contraste min - overflow 0px cambios 45 coda 6.29vh
-on 1024x768: LCP 756ms CLS inicial 0 CLS barrido 0 entrada 7523788 B / 8000000 contraste min - overflow 0px cambios 45 coda 6.17vh
-on 1440x900: LCP 908ms CLS inicial 0 CLS barrido 0 entrada 7523788 B / 8000000 contraste min 6.57 overflow 0px cambios 45 coda 5.88vh
-on 1920x1080: LCP 828ms CLS inicial 0 CLS barrido 0 entrada 7523788 B / 8000000 contraste min - overflow 0px cambios 45 coda 5.34vh
-off 390x844: LCP 1208ms CLS inicial 0 CLS barrido 0 entrada 1034429 B / 2500000 contraste min 6.96 overflow 0px cambios - coda -vh
-off 667x375: LCP 780ms CLS inicial 0 CLS barrido 0 entrada 1034429 B / 2500000 contraste min - overflow 0px cambios - coda -vh
-off 768x1024: LCP 584ms CLS inicial 0 CLS barrido 0 entrada 1034429 B / 2500000 contraste min - overflow 0px cambios - coda -vh
-off 1024x768: LCP 928ms CLS inicial 0 CLS barrido 0 entrada 1256388 B / 8000000 contraste min - overflow 0px cambios - coda -vh
-off 1440x900: LCP 824ms CLS inicial 0 CLS barrido 0 entrada 1256388 B / 8000000 contraste min 6.85 overflow 0px cambios - coda -vh
-off 1920x1080: LCP 676ms CLS inicial 0 CLS barrido 0 entrada 1256388 B / 8000000 contraste min - overflow 0px cambios - coda -vh
-LCP 390x844 CPU4x: frío 3536 ms | repeticiones 1120 / 860 / 1004 ms | mediana 1004 ms
+on 390x844: LCP 1220ms CLS inicial 0 CLS barrido 0 entrada 2461734 B / 2500000 contraste min 6.8 overflow 0px cambios 45 coda 7.74vh
+on 667x375: LCP 664ms CLS inicial 0 CLS barrido 0 entrada 2461734 B / 2500000 contraste min - overflow 0px cambios 45 coda 14.83vh
+on 768x1024: LCP 896ms CLS inicial 0 CLS barrido 0 entrada 2461734 B / 2500000 contraste min - overflow 0px cambios 45 coda 6.25vh
+on 1024x768: LCP 1028ms CLS inicial 0 CLS barrido 0 entrada 7523796 B / 8000000 contraste min - overflow 0px cambios 45 coda 6.17vh
+on 1440x900: LCP 864ms CLS inicial 0 CLS barrido 0 entrada 7523796 B / 8000000 contraste min 6.57 overflow 0px cambios 45 coda 5.88vh
+on 1920x1080: LCP 944ms CLS inicial 0 CLS barrido 0 entrada 7523796 B / 8000000 contraste min - overflow 0px cambios 45 coda 5.36vh
+off 390x844: LCP 1112ms CLS inicial 0 CLS barrido 0 entrada 1034437 B / 2500000 contraste min 6.96 overflow 0px cambios - coda -vh
+off 667x375: LCP 900ms CLS inicial 0 CLS barrido 0 entrada 1034437 B / 2500000 contraste min - overflow 0px cambios - coda -vh
+off 768x1024: LCP 824ms CLS inicial 0 CLS barrido 0 entrada 1034437 B / 2500000 contraste min - overflow 0px cambios - coda -vh
+off 1024x768: LCP 972ms CLS inicial 0 CLS barrido 0 entrada 1256396 B / 8000000 contraste min - overflow 0px cambios - coda -vh
+off 1440x900: LCP 788ms CLS inicial 0 CLS barrido 0 entrada 1256396 B / 8000000 contraste min 6.85 overflow 0px cambios - coda -vh
+off 1920x1080: LCP 956ms CLS inicial 0 CLS barrido 0 entrada 1256396 B / 8000000 contraste min - overflow 0px cambios - coda -vh
+LCP 390x844 CPU4x: frío 1220 ms | repeticiones 876 / 892 / 928 ms | mediana 892 ms
 teclado 1440x900 (modo on): 13/13 enlaces wa.me alcanzados con Tab
 teclado 390x844 (modo on): 13/13 enlaces wa.me alcanzados con Tab
-QA APROBADO: 6 viewports, consola/404/overflow/CLS<0.1/bytes reales/LCP mediana, contraste real, 13/13 CTA con teclado, >=40 cambios y motion-off.
+punteros 1440x900 (modo on): 9/9 CTA de capitulo reciben el clic; 0 tarjetas invisibles clicables
+QA APROBADO: 6 viewports, consola/404/overflow/CLS<0.1/bytes reales/LCP mediana, contraste real, 13/13 CTA con teclado, 9/9 CTA con raton, >=40 cambios y motion-off.
+exit=0

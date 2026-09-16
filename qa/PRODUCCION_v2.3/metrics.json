@@ -12,13 +12,13 @@
     "desktop": 8000000
   },
   "lcp": {
-    "frio": 3536,
+    "frio": 1220,
     "repeticiones": [
-      1120,
-      860,
-      1004
+      876,
+      892,
+      928
     ],
-    "mediana": 1004,
+    "mediana": 892,
     "presupuestoMediana": 2500,
     "topeFrio": 4000
   },
@@ -32,21 +32,77 @@
       "alcanzados": 13
     }
   },
+  "punteros": [
+    {
+      "capitulo": 1,
+      "opacidad": 1,
+      "recibeElClic": true,
+      "invisiblesClicables": 0
+    },
+    {
+      "capitulo": 2,
+      "opacidad": 1,
+      "recibeElClic": true,
+      "invisiblesClicables": 0
+    },
+    {
+      "capitulo": 3,
+      "opacidad": 1,
+      "recibeElClic": true,
+      "invisiblesClicables": 0
+    },
+    {
+      "capitulo": 4,
+      "opacidad": 1,
+      "recibeElClic": true,
+      "invisiblesClicables": 0
+    },
+    {
+      "capitulo": 5,
+      "opacidad": 1,
+      "recibeElClic": true,
+      "invisiblesClicables": 0
+    },
+    {
+      "capitulo": 6,
+      "opacidad": 1,
+      "recibeElClic": true,
+      "invisiblesClicables": 0
+    },
+    {
+      "capitulo": 7,
+      "opacidad": 1,
+      "recibeElClic": true,
+      "invisiblesClicables": 0
+    },
+    {
+      "capitulo": 8,
+      "opacidad": 1,
+      "recibeElClic": true,
+      "invisiblesClicables": 0
+    },
+    {
+      "capitulo": 9,
+      "opacidad": 1,
+      "recibeElClic": true,
+      "invisiblesClicables": 0
+    }
+  ],
   "results": [
     {
       "mode": "on",
       "name": "390x844",
-      "lcpMs": 3536,
+      "lcpMs": 1220,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 2461726,
+      "inputBytes": 2461734,
       "respuestasSinCuerpo": 0,
       "entryBudget": 2500000,
       "overflowPx": 0,
       "errors": [],
       "broken": [],
       "scrollProof": 45,
-      "contentScreens": 7.67,
+      "contentScreens": 7.74,
       "labelContrasts": [
         {
           "capitulo": 1,
@@ -117,8 +173,8 @@
         {
           "capitulo": 7,
           "contraste": 6.81,
-          "contrastePuro": 8.47,
-          "pixelesDeTexto": 289,
+          "contrastePuro": 8.48,
+          "pixelesDeTexto": 288,
           "pixelesPuros": 74,
           "estadoReal": {
             "visibility": "visible",
@@ -139,7 +195,7 @@
         {
           "capitulo": 9,
           "contraste": 7.08,
-          "contrastePuro": 8.45,
+          "contrastePuro": 8.44,
           "pixelesDeTexto": 219,
           "pixelesPuros": 79,
           "estadoReal": {
@@ -159,21 +215,21 @@
     {
       "mode": "on",
       "name": "667x375",
-      "lcpMs": 768,
+      "lcpMs": 664,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 2461726,
+      "inputBytes": 2461734,
       "respuestasSinCuerpo": 0,
       "entryBudget": 2500000,
       "overflowPx": 0,
       "errors": [],
       "broken": [],
       "scrollProof": 45,
-      "contentScreens": 14.84,
+      "contentScreens": 14.83,
       "labelContrasts": null,
       "contrasteMin": null,
       "motionToggle": {
-        "width": 169.90625,
+        "width": 176.28125,
         "height": 44,
         "pressed": "true"
       },
@@ -182,21 +238,21 @@
     {
       "mode": "on",
       "name": "768x1024",
-      "lcpMs": 1020,
+      "lcpMs": 896,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 2461726,
+      "inputBytes": 2461734,
       "respuestasSinCuerpo": 0,
       "entryBudget": 2500000,
       "overflowPx": 0,
       "errors": [],
       "broken": [],
       "scrollProof": 45,
-      "contentScreens": 6.29,
+      "contentScreens": 6.25,
       "labelContrasts": null,
       "contrasteMin": null,
       "motionToggle": {
-        "width": 169.90625,
+        "width": 176.28125,
         "height": 44,
         "pressed": "true"
       },
@@ -205,10 +261,10 @@
     {
       "mode": "on",
       "name": "1024x768",
-      "lcpMs": 756,
+      "lcpMs": 1028,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 7523788,
+      "inputBytes": 7523796,
       "respuestasSinCuerpo": 0,
       "entryBudget": 8000000,
       "overflowPx": 0,
@@ -228,10 +284,10 @@
     {
       "mode": "on",
       "name": "1440x900",
-      "lcpMs": 908,
+      "lcpMs": 864,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 7523788,
+      "inputBytes": 7523796,
       "respuestasSinCuerpo": 0,
       "entryBudget": 8000000,
       "overflowPx": 0,
@@ -351,21 +407,21 @@
     {
       "mode": "on",
       "name": "1920x1080",
-      "lcpMs": 828,
+      "lcpMs": 944,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 7523788,
+      "inputBytes": 7523796,
       "respuestasSinCuerpo": 0,
       "entryBudget": 8000000,
       "overflowPx": 0,
       "errors": [],
       "broken": [],
       "scrollProof": 45,
-      "contentScreens": 5.34,
+      "contentScreens": 5.36,
       "labelContrasts": null,
       "contrasteMin": null,
       "motionToggle": {
-        "width": 169.90625,
+        "width": 176.28125,
         "height": 44,
         "pressed": "true"
       },
@@ -374,10 +430,10 @@
     {
       "mode": "off",
       "name": "390x844",
-      "lcpMs": 1208,
+      "lcpMs": 1112,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 1034429,
+      "inputBytes": 1034437,
       "respuestasSinCuerpo": 0,
       "entryBudget": 2500000,
       "overflowPx": 0,
@@ -497,10 +553,10 @@
     {
       "mode": "off",
       "name": "667x375",
-      "lcpMs": 780,
+      "lcpMs": 900,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 1034429,
+      "inputBytes": 1034437,
       "respuestasSinCuerpo": 0,
       "entryBudget": 2500000,
       "overflowPx": 0,
@@ -520,10 +576,10 @@
     {
       "mode": "off",
       "name": "768x1024",
-      "lcpMs": 584,
+      "lcpMs": 824,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 1034429,
+      "inputBytes": 1034437,
       "respuestasSinCuerpo": 0,
       "entryBudget": 2500000,
       "overflowPx": 0,
@@ -534,7 +590,7 @@
       "labelContrasts": null,
       "contrasteMin": null,
       "motionToggle": {
-        "width": 187.234375,
+        "width": 179.484375,
         "height": 44,
         "pressed": "false"
       },
@@ -543,10 +599,10 @@
     {
       "mode": "off",
       "name": "1024x768",
-      "lcpMs": 928,
+      "lcpMs": 972,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 1256388,
+      "inputBytes": 1256396,
       "respuestasSinCuerpo": 0,
       "entryBudget": 8000000,
       "overflowPx": 0,
@@ -566,10 +622,10 @@
     {
       "mode": "off",
       "name": "1440x900",
-      "lcpMs": 824,
+      "lcpMs": 788,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 1256388,
+      "inputBytes": 1256396,
       "respuestasSinCuerpo": 0,
       "entryBudget": 8000000,
       "overflowPx": 0,
@@ -603,9 +659,9 @@
         {
           "capitulo": 3,
           "contraste": 6.85,
-          "contrastePuro": 8.45,
+          "contrastePuro": 8.46,
           "pixelesDeTexto": 228,
-          "pixelesPuros": 50,
+          "pixelesPuros": 51,
           "estadoReal": {
             "visibility": "visible",
             "opacity": 1
@@ -625,9 +681,9 @@
         {
           "capitulo": 5,
           "contraste": 7.12,
-          "contrastePuro": 8.46,
+          "contrastePuro": 8.44,
           "pixelesDeTexto": 228,
-          "pixelesPuros": 49,
+          "pixelesPuros": 53,
           "estadoReal": {
             "visibility": "visible",
             "opacity": 1
@@ -649,7 +705,7 @@
           "contraste": 7.1,
           "contrastePuro": 8.46,
           "pixelesDeTexto": 244,
-          "pixelesPuros": 53,
+          "pixelesPuros": 55,
           "estadoReal": {
             "visibility": "visible",
             "opacity": 1
@@ -668,10 +724,10 @@
         },
         {
           "capitulo": 9,
-          "contraste": 6.89,
-          "contrastePuro": 8.47,
+          "contraste": 6.9,
+          "contrastePuro": 8.51,
           "pixelesDeTexto": 202,
-          "pixelesPuros": 48,
+          "pixelesPuros": 45,
           "estadoReal": {
             "visibility": "visible",
             "opacity": 1
@@ -689,10 +745,10 @@
     {
       "mode": "off",
       "name": "1920x1080",
-      "lcpMs": 676,
+      "lcpMs": 956,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 1256388,
+      "inputBytes": 1256396,
       "respuestasSinCuerpo": 0,
       "entryBudget": 8000000,
       "overflowPx": 0,
@@ -703,7 +759,7 @@
       "labelContrasts": null,
       "contrasteMin": null,
       "motionToggle": {
-        "width": 187.234375,
+        "width": 179.484375,
         "height": 44,
         "pressed": "false"
       },
