@@ -124,7 +124,21 @@ export function montarActo(animar: boolean): gsap.Context {
         preloadDirection(0, 1)
         const cards = gsap.utils.toArray<HTMLElement>('.film-card', root)
         const count = root.querySelector<HTMLElement>('[data-film-count]')
-        const timeline = gsap.timeline()
+
+        // Lee el opacity EN LÍNEA que escribe la timeline: cero lecturas de
+        // estilo calculado, así que no cuesta layout dentro del scrub. Cuelga
+        // del onUpdate de la TIMELINE, no del de ScrollTrigger: con `scrub` la
+        // timeline sigue moviéndose después del último evento de scroll, y
+        // sincronizarlo con el scroll dejaba el CTA visible con los punteros
+        // apagados.
+        const sincronizarPunteros = (): void => {
+          for (const card of cards) {
+            const quiere = Number(card.style.opacity || '0') > 0.5 ? 'auto' : 'none'
+            if (card.style.pointerEvents !== quiere) card.style.pointerEvents = quiere
+          }
+        }
+
+        const timeline = gsap.timeline({ onUpdate: sincronizarPunteros })
         cards.forEach((card, index) => {
           const from = Number(card.dataset.from)
           const to = Number(card.dataset.to)
@@ -137,15 +151,6 @@ export function montarActo(animar: boolean): gsap.Context {
         })
         timeline.set({}, {}, 1)
 
-        // Lee el opacity EN LÍNEA que escribe la timeline: cero lecturas de
-        // estilo calculado, así que no cuesta layout dentro del scrub.
-        const sincronizarPunteros = (): void => {
-          for (const card of cards) {
-            const quiere = Number(card.style.opacity || '0') > 0.5 ? 'auto' : 'none'
-            if (card.style.pointerEvents !== quiere) card.style.pointerEvents = quiere
-          }
-        }
-
         const trigger = ScrollTrigger.create({
         trigger: root, start: 'top top', end: () => `+=${Math.round(data.pinVh * innerHeight)}`,
         pin: true, pinType: 'transform', pinSpacing: true, scrub: 0.5, anticipatePin: 1, invalidateOnRefresh: true,
@@ -157,7 +162,6 @@ export function montarActo(animar: boolean): gsap.Context {
           preloadDirection(index, direction)
           previousIndex = index
           paint()
-          sincronizarPunteros()
           if (count) count.textContent = String(Math.min(9, Math.floor(progress * 9) + 1)).padStart(2, '0')
         },
         })

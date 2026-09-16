@@ -377,6 +377,44 @@ try {
     await tecladoContext.close()
   }
 
+  // ------------------------------------------- CTA de capitulo con el raton
+  // El teclado no basta: las tarjetas invisibles llevan `pointer-events: none`
+  // y quien las enciende es el onUpdate de la timeline. Si eso se sincronizara
+  // con el scroll en vez de con la timeline, el CTA visible se quedaria sin
+  // punteros al asentarse el scrub — y los 9 CTA de capitulo dejarian de ser
+  // clicables sin que nada fallara.
+  const punteroContext = await browser.newContext({ viewport: { width: 1440, height: 900 }, reducedMotion: 'no-preference' })
+  const punteroPage = await punteroContext.newPage()
+  await punteroPage.goto(`${BASE}/?motion=on`, { waitUntil: 'networkidle' })
+  await punteroPage.waitForFunction(() => document.querySelector('.film')?.classList.contains('is-painted'), null, { timeout: 15000 })
+  const punteroRango = await punteroPage.evaluate(() => {
+    const trigger = window.ScrollTrigger?.getAll?.().find((t) => t.pin)
+    return trigger ? { inicio: trigger.start, fin: trigger.end } : null
+  })
+  if (!punteroRango) failures.push({ punteros: 'sin ScrollTrigger pinneado' })
+  const punteros = []
+  for (let index = 0; punteroRango && index < 9; index += 1) {
+    const punto = await punteroPage.locator('.film-card').nth(index).evaluate((element) => (Number(element.dataset.from) + Number(element.dataset.to)) / 2)
+    await punteroPage.evaluate((y) => scrollTo(0, y), Math.round(punteroRango.inicio + (punteroRango.fin - punteroRango.inicio) * Math.min(1, Math.max(0, punto))))
+    await punteroPage.waitForTimeout(Math.max(900, STEP_MS))
+    punteros.push(await punteroPage.evaluate((idx) => {
+      const cards = [...document.querySelectorAll('.film-card')]
+      const cta = cards[idx].querySelector('.film-card__cta')
+      const caja = cta.getBoundingClientRect()
+      const enElPunto = document.elementFromPoint(Math.round(caja.x + caja.width / 2), Math.round(caja.y + caja.height / 2))
+      return {
+        capitulo: idx + 1,
+        opacidad: Number(Number(getComputedStyle(cards[idx]).opacity).toFixed(2)),
+        recibeElClic: !!(enElPunto && (enElPunto === cta || cta.contains(enElPunto))),
+        invisiblesClicables: cards.filter((card, j) => j !== idx && Number(getComputedStyle(card).opacity) < 0.1 && getComputedStyle(card).pointerEvents !== 'none').length,
+      }
+    }, index))
+  }
+  const punterosMalos = punteros.filter(({ recibeElClic, invisiblesClicables }) => !recibeElClic || invisiblesClicables > 0)
+  console.log(`punteros 1440x900 (modo on): ${punteros.filter((p) => p.recibeElClic).length}/${punteros.length} CTA de capitulo reciben el clic; ${punteros.reduce((t, p) => t + p.invisiblesClicables, 0)} tarjetas invisibles clicables`)
+  if (punteros.length !== 9 || punterosMalos.length) failures.push({ punteros: punterosMalos, medidos: punteros.length })
+  await punteroContext.close()
+
   const targetContext = await browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: 'reduce' })
   const targetPage = await targetContext.newPage()
   await targetPage.goto(`${BASE}/?motion=off`, { waitUntil: 'networkidle' })
@@ -388,12 +426,12 @@ try {
   await targetContext.close()
 
   if (budgets.desktop > limits.desktop || budgets.mobile > limits.mobile) failures.push({ frameBudgets: budgets, limits })
-  const summary = { frameBytes: budgets, limits, entryBudgets, lcp: { frio: lcpFrio, repeticiones: lcpRepeticiones, mediana: lcpMediana, presupuestoMediana: LCP_PRESUPUESTO, topeFrio: LCP_TOPE_FRIO }, teclado: tecladoResumen, results, failures }
+  const summary = { frameBytes: budgets, limits, entryBudgets, lcp: { frio: lcpFrio, repeticiones: lcpRepeticiones, mediana: lcpMediana, presupuestoMediana: LCP_PRESUPUESTO, topeFrio: LCP_TOPE_FRIO }, teclado: tecladoResumen, punteros, results, failures }
   writeFileSync('qa/v2/metrics.json', `${JSON.stringify(summary, null, 2)}\n`)
   if (failures.length) {
     console.error(JSON.stringify(failures, null, 2))
     process.exitCode = 1
-  } else console.log('QA APROBADO: 6 viewports, consola/404/overflow/CLS<0.1/bytes reales/LCP mediana, contraste real, 13/13 CTA con teclado, >=40 cambios y motion-off.')
+  } else console.log('QA APROBADO: 6 viewports, consola/404/overflow/CLS<0.1/bytes reales/LCP mediana, contraste real, 13/13 CTA con teclado, 9/9 CTA con raton, >=40 cambios y motion-off.')
 } finally {
   await browser?.close()
   if (server) server.kill()

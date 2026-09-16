@@ -12,13 +12,13 @@
     "desktop": 8000000
   },
   "lcp": {
-    "frio": 3536,
+    "frio": 724,
     "repeticiones": [
-      1120,
-      860,
-      1004
+      644,
+      660,
+      644
     ],
-    "mediana": 1004,
+    "mediana": 644,
     "presupuestoMediana": 2500,
     "topeFrio": 4000
   },
@@ -32,14 +32,70 @@
       "alcanzados": 13
     }
   },
+  "punteros": [
+    {
+      "capitulo": 1,
+      "opacidad": 1,
+      "recibeElClic": true,
+      "invisiblesClicables": 0
+    },
+    {
+      "capitulo": 2,
+      "opacidad": 1,
+      "recibeElClic": true,
+      "invisiblesClicables": 0
+    },
+    {
+      "capitulo": 3,
+      "opacidad": 1,
+      "recibeElClic": true,
+      "invisiblesClicables": 0
+    },
+    {
+      "capitulo": 4,
+      "opacidad": 1,
+      "recibeElClic": true,
+      "invisiblesClicables": 0
+    },
+    {
+      "capitulo": 5,
+      "opacidad": 1,
+      "recibeElClic": true,
+      "invisiblesClicables": 0
+    },
+    {
+      "capitulo": 6,
+      "opacidad": 1,
+      "recibeElClic": true,
+      "invisiblesClicables": 0
+    },
+    {
+      "capitulo": 7,
+      "opacidad": 1,
+      "recibeElClic": true,
+      "invisiblesClicables": 0
+    },
+    {
+      "capitulo": 8,
+      "opacidad": 1,
+      "recibeElClic": true,
+      "invisiblesClicables": 0
+    },
+    {
+      "capitulo": 9,
+      "opacidad": 1,
+      "recibeElClic": true,
+      "invisiblesClicables": 0
+    }
+  ],
   "results": [
     {
       "mode": "on",
       "name": "390x844",
-      "lcpMs": 3536,
+      "lcpMs": 724,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 2461726,
+      "inputBytes": 2462436,
       "respuestasSinCuerpo": 0,
       "entryBudget": 2500000,
       "overflowPx": 0,
@@ -159,10 +215,10 @@
     {
       "mode": "on",
       "name": "667x375",
-      "lcpMs": 768,
+      "lcpMs": 136,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 2461726,
+      "inputBytes": 2462436,
       "respuestasSinCuerpo": 0,
       "entryBudget": 2500000,
       "overflowPx": 0,
@@ -182,10 +238,10 @@
     {
       "mode": "on",
       "name": "768x1024",
-      "lcpMs": 1020,
+      "lcpMs": 144,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 2461726,
+      "inputBytes": 2462436,
       "respuestasSinCuerpo": 0,
       "entryBudget": 2500000,
       "overflowPx": 0,
@@ -205,10 +261,10 @@
     {
       "mode": "on",
       "name": "1024x768",
-      "lcpMs": 756,
+      "lcpMs": 144,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 7523788,
+      "inputBytes": 7524498,
       "respuestasSinCuerpo": 0,
       "entryBudget": 8000000,
       "overflowPx": 0,
@@ -228,17 +284,17 @@
     {
       "mode": "on",
       "name": "1440x900",
-      "lcpMs": 908,
+      "lcpMs": 208,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 7523788,
+      "inputBytes": 7524498,
       "respuestasSinCuerpo": 0,
       "entryBudget": 8000000,
       "overflowPx": 0,
       "errors": [],
       "broken": [],
       "scrollProof": 45,
-      "contentScreens": 5.88,
+      "contentScreens": 5.95,
       "labelContrasts": [
         {
           "capitulo": 1,
@@ -351,10 +407,10 @@
     {
       "mode": "on",
       "name": "1920x1080",
-      "lcpMs": 828,
+      "lcpMs": 184,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 7523788,
+      "inputBytes": 7524498,
       "respuestasSinCuerpo": 0,
       "entryBudget": 8000000,
       "overflowPx": 0,
@@ -374,10 +430,10 @@
     {
       "mode": "off",
       "name": "390x844",
-      "lcpMs": 1208,
+      "lcpMs": 644,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 1034429,
+      "inputBytes": 1034532,
       "respuestasSinCuerpo": 0,
       "entryBudget": 2500000,
       "overflowPx": 0,
@@ -497,10 +553,10 @@
     {
       "mode": "off",
       "name": "667x375",
-      "lcpMs": 780,
+      "lcpMs": 124,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 1034429,
+      "inputBytes": 1034532,
       "respuestasSinCuerpo": 0,
       "entryBudget": 2500000,
       "overflowPx": 0,
@@ -520,10 +576,10 @@
     {
       "mode": "off",
       "name": "768x1024",
-      "lcpMs": 584,
+      "lcpMs": 128,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 1034429,
+      "inputBytes": 1034532,
       "respuestasSinCuerpo": 0,
       "entryBudget": 2500000,
       "overflowPx": 0,
@@ -534,7 +590,7 @@
       "labelContrasts": null,
       "contrasteMin": null,
       "motionToggle": {
-        "width": 187.234375,
+        "width": 179.484375,
         "height": 44,
         "pressed": "false"
       },
@@ -543,10 +599,10 @@
     {
       "mode": "off",
       "name": "1024x768",
-      "lcpMs": 928,
+      "lcpMs": 140,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 1256388,
+      "inputBytes": 1256491,
       "respuestasSinCuerpo": 0,
       "entryBudget": 8000000,
       "overflowPx": 0,
@@ -566,10 +622,10 @@
     {
       "mode": "off",
       "name": "1440x900",
-      "lcpMs": 824,
+      "lcpMs": 140,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 1256388,
+      "inputBytes": 1256491,
       "respuestasSinCuerpo": 0,
       "entryBudget": 8000000,
       "overflowPx": 0,
@@ -689,10 +745,10 @@
     {
       "mode": "off",
       "name": "1920x1080",
-      "lcpMs": 676,
+      "lcpMs": 168,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 1256388,
+      "inputBytes": 1256491,
       "respuestasSinCuerpo": 0,
       "entryBudget": 8000000,
       "overflowPx": 0,
@@ -703,7 +759,7 @@
       "labelContrasts": null,
       "contrasteMin": null,
       "motionToggle": {
-        "width": 187.234375,
+        "width": 179.484375,
         "height": 44,
         "pressed": "false"
       },
