@@ -92,6 +92,15 @@ El capítulo central conserva la promesa comercial: **Tu primera cita, minuto a 
 - `c03` — **sillón → instrumental**: travelling cercano desde el sillón jade hacia instrumental de precisión sobre piedra; latón envejecido y fondo petróleo.
 - `c04` — **radiografía → nácar oro**: la pantalla abstracta se resuelve en arcos luminosos y capas de nácar encendidas desde dentro con oro antiguo.
 
-Los cortes declarados son `c01-066 → c02-001`, `c02-066 → c03-001` y `c03-066 → c04-001`. El manifiesto conserva orden, capítulos y cortes para ambos sets. Los WebP existentes son 1440 px desktop / 720 px móvil, 10 fps; peso total medido: 7,983,510 B / 2,980,502 B. El modo `motion-off` mantiene las nueve JPG maestras como láminas fijas.
+Los cortes declarados son `c01-066 → c02-001`, `c02-066 → c03-001` y `c03-066 → c04-001`. El manifiesto conserva orden, capítulos y cortes para ambos sets, y sirve cada fotograma con `?v=<huella del set>` (sha256 de los 264 binarios) para que `Cache-Control: immutable` sea seguro con nombres estables.
 
-La comprobación perceptual v2.2 mide un máximo interno de 25.385 desktop y 25.310 móvil en el set completo. El clip 02 elegido tiene pico 9.894 y razón máxima 1.466, sin sustitución de objetos. La puerta absoluta vigente es `0.75 × REF_SALTO = 32.33175`; los únicos saltos excluidos siguen siendo los tres cortes declarados.
+Desde la v2.3 los dos sets se extraen con **los mismos parámetros para los cuatro clips** — nada de mezclar calidades por clip:
+
+```
+ffmpeg -i <clip>.mp4 -vf "fps=10,scale=1440:-2" -c:v libwebp -quality 44 -compression_level 6 -fps_mode passthrough  # desktop
+ffmpeg -i <clip>.mp4 -vf "fps=10,scale=720:-2"  -c:v libwebp -quality 20 -compression_level 6 -fps_mode passthrough  # móvil
+```
+
+Fuentes: `assets-src/clip/clip-01.mp4`, `assets-src/clip-v2/clip-02-cand-b.mp4`, `clip-03.mp4` y `clip-04.mp4` (1344×768, 24 fps, 6.583 s). Los WebP resultantes son 1440×822 desktop / 720×412 móvil, 10 fps; peso total medido: **7,140,240 B / 2,078,178 B** (antes 7,983,510 / 2,980,502 con calidades desiguales). El modo `motion-off` mantiene las nueve JPG maestras como láminas fijas.
+
+La comprobación perceptual v2.3 mide un máximo interno de 25.365 desktop y 25.199 móvil en el set completo. El clip 02 elegido tiene pico 9.894 y razón máxima 1.466, sin sustitución de objetos. La puerta absoluta vigente es `0.75 × REF_SALTO = 32.33175`; los únicos saltos excluidos siguen siendo los tres cortes declarados.

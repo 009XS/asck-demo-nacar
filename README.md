@@ -39,8 +39,10 @@ npm run dev        # http://localhost:5187
 npm run build      # tsc + vite build -> dist/
 npm run preview    # http://localhost:4187 — contra ESTE corre el QA
 npm run typecheck
-npm run qa         # consola, 404, overflow, CLS, peso, LCP y scroll-proof
-                   # del acto, en ambos modos y 3 viewports; evidencia en qa/
+npm run qa         # consola, 404, overflow, CLS de barrido (<0.1), bytes reales de
+                   # entrada, LCP en frío y mediana de 3, contraste medido sobre el
+                   # estado real, 13/13 CTA de WhatsApp con Tab y scroll-proof;
+                   # 6 viewports × 2 modos, evidencia en qa/
 ```
 
 ## Depuración
@@ -82,7 +84,12 @@ Contraste AA medido: pizarra 5.53 · jade 5.60 · tinta 15.71 · porcelana/petr�
 ## Cómo se publicó (Coolify, proyecto demos-sector)
 
 Contenedor `Dockerfile` + nginx (mismo patrón que umbral-arquitectura: cabeceras en
-`security-headers.conf` incluidas por location, `noindex` mientras sea demo).
+`security-headers.conf` incluidas por location, `noindex` mientras sea demo). **El
+`nginx.conf` del repo es la única fuente**: la app de Coolify no tiene
+`custom_nginx_configuration` y `scripts/c19-deploy.py` aborta el despliegue si algún
+día la tuviera. De ahí salen las cachés: `/film/desktop|mobile/` inmutables (los
+fotogramas van versionados con `?v=` desde el manifiesto), `/assets/` inmutable,
+`/film/manifest.json` e `index.html` sin caché.
 
 1. Repo en GitHub (cuenta 009XS) con este contenido; rama que Coolify tenga configurada.
 2. App nueva en Coolify (proyecto `demos-sector`, build pack `dockerfile`) apuntando al
