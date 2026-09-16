@@ -18,7 +18,7 @@ const waitForServer = async () => {
 }
 
 mkdirSync('qa/v2', { recursive: true })
-mkdirSync('qa/v2.3/contrast', { recursive: true })
+mkdirSync('qa/v2.4/contrast', { recursive: true })
 await waitForServer()
 const manifest = JSON.parse(readFileSync('public/film/manifest.json', 'utf8'))
 const frameBytes = (set) => manifest.sets[set].reduce((total, url) => total + readFileSync(`public${url.split('?')[0]}`).length, 0)
@@ -31,7 +31,15 @@ const mobileProfiles = new Set(['390x844', '667x375', '768x1024'])
 const LCP_PRESUPUESTO = 2500
 const LCP_TOPE_FRIO = 4000
 const CLS_BARRIDO_MAX = 0.1
+// Umbrales WCAG AA. 4.5 para texto normal (párrafo y etiqueta); 3.0 para texto
+// grande, que la norma define como >= 24 px — si el `h2` computa por debajo de
+// eso, se le exige 4.5 como a cualquier otro texto.
 const CONTRASTE_MIN = 4.5
+const CONTRASTE_MIN_GRANDE = 3.0
+const TEXTO_GRANDE_PX = 24
+const umbralDe = ({ elemento, fontPx }) => (elemento === 'h2' && fontPx >= TEXTO_GRANDE_PX ? CONTRASTE_MIN_GRANDE : CONTRASTE_MIN)
+const TEXTOS = [['label', '.label'], ['h2', 'h2'], ['parrafo', 'p:last-of-type']]
+const PERFILES_CONTRASTE = [['390x844', 390, 844], ['1440x900', 1440, 900]]
 const viewports = [['390x844',390,844],['667x375',667,375],['768x1024',768,1024],['1024x768',1024,768],['1440x900',1440,900],['1920x1080',1920,1080]]
 const failures = []
 const results = []
@@ -90,31 +98,42 @@ async function relacionTextoFondo(conTexto, sinTexto) {
   return { contraste: nucleo.valor, pixelesDeTexto: nucleo.pixeles, contrastePuro: puro?.valor ?? null, pixelesPuros: puro?.pixeles ?? 0 }
 }
 
-async function contrasteDeEtiqueta(page, label, ruta) {
-  const box = await label.boundingBox()
-  if (!box) throw new Error(`Etiqueta sin caja: ${ruta}`)
-  const clip = {
-    x: Math.max(0, Math.round(box.x)), y: Math.max(0, Math.round(box.y)),
-    width: Math.max(1, Math.round(box.width)), height: Math.max(1, Math.round(box.height)),
-  }
+async function contrasteDeTexto(page, elemento, ruta) {
+  const vista = page.viewportSize()
+  const box = await elemento.boundingBox()
+  if (!box) throw new Error(`Texto sin caja: ${ruta}`)
+  // El recorte se limita al viewport: un `h2` de 92 px puede desbordar la lámina
+  // y `page.screenshot({ clip })` trabaja en coordenadas de viewport.
+  const x0 = Math.max(0, Math.round(box.x))
+  const y0 = Math.max(0, Math.round(box.y))
+  const x1 = Math.min(vista.width, Math.round(box.x + box.width))
+  const y1 = Math.min(vista.height, Math.round(box.y + box.height))
+  if (x1 - x0 < 2 || y1 - y0 < 2) throw new Error(`Texto fuera del viewport: ${ruta}`)
+  const clip = { x: x0, y: y0, width: x1 - x0, height: y1 - y0 }
   const conTexto = await page.screenshot({ clip, animations: 'disabled', path: ruta })
-  await label.evaluate((element) => {
-    element.dataset.qaColor = element.style.color
-    element.style.color = 'transparent'
+  await elemento.evaluate((node) => {
+    node.dataset.qaColor = node.style.color
+    node.style.color = 'transparent'
   })
   const sinTexto = await page.screenshot({ clip, animations: 'disabled' })
-  await label.evaluate((element) => {
-    element.style.color = element.dataset.qaColor ?? ''
-    delete element.dataset.qaColor
+  await elemento.evaluate((node) => {
+    node.style.color = node.dataset.qaColor ?? ''
+    delete node.dataset.qaColor
   })
   return relacionTextoFondo(conTexto, sinTexto)
 }
 
 /**
- * Mide las 9 etiquetas SOBRE EL ESTADO REAL de la página: en modo animado se
- * navega al progreso de cada capítulo y se comprueba que la tarjeta esté
- * realmente visible. No se fuerza `visibility`, `opacity` ni `transform`: si el
- * usuario no lo ve así, la puerta debe fallar, no maquillarse.
+ * Mide los TRES textos sobre imagen de los 9 capítulos —etiqueta, titular y
+ * párrafo— SOBRE EL ESTADO REAL de la página: en modo animado se navega al
+ * progreso de cada capítulo y se comprueba que la tarjeta esté realmente
+ * visible. No se fuerza `visibility`, `opacity` ni `transform`: si el usuario no
+ * lo ve así, la puerta debe fallar, no maquillarse.
+ *
+ * Hasta la v2.3 esto sólo miraba `.label`, que es el texto con más contraste
+ * (lleva su propio fondo petróleo). Los dos que de verdad se apoyan en el scrim
+ * —el `h2` y el párrafo— quedaban fuera, y ahí vivía el fallo AA del capítulo 03
+ * en modo quieto (h2 2.62:1, párrafo 4.18:1 a 1440×900).
  */
 async function medirContrastes(page, mode, name) {
   const medidas = []
@@ -135,17 +154,33 @@ async function medirContrastes(page, mode, name) {
       const punto = await card.evaluate((element) => (Number(element.dataset.from) + Number(element.dataset.to)) / 2)
       await page.evaluate((y) => scrollTo(0, y), Math.round(inicio + (fin - inicio) * Math.min(1, Math.max(0, punto))))
       await page.waitForTimeout(Math.max(800, STEP_MS))
-    } else {
-      await card.scrollIntoViewIfNeeded()
-      await page.waitForTimeout(150)
     }
     const estado = await card.evaluate((element) => {
       const estilo = getComputedStyle(element)
       return { visibility: estilo.visibility, opacity: Number(estilo.opacity) }
     })
-    const ruta = `qa/v2.3/contrast/${name}-${mode}-${String(index + 1).padStart(2, '0')}.png`
-    const medida = await contrasteDeEtiqueta(page, card.locator('.label'), ruta)
-    medidas.push({ capitulo: index + 1, contraste: Number(medida.contraste.toFixed(2)), contrastePuro: medida.contrastePuro === null ? null : Number(medida.contrastePuro.toFixed(2)), pixelesDeTexto: medida.pixelesDeTexto, pixelesPuros: medida.pixelesPuros, estadoReal: estado })
+    for (const [clave, selector] of TEXTOS) {
+      const nodo = card.locator(selector)
+      // En quieto la lámina mide 88svh: el titular y el párrafo sólo entran en
+      // cuadro si se les acerca, que es justo lo que hace quien lee.
+      if (mode === 'off') {
+        await nodo.scrollIntoViewIfNeeded()
+        await page.waitForTimeout(150)
+      }
+      const fontPx = await nodo.evaluate((node) => parseFloat(getComputedStyle(node).fontSize))
+      const ruta = `qa/v2.4/contrast/${name}-${mode}-${String(index + 1).padStart(2, '0')}-${clave}.png`
+      const medida = await contrasteDeTexto(page, nodo, ruta)
+      const fila = {
+        modo: mode, viewport: name, capitulo: index + 1, elemento: clave,
+        fontPx: Number(fontPx.toFixed(1)),
+        contraste: Number(medida.contraste.toFixed(2)),
+        contrastePuro: medida.contrastePuro === null ? null : Number(medida.contrastePuro.toFixed(2)),
+        pixelesDeTexto: medida.pixelesDeTexto, pixelesPuros: medida.pixelesPuros,
+        estadoReal: estado,
+      }
+      fila.umbral = umbralDe(fila)
+      medidas.push(fila)
+    }
   }
   return medidas
 }
@@ -248,7 +283,6 @@ try {
     }))
     let scrollProof = null
     let contentScreens = null
-    let labelContrasts = null
     if (mode === 'on') {
       if (name === '390x844') await cdp.send('Network.emulateNetworkConditions', { offline: false, latency: 0, downloadThroughput: -1, uploadThroughput: -1 })
       await page.evaluate(() => { window.__qa.phase = 'scroll' })
@@ -276,12 +310,6 @@ try {
       }).length)
       if (visibleCards !== 9) failures.push({ mode, name, visibleCards })
     }
-    if (name === '390x844' || name === '1440x900') {
-      labelContrasts = await medirContrastes(page, mode, name)
-      const flojas = labelContrasts.filter(({ contraste }) => contraste < CONTRASTE_MIN)
-      const invisibles = labelContrasts.filter(({ estadoReal }) => estadoReal.visibility !== 'visible' || estadoReal.opacity < 0.9)
-      if (flojas.length || invisibles.length) failures.push({ mode, name, contrasteFlojo: flojas, tarjetaNoVisible: invisibles })
-    }
     const postScroll = await page.evaluate(() => ({ clsScrollDiagnostico: window.__qa.clsScrollDiagnostico, shifts: window.__qa.shifts }))
     while (bodyReads.length) {
       const pendientes = bodyReads
@@ -289,8 +317,7 @@ try {
       await Promise.all(pendientes)
     }
     const inputBytes = [...responseBytes.values()].reduce((total, bytes) => total + bytes, 0)
-    const contrasteMin = labelContrasts ? Math.min(...labelContrasts.map(({ contraste }) => contraste)) : null
-    const row = { mode, name, lcpMs: Math.round(metrics.lcp), clsInitial: Number(metrics.clsInitial.toFixed(4)), clsScrollDiagnostico: Number(postScroll.clsScrollDiagnostico.toFixed(4)), inputBytes, respuestasSinCuerpo: sinCuerpo.length, entryBudget: mobileProfiles.has(name) ? entryBudgets.mobile : entryBudgets.desktop, overflowPx: metrics.overflow, errors, broken, scrollProof, contentScreens: contentScreens === null ? null : Number(contentScreens.toFixed(2)), labelContrasts, contrasteMin, motionToggle: metrics.motionToggle, shifts: postScroll.shifts }
+    const row = { mode, name, lcpMs: Math.round(metrics.lcp), clsInitial: Number(metrics.clsInitial.toFixed(4)), clsScrollDiagnostico: Number(postScroll.clsScrollDiagnostico.toFixed(4)), inputBytes, respuestasSinCuerpo: sinCuerpo.length, entryBudget: mobileProfiles.has(name) ? entryBudgets.mobile : entryBudgets.desktop, overflowPx: metrics.overflow, errors, broken, scrollProof, contentScreens: contentScreens === null ? null : Number(contentScreens.toFixed(2)), motionToggle: metrics.motionToggle, shifts: postScroll.shifts }
     results.push(row)
     const invalidToggle = metrics.motionToggle.width < 44 || metrics.motionToggle.height < 44 || metrics.motionToggle.pressed !== String(mode === 'on')
     // Puerta de bytes sobre los SEIS perfiles y sobre el presupuesto de entrada
@@ -298,7 +325,65 @@ try {
     const invalidInput = mode === 'on' && inputBytes > row.entryBudget
     const invalidScrollCls = mode === 'on' && postScroll.clsScrollDiagnostico >= CLS_BARRIDO_MAX
     if (metrics.overflow > 0 || metrics.clsInitial > 0.05 || invalidToggle || invalidInput || invalidScrollCls || sinCuerpo.length || errors.length || broken.length || (mode === 'on' && (scrollProof ?? 0) < 40) || (contentScreens !== null && height >= 600 && contentScreens > 8.01)) failures.push(row)
-    console.log(`${mode} ${name}: LCP ${row.lcpMs}ms CLS inicial ${row.clsInitial} CLS barrido ${row.clsScrollDiagnostico} entrada ${row.inputBytes} B / ${row.entryBudget} contraste min ${contrasteMin ?? '-'} overflow ${row.overflowPx}px cambios ${scrollProof ?? '-'} coda ${row.contentScreens ?? '-'}vh`)
+    console.log(`${mode} ${name}: LCP ${row.lcpMs}ms CLS inicial ${row.clsInitial} CLS barrido ${row.clsScrollDiagnostico} entrada ${row.inputBytes} B / ${row.entryBudget} overflow ${row.overflowPx}px cambios ${scrollProof ?? '-'} coda ${row.contentScreens ?? '-'}vh`)
+    await context.close()
+  }
+
+  // ------------------------------------------------- contraste AA de los textos
+  // Pasada propia y a densidad ×2 (más antialias real del glifo, lectura más
+  // severa que a ×1). Va aparte del bucle de arriba para no tocar el DPR con el
+  // que se miden bytes, CLS y LCP: los tres textos sobre imagen, los 9 capítulos,
+  // los dos modos y los dos anchos = 108 medidas en estado real.
+  const contrastes = []
+  for (const mode of ['on', 'off']) for (const [name, width, height] of PERFILES_CONTRASTE) {
+    const context = await browser.newContext({ viewport: { width, height }, deviceScaleFactor: 2, reducedMotion: mode === 'off' ? 'reduce' : 'no-preference' })
+    const page = await context.newPage()
+    await page.goto(`${BASE}/?motion=${mode}`, { waitUntil: 'networkidle' })
+    if (mode === 'on') await page.waitForFunction(() => document.querySelector('.film')?.classList.contains('is-painted'), null, { timeout: 20000 })
+    contrastes.push(...await medirContrastes(page, mode, name))
+    await context.close()
+  }
+  const contrasteFlojo = contrastes.filter((fila) => fila.contraste < fila.umbral)
+  const tarjetaNoVisible = contrastes.filter(({ estadoReal }) => estadoReal.visibility !== 'visible' || estadoReal.opacity < 0.9)
+  if (contrastes.length !== 2 * PERFILES_CONTRASTE.length * 9 * TEXTOS.length) failures.push({ contraste: 'medidas incompletas', medidas: contrastes.length })
+  if (contrasteFlojo.length || tarjetaNoVisible.length) failures.push({ contraste: 'AA', contrasteFlojo, tarjetaNoVisible })
+  for (const [clave] of TEXTOS) for (const mode of ['on', 'off']) for (const [name] of PERFILES_CONTRASTE) {
+    const sub = contrastes.filter((f) => f.elemento === clave && f.modo === mode && f.viewport === name)
+    const min = Math.min(...sub.map((f) => f.contraste))
+    const peor = sub.find((f) => f.contraste === min)
+    console.log(`contraste ${clave.padEnd(8)} ${mode} ${name}: min ${min.toFixed(2)}:1 (cap ${peor.capitulo}, ${peor.fontPx}px, umbral ${peor.umbral}) max ${Math.max(...sub.map((f) => f.contraste)).toFixed(2)}:1`)
+  }
+
+  // --------------------------------- objetivos táctiles de la nav de escritorio
+  // Con `(pointer: coarse)` los cuatro enlaces medían 18 px de alto a partir de
+  // 1024 px. La puerta comprueba además que la regla NO resucite en el teléfono
+  // los enlaces que el layout oculta por debajo de 821 px.
+  const navPerfiles = [['390x844', 390, 844, 1], ['820x1180', 820, 1180, 1], ['1024x768', 1024, 768, 5], ['1280x800', 1280, 800, 5], ['1440x900', 1440, 900, 5]]
+  const navObjetivos = []
+  for (const [name, width, height, esperados] of navPerfiles) {
+    const context = await browser.newContext({ viewport: { width, height }, hasTouch: true, reducedMotion: 'reduce' })
+    const page = await context.newPage()
+    await page.goto(`${BASE}/?motion=off`, { waitUntil: 'domcontentloaded' })
+    // Se espera al enlace de WhatsApp: es el único visible en los cinco anchos
+    // (por debajo de 821 px los otros cuatro están ocultos a propósito).
+    await page.waitForSelector('.nav__enlaces .nav__wa')
+    const medida = await page.evaluate(() => ({
+      punteroGrueso: matchMedia('(pointer: coarse)').matches,
+      overflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+      filaPx: Math.round(document.querySelector('.nav__fila').getBoundingClientRect().height),
+      enlaces: [...document.querySelectorAll('.nav__enlaces a')]
+        .filter((a) => getComputedStyle(a).display !== 'none')
+        .map((a) => {
+          const caja = a.getBoundingClientRect()
+          return { texto: a.textContent.trim(), width: Math.round(caja.width), height: Math.round(caja.height) }
+        }),
+    }))
+    navObjetivos.push({ viewport: name, ...medida })
+    const chicos = medida.enlaces.filter(({ height: alto }) => alto < 44)
+    // Si la emulación de puntero grueso no se aplicara, esta puerta no probaría nada.
+    if (!medida.punteroGrueso) failures.push({ nav: name, motivo: 'no se emuló (pointer: coarse)' })
+    if (medida.enlaces.length !== esperados || chicos.length || medida.overflow > 0) failures.push({ nav: name, esperados, medida })
+    console.log(`nav ${name} (pointer: coarse): ${medida.enlaces.length}/${esperados} enlaces visibles, ${chicos.length} por debajo de 44 px, fila ${medida.filaPx}px, overflow ${medida.overflow}px`)
     await context.close()
   }
 
@@ -426,12 +511,12 @@ try {
   await targetContext.close()
 
   if (budgets.desktop > limits.desktop || budgets.mobile > limits.mobile) failures.push({ frameBudgets: budgets, limits })
-  const summary = { frameBytes: budgets, limits, entryBudgets, lcp: { frio: lcpFrio, repeticiones: lcpRepeticiones, mediana: lcpMediana, presupuestoMediana: LCP_PRESUPUESTO, topeFrio: LCP_TOPE_FRIO }, teclado: tecladoResumen, punteros, results, failures }
+  const summary = { frameBytes: budgets, limits, entryBudgets, lcp: { frio: lcpFrio, repeticiones: lcpRepeticiones, mediana: lcpMediana, presupuestoMediana: LCP_PRESUPUESTO, topeFrio: LCP_TOPE_FRIO }, teclado: tecladoResumen, punteros, umbralesContraste: { normal: CONTRASTE_MIN, grande: CONTRASTE_MIN_GRANDE, textoGrandePx: TEXTO_GRANDE_PX }, contrastes, navObjetivos, results, failures }
   writeFileSync('qa/v2/metrics.json', `${JSON.stringify(summary, null, 2)}\n`)
   if (failures.length) {
     console.error(JSON.stringify(failures, null, 2))
     process.exitCode = 1
-  } else console.log('QA APROBADO: 6 viewports, consola/404/overflow/CLS<0.1/bytes reales/LCP mediana, contraste real, 13/13 CTA con teclado, 9/9 CTA con raton, >=40 cambios y motion-off.')
+  } else console.log('QA APROBADO: 6 viewports, consola/404/overflow/CLS<0.1/bytes reales/LCP mediana, contraste AA real de etiqueta+titular+parrafo en los 2 modos y los 2 anchos, nav >=44 px con puntero grueso, 13/13 CTA con teclado, 9/9 CTA con raton, >=40 cambios y motion-off.')
 } finally {
   await browser?.close()
   if (server) server.kill()

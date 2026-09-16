@@ -1,0 +1,2013 @@
+{
+  "nota": "Ejecucion de scripts/qa.mjs (puerta v2.4) contra el CSS de la v2.3, con el arreglo revertido por git stash. Demuestra que la puerta nueva falla donde R1e denuncio.",
+  "umbralesContraste": {
+    "normal": 4.5,
+    "grande": 3,
+    "textoGrandePx": 24
+  },
+  "contrastes": [
+    {
+      "modo": "on",
+      "viewport": "390x844",
+      "capitulo": 1,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.44,
+      "contrastePuro": 8.43,
+      "pixelesDeTexto": 830,
+      "pixelesPuros": 462,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "on",
+      "viewport": "390x844",
+      "capitulo": 1,
+      "elemento": "h2",
+      "fontPx": 50.7,
+      "contraste": 7.55,
+      "contrastePuro": 13.62,
+      "pixelesDeTexto": 5079,
+      "pixelesPuros": 213,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "on",
+      "viewport": "390x844",
+      "capitulo": 1,
+      "elemento": "parrafo",
+      "fontPx": 16,
+      "contraste": 8.37,
+      "contrastePuro": 12.38,
+      "pixelesDeTexto": 5403,
+      "pixelesPuros": 789,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "on",
+      "viewport": "390x844",
+      "capitulo": 2,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.39,
+      "contrastePuro": 8.43,
+      "pixelesDeTexto": 1187,
+      "pixelesPuros": 652,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "on",
+      "viewport": "390x844",
+      "capitulo": 2,
+      "elemento": "h2",
+      "fontPx": 50.7,
+      "contraste": 3.95,
+      "contrastePuro": 4.97,
+      "pixelesDeTexto": 7504,
+      "pixelesPuros": 1171,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "on",
+      "viewport": "390x844",
+      "capitulo": 2,
+      "elemento": "parrafo",
+      "fontPx": 16,
+      "contraste": 6.19,
+      "contrastePuro": 8.27,
+      "pixelesDeTexto": 7469,
+      "pixelesPuros": 608,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "on",
+      "viewport": "390x844",
+      "capitulo": 3,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.44,
+      "contrastePuro": 8.44,
+      "pixelesDeTexto": 872,
+      "pixelesPuros": 497,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "on",
+      "viewport": "390x844",
+      "capitulo": 3,
+      "elemento": "h2",
+      "fontPx": 50.7,
+      "contraste": 7.23,
+      "contrastePuro": 13.98,
+      "pixelesDeTexto": 6650,
+      "pixelesPuros": 362,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "on",
+      "viewport": "390x844",
+      "capitulo": 3,
+      "elemento": "parrafo",
+      "fontPx": 16,
+      "contraste": 5.23,
+      "contrastePuro": 6.94,
+      "pixelesDeTexto": 6961,
+      "pixelesPuros": 1013,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "on",
+      "viewport": "390x844",
+      "capitulo": 4,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.4,
+      "contrastePuro": 8.45,
+      "pixelesDeTexto": 842,
+      "pixelesPuros": 452,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "on",
+      "viewport": "390x844",
+      "capitulo": 4,
+      "elemento": "h2",
+      "fontPx": 50.7,
+      "contraste": 4.12,
+      "contrastePuro": 7.93,
+      "pixelesDeTexto": 8798,
+      "pixelesPuros": 43,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "on",
+      "viewport": "390x844",
+      "capitulo": 4,
+      "elemento": "parrafo",
+      "fontPx": 16,
+      "contraste": 5.5,
+      "contrastePuro": 10.8,
+      "pixelesDeTexto": 3802,
+      "pixelesPuros": 10,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "on",
+      "viewport": "390x844",
+      "capitulo": 5,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.39,
+      "contrastePuro": 8.42,
+      "pixelesDeTexto": 945,
+      "pixelesPuros": 526,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "on",
+      "viewport": "390x844",
+      "capitulo": 5,
+      "elemento": "h2",
+      "fontPx": 50.7,
+      "contraste": 6.99,
+      "contrastePuro": 14.43,
+      "pixelesDeTexto": 5519,
+      "pixelesPuros": 77,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "on",
+      "viewport": "390x844",
+      "capitulo": 5,
+      "elemento": "parrafo",
+      "fontPx": 16,
+      "contraste": 6.7,
+      "contrastePuro": 12.53,
+      "pixelesDeTexto": 3325,
+      "pixelesPuros": 60,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "on",
+      "viewport": "390x844",
+      "capitulo": 6,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.41,
+      "contrastePuro": 8.43,
+      "pixelesDeTexto": 599,
+      "pixelesPuros": 322,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "on",
+      "viewport": "390x844",
+      "capitulo": 6,
+      "elemento": "h2",
+      "fontPx": 50.7,
+      "contraste": 3.95,
+      "contrastePuro": 5.37,
+      "pixelesDeTexto": 6050,
+      "pixelesPuros": 145,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "on",
+      "viewport": "390x844",
+      "capitulo": 6,
+      "elemento": "parrafo",
+      "fontPx": 16,
+      "contraste": 5.22,
+      "contrastePuro": 10.09,
+      "pixelesDeTexto": 5555,
+      "pixelesPuros": 169,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "on",
+      "viewport": "390x844",
+      "capitulo": 7,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.43,
+      "contrastePuro": 8.43,
+      "pixelesDeTexto": 978,
+      "pixelesPuros": 550,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "on",
+      "viewport": "390x844",
+      "capitulo": 7,
+      "elemento": "h2",
+      "fontPx": 50.7,
+      "contraste": 8.33,
+      "contrastePuro": 14.41,
+      "pixelesDeTexto": 6778,
+      "pixelesPuros": 63,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "on",
+      "viewport": "390x844",
+      "capitulo": 7,
+      "elemento": "parrafo",
+      "fontPx": 16,
+      "contraste": 5.73,
+      "contrastePuro": 11.43,
+      "pixelesDeTexto": 4823,
+      "pixelesPuros": 288,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "on",
+      "viewport": "390x844",
+      "capitulo": 8,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.5,
+      "contrastePuro": 8.45,
+      "pixelesDeTexto": 910,
+      "pixelesPuros": 506,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "on",
+      "viewport": "390x844",
+      "capitulo": 8,
+      "elemento": "h2",
+      "fontPx": 50.7,
+      "contraste": 13.91,
+      "contrastePuro": 16.25,
+      "pixelesDeTexto": 5516,
+      "pixelesPuros": 2968,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "on",
+      "viewport": "390x844",
+      "capitulo": 8,
+      "elemento": "parrafo",
+      "fontPx": 16,
+      "contraste": 11.3,
+      "contrastePuro": 12.87,
+      "pixelesDeTexto": 6808,
+      "pixelesPuros": 4079,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "on",
+      "viewport": "390x844",
+      "capitulo": 9,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.59,
+      "contrastePuro": 8.39,
+      "pixelesDeTexto": 739,
+      "pixelesPuros": 481,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "on",
+      "viewport": "390x844",
+      "capitulo": 9,
+      "elemento": "h2",
+      "fontPx": 50.7,
+      "contraste": 5.8,
+      "contrastePuro": 8.34,
+      "pixelesDeTexto": 9697,
+      "pixelesPuros": 1102,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "on",
+      "viewport": "390x844",
+      "capitulo": 9,
+      "elemento": "parrafo",
+      "fontPx": 16,
+      "contraste": 7.51,
+      "contrastePuro": 11.93,
+      "pixelesDeTexto": 4990,
+      "pixelesPuros": 151,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "on",
+      "viewport": "1440x900",
+      "capitulo": 1,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.44,
+      "contrastePuro": 8.43,
+      "pixelesDeTexto": 830,
+      "pixelesPuros": 465,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "on",
+      "viewport": "1440x900",
+      "capitulo": 1,
+      "elemento": "h2",
+      "fontPx": 92,
+      "contraste": 9.15,
+      "contrastePuro": 13.99,
+      "pixelesDeTexto": 17197,
+      "pixelesPuros": 1247,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "on",
+      "viewport": "1440x900",
+      "capitulo": 1,
+      "elemento": "parrafo",
+      "fontPx": 18,
+      "contraste": 6.19,
+      "contrastePuro": 9.56,
+      "pixelesDeTexto": 7076,
+      "pixelesPuros": 463,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "on",
+      "viewport": "1440x900",
+      "capitulo": 2,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.4,
+      "contrastePuro": 8.43,
+      "pixelesDeTexto": 1185,
+      "pixelesPuros": 652,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "on",
+      "viewport": "1440x900",
+      "capitulo": 2,
+      "elemento": "h2",
+      "fontPx": 92,
+      "contraste": 5.67,
+      "contrastePuro": 8.1,
+      "pixelesDeTexto": 23886,
+      "pixelesPuros": 2096,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "on",
+      "viewport": "1440x900",
+      "capitulo": 2,
+      "elemento": "parrafo",
+      "fontPx": 18,
+      "contraste": 5.9,
+      "contrastePuro": 8.06,
+      "pixelesDeTexto": 9335,
+      "pixelesPuros": 610,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "on",
+      "viewport": "1440x900",
+      "capitulo": 3,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.44,
+      "contrastePuro": 8.44,
+      "pixelesDeTexto": 873,
+      "pixelesPuros": 496,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "on",
+      "viewport": "1440x900",
+      "capitulo": 3,
+      "elemento": "h2",
+      "fontPx": 92,
+      "contraste": 7.84,
+      "contrastePuro": 13.78,
+      "pixelesDeTexto": 25880,
+      "pixelesPuros": 891,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "on",
+      "viewport": "1440x900",
+      "capitulo": 3,
+      "elemento": "parrafo",
+      "fontPx": 18,
+      "contraste": 7.22,
+      "contrastePuro": 11.04,
+      "pixelesDeTexto": 8096,
+      "pixelesPuros": 232,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "on",
+      "viewport": "1440x900",
+      "capitulo": 4,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.41,
+      "contrastePuro": 8.46,
+      "pixelesDeTexto": 841,
+      "pixelesPuros": 449,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "on",
+      "viewport": "1440x900",
+      "capitulo": 4,
+      "elemento": "h2",
+      "fontPx": 92,
+      "contraste": 7.89,
+      "contrastePuro": 14.72,
+      "pixelesDeTexto": 32835,
+      "pixelesPuros": 255,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "on",
+      "viewport": "1440x900",
+      "capitulo": 4,
+      "elemento": "parrafo",
+      "fontPx": 18,
+      "contraste": 6.69,
+      "contrastePuro": 12.09,
+      "pixelesDeTexto": 5114,
+      "pixelesPuros": 28,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "on",
+      "viewport": "1440x900",
+      "capitulo": 5,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.4,
+      "contrastePuro": 8.41,
+      "pixelesDeTexto": 943,
+      "pixelesPuros": 528,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "on",
+      "viewport": "1440x900",
+      "capitulo": 5,
+      "elemento": "h2",
+      "fontPx": 92,
+      "contraste": 8.22,
+      "contrastePuro": 14.54,
+      "pixelesDeTexto": 23389,
+      "pixelesPuros": 1087,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "on",
+      "viewport": "1440x900",
+      "capitulo": 5,
+      "elemento": "parrafo",
+      "fontPx": 18,
+      "contraste": 7.29,
+      "contrastePuro": 11.62,
+      "pixelesDeTexto": 4937,
+      "pixelesPuros": 61,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "on",
+      "viewport": "1440x900",
+      "capitulo": 6,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.41,
+      "contrastePuro": 8.43,
+      "pixelesDeTexto": 599,
+      "pixelesPuros": 318,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "on",
+      "viewport": "1440x900",
+      "capitulo": 6,
+      "elemento": "h2",
+      "fontPx": 92,
+      "contraste": 9.26,
+      "contrastePuro": 15.36,
+      "pixelesDeTexto": 18819,
+      "pixelesPuros": 2531,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "on",
+      "viewport": "1440x900",
+      "capitulo": 6,
+      "elemento": "parrafo",
+      "fontPx": 18,
+      "contraste": 10.45,
+      "contrastePuro": 12.38,
+      "pixelesDeTexto": 8511,
+      "pixelesPuros": 3585,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "on",
+      "viewport": "1440x900",
+      "capitulo": 7,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.42,
+      "contrastePuro": 8.43,
+      "pixelesDeTexto": 979,
+      "pixelesPuros": 551,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "on",
+      "viewport": "1440x900",
+      "capitulo": 7,
+      "elemento": "h2",
+      "fontPx": 92,
+      "contraste": 6.6,
+      "contrastePuro": 13.43,
+      "pixelesDeTexto": 34137,
+      "pixelesPuros": 908,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "on",
+      "viewport": "1440x900",
+      "capitulo": 7,
+      "elemento": "parrafo",
+      "fontPx": 18,
+      "contraste": 7.02,
+      "contrastePuro": 12.37,
+      "pixelesDeTexto": 8260,
+      "pixelesPuros": 237,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "on",
+      "viewport": "1440x900",
+      "capitulo": 8,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.51,
+      "contrastePuro": 8.45,
+      "pixelesDeTexto": 909,
+      "pixelesPuros": 506,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "on",
+      "viewport": "1440x900",
+      "capitulo": 8,
+      "elemento": "h2",
+      "fontPx": 92,
+      "contraste": 13.06,
+      "contrastePuro": 15.93,
+      "pixelesDeTexto": 17701,
+      "pixelesPuros": 9864,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "on",
+      "viewport": "1440x900",
+      "capitulo": 8,
+      "elemento": "parrafo",
+      "fontPx": 18,
+      "contraste": 11.36,
+      "contrastePuro": 12.78,
+      "pixelesDeTexto": 8542,
+      "pixelesPuros": 5182,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "on",
+      "viewport": "1440x900",
+      "capitulo": 9,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.59,
+      "contrastePuro": 8.39,
+      "pixelesDeTexto": 739,
+      "pixelesPuros": 482,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "on",
+      "viewport": "1440x900",
+      "capitulo": 9,
+      "elemento": "h2",
+      "fontPx": 92,
+      "contraste": 6.32,
+      "contrastePuro": 9.52,
+      "pixelesDeTexto": 32935,
+      "pixelesPuros": 447,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "on",
+      "viewport": "1440x900",
+      "capitulo": 9,
+      "elemento": "parrafo",
+      "fontPx": 18,
+      "contraste": 6.24,
+      "contrastePuro": 8.97,
+      "pixelesDeTexto": 6580,
+      "pixelesPuros": 656,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "390x844",
+      "capitulo": 1,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.67,
+      "contrastePuro": 8.49,
+      "pixelesDeTexto": 803,
+      "pixelesPuros": 463,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "390x844",
+      "capitulo": 1,
+      "elemento": "h2",
+      "fontPx": 50.7,
+      "contraste": 8.48,
+      "contrastePuro": 13.28,
+      "pixelesDeTexto": 5160,
+      "pixelesPuros": 268,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "off",
+      "viewport": "390x844",
+      "capitulo": 1,
+      "elemento": "parrafo",
+      "fontPx": 16,
+      "contraste": 6.57,
+      "contrastePuro": 12.58,
+      "pixelesDeTexto": 4840,
+      "pixelesPuros": 441,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "390x844",
+      "capitulo": 2,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.67,
+      "contrastePuro": 8.5,
+      "pixelesDeTexto": 1145,
+      "pixelesPuros": 661,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "390x844",
+      "capitulo": 2,
+      "elemento": "h2",
+      "fontPx": 50.7,
+      "contraste": 10.42,
+      "contrastePuro": 15.45,
+      "pixelesDeTexto": 5303,
+      "pixelesPuros": 589,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "off",
+      "viewport": "390x844",
+      "capitulo": 2,
+      "elemento": "parrafo",
+      "fontPx": 16,
+      "contraste": 7.04,
+      "contrastePuro": 12.54,
+      "pixelesDeTexto": 6344,
+      "pixelesPuros": 755,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "390x844",
+      "capitulo": 3,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.64,
+      "contrastePuro": 8.49,
+      "pixelesDeTexto": 851,
+      "pixelesPuros": 503,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "390x844",
+      "capitulo": 3,
+      "elemento": "h2",
+      "fontPx": 50.7,
+      "contraste": 4.06,
+      "contrastePuro": 6.75,
+      "pixelesDeTexto": 5801,
+      "pixelesPuros": 212,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "off",
+      "viewport": "390x844",
+      "capitulo": 3,
+      "elemento": "parrafo",
+      "fontPx": 16,
+      "contraste": 7.6,
+      "contrastePuro": 12.43,
+      "pixelesDeTexto": 6457,
+      "pixelesPuros": 617,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "390x844",
+      "capitulo": 4,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.64,
+      "contrastePuro": 8.5,
+      "pixelesDeTexto": 816,
+      "pixelesPuros": 461,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "390x844",
+      "capitulo": 4,
+      "elemento": "h2",
+      "fontPx": 50.7,
+      "contraste": 6.33,
+      "contrastePuro": 11.45,
+      "pixelesDeTexto": 6427,
+      "pixelesPuros": 309,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "off",
+      "viewport": "390x844",
+      "capitulo": 4,
+      "elemento": "parrafo",
+      "fontPx": 16,
+      "contraste": 4.61,
+      "contrastePuro": 5.88,
+      "pixelesDeTexto": 4280,
+      "pixelesPuros": 638,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "390x844",
+      "capitulo": 5,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.65,
+      "contrastePuro": 8.49,
+      "pixelesDeTexto": 911,
+      "pixelesPuros": 537,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "390x844",
+      "capitulo": 5,
+      "elemento": "h2",
+      "fontPx": 50.7,
+      "contraste": 6.77,
+      "contrastePuro": 15.08,
+      "pixelesDeTexto": 871,
+      "pixelesPuros": 23,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "off",
+      "viewport": "390x844",
+      "capitulo": 5,
+      "elemento": "parrafo",
+      "fontPx": 16,
+      "contraste": 6.76,
+      "contrastePuro": 12.67,
+      "pixelesDeTexto": 3750,
+      "pixelesPuros": 170,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "390x844",
+      "capitulo": 6,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.67,
+      "contrastePuro": 8.5,
+      "pixelesDeTexto": 578,
+      "pixelesPuros": 325,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "390x844",
+      "capitulo": 6,
+      "elemento": "h2",
+      "fontPx": 50.7,
+      "contraste": 8.39,
+      "contrastePuro": 16.33,
+      "pixelesDeTexto": 5452,
+      "pixelesPuros": 620,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "off",
+      "viewport": "390x844",
+      "capitulo": 6,
+      "elemento": "parrafo",
+      "fontPx": 16,
+      "contraste": 8.13,
+      "contrastePuro": 12.22,
+      "pixelesDeTexto": 5910,
+      "pixelesPuros": 613,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "390x844",
+      "capitulo": 7,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.67,
+      "contrastePuro": 8.49,
+      "pixelesDeTexto": 948,
+      "pixelesPuros": 556,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "390x844",
+      "capitulo": 7,
+      "elemento": "h2",
+      "fontPx": 50.7,
+      "contraste": 8.26,
+      "contrastePuro": 14.19,
+      "pixelesDeTexto": 5608,
+      "pixelesPuros": 61,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "off",
+      "viewport": "390x844",
+      "capitulo": 7,
+      "elemento": "parrafo",
+      "fontPx": 16,
+      "contraste": 7.16,
+      "contrastePuro": 11.13,
+      "pixelesDeTexto": 4319,
+      "pixelesPuros": 467,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "390x844",
+      "capitulo": 8,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.82,
+      "contrastePuro": 8.5,
+      "pixelesDeTexto": 874,
+      "pixelesPuros": 509,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "390x844",
+      "capitulo": 8,
+      "elemento": "h2",
+      "fontPx": 50.7,
+      "contraste": 14.1,
+      "contrastePuro": 15.68,
+      "pixelesDeTexto": 5605,
+      "pixelesPuros": 3813,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "off",
+      "viewport": "390x844",
+      "capitulo": 8,
+      "elemento": "parrafo",
+      "fontPx": 16,
+      "contraste": 4.88,
+      "contrastePuro": 12.59,
+      "pixelesDeTexto": 4710,
+      "pixelesPuros": 52,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "390x844",
+      "capitulo": 9,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.83,
+      "contrastePuro": 8.48,
+      "pixelesDeTexto": 717,
+      "pixelesPuros": 486,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "390x844",
+      "capitulo": 9,
+      "elemento": "h2",
+      "fontPx": 50.7,
+      "contraste": 5.04,
+      "contrastePuro": 9.73,
+      "pixelesDeTexto": 5820,
+      "pixelesPuros": 22,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "off",
+      "viewport": "390x844",
+      "capitulo": 9,
+      "elemento": "parrafo",
+      "fontPx": 16,
+      "contraste": 5.77,
+      "contrastePuro": 11.2,
+      "pixelesDeTexto": 4502,
+      "pixelesPuros": 235,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "1440x900",
+      "capitulo": 1,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.68,
+      "contrastePuro": 8.5,
+      "pixelesDeTexto": 803,
+      "pixelesPuros": 461,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "1440x900",
+      "capitulo": 1,
+      "elemento": "h2",
+      "fontPx": 92,
+      "contraste": 4.97,
+      "contrastePuro": 10.46,
+      "pixelesDeTexto": 11248,
+      "pixelesPuros": 65,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "off",
+      "viewport": "1440x900",
+      "capitulo": 1,
+      "elemento": "parrafo",
+      "fontPx": 18,
+      "contraste": 5.27,
+      "contrastePuro": 9.37,
+      "pixelesDeTexto": 6797,
+      "pixelesPuros": 7,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "1440x900",
+      "capitulo": 2,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.67,
+      "contrastePuro": 8.5,
+      "pixelesDeTexto": 1145,
+      "pixelesPuros": 658,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "1440x900",
+      "capitulo": 2,
+      "elemento": "h2",
+      "fontPx": 92,
+      "contraste": 3.39,
+      "contrastePuro": 6.15,
+      "pixelesDeTexto": 11701,
+      "pixelesPuros": 83,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "off",
+      "viewport": "1440x900",
+      "capitulo": 2,
+      "elemento": "parrafo",
+      "fontPx": 18,
+      "contraste": 5.31,
+      "contrastePuro": 9.56,
+      "pixelesDeTexto": 8527,
+      "pixelesPuros": 22,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "1440x900",
+      "capitulo": 3,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.64,
+      "contrastePuro": 8.5,
+      "pixelesDeTexto": 852,
+      "pixelesPuros": 501,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "1440x900",
+      "capitulo": 3,
+      "elemento": "h2",
+      "fontPx": 92,
+      "contraste": 2.62,
+      "contrastePuro": 3.48,
+      "pixelesDeTexto": 27024,
+      "pixelesPuros": 1271,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "off",
+      "viewport": "1440x900",
+      "capitulo": 3,
+      "elemento": "parrafo",
+      "fontPx": 18,
+      "contraste": 4.18,
+      "contrastePuro": 5.51,
+      "pixelesDeTexto": 8636,
+      "pixelesPuros": 745,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "1440x900",
+      "capitulo": 4,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.64,
+      "contrastePuro": 8.51,
+      "pixelesDeTexto": 816,
+      "pixelesPuros": 457,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "1440x900",
+      "capitulo": 4,
+      "elemento": "h2",
+      "fontPx": 92,
+      "contraste": 8.19,
+      "contrastePuro": 16.76,
+      "pixelesDeTexto": 22770,
+      "pixelesPuros": 2723,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "off",
+      "viewport": "1440x900",
+      "capitulo": 4,
+      "elemento": "parrafo",
+      "fontPx": 18,
+      "contraste": 7.31,
+      "contrastePuro": 13.15,
+      "pixelesDeTexto": 4990,
+      "pixelesPuros": 287,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "1440x900",
+      "capitulo": 5,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.65,
+      "contrastePuro": 8.49,
+      "pixelesDeTexto": 911,
+      "pixelesPuros": 536,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "1440x900",
+      "capitulo": 5,
+      "elemento": "h2",
+      "fontPx": 92,
+      "contraste": 5.82,
+      "contrastePuro": 13.12,
+      "pixelesDeTexto": 10017,
+      "pixelesPuros": 58,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "off",
+      "viewport": "1440x900",
+      "capitulo": 5,
+      "elemento": "parrafo",
+      "fontPx": 18,
+      "contraste": 5.4,
+      "contrastePuro": 11.67,
+      "pixelesDeTexto": 4923,
+      "pixelesPuros": 14,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "1440x900",
+      "capitulo": 6,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.67,
+      "contrastePuro": 8.51,
+      "pixelesDeTexto": 578,
+      "pixelesPuros": 326,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "1440x900",
+      "capitulo": 6,
+      "elemento": "h2",
+      "fontPx": 92,
+      "contraste": 4.8,
+      "contrastePuro": 10.19,
+      "pixelesDeTexto": 4428,
+      "pixelesPuros": 71,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "off",
+      "viewport": "1440x900",
+      "capitulo": 6,
+      "elemento": "parrafo",
+      "fontPx": 18,
+      "contraste": 7.11,
+      "contrastePuro": 13,
+      "pixelesDeTexto": 2545,
+      "pixelesPuros": 255,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "1440x900",
+      "capitulo": 7,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.67,
+      "contrastePuro": 8.49,
+      "pixelesDeTexto": 948,
+      "pixelesPuros": 555,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "1440x900",
+      "capitulo": 7,
+      "elemento": "h2",
+      "fontPx": 92,
+      "contraste": 6.53,
+      "contrastePuro": 13.14,
+      "pixelesDeTexto": 9035,
+      "pixelesPuros": 254,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "off",
+      "viewport": "1440x900",
+      "capitulo": 7,
+      "elemento": "parrafo",
+      "fontPx": 18,
+      "contraste": 6.34,
+      "contrastePuro": 12.56,
+      "pixelesDeTexto": 5732,
+      "pixelesPuros": 309,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "1440x900",
+      "capitulo": 8,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.82,
+      "contrastePuro": 8.51,
+      "pixelesDeTexto": 874,
+      "pixelesPuros": 513,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "1440x900",
+      "capitulo": 8,
+      "elemento": "h2",
+      "fontPx": 92,
+      "contraste": 14.11,
+      "contrastePuro": 15.31,
+      "pixelesDeTexto": 14400,
+      "pixelesPuros": 9036,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "off",
+      "viewport": "1440x900",
+      "capitulo": 8,
+      "elemento": "parrafo",
+      "fontPx": 18,
+      "contraste": 11.03,
+      "contrastePuro": 12.09,
+      "pixelesDeTexto": 8499,
+      "pixelesPuros": 5649,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "1440x900",
+      "capitulo": 9,
+      "elemento": "label",
+      "fontPx": 11,
+      "contraste": 7.83,
+      "contrastePuro": 8.48,
+      "pixelesDeTexto": 717,
+      "pixelesPuros": 486,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    },
+    {
+      "modo": "off",
+      "viewport": "1440x900",
+      "capitulo": 9,
+      "elemento": "h2",
+      "fontPx": 92,
+      "contraste": 3.46,
+      "contrastePuro": 5.57,
+      "pixelesDeTexto": 13660,
+      "pixelesPuros": 131,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 3
+    },
+    {
+      "modo": "off",
+      "viewport": "1440x900",
+      "capitulo": 9,
+      "elemento": "parrafo",
+      "fontPx": 18,
+      "contraste": 4.85,
+      "contrastePuro": 8.97,
+      "pixelesDeTexto": 5736,
+      "pixelesPuros": 13,
+      "estadoReal": {
+        "visibility": "visible",
+        "opacity": 1
+      },
+      "umbral": 4.5
+    }
+  ],
+  "navObjetivos": [
+    {
+      "viewport": "390x844",
+      "punteroGrueso": true,
+      "overflow": 0,
+      "filaPx": 79,
+      "enlaces": [
+        {
+          "texto": "WhatsApp",
+          "width": 114,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "viewport": "820x1180",
+      "punteroGrueso": true,
+      "overflow": 0,
+      "filaPx": 79,
+      "enlaces": [
+        {
+          "texto": "WhatsApp",
+          "width": 114,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "viewport": "1024x768",
+      "punteroGrueso": true,
+      "overflow": 0,
+      "filaPx": 79,
+      "enlaces": [
+        {
+          "texto": "Método",
+          "width": 63,
+          "height": 18
+        },
+        {
+          "texto": "Servicios",
+          "width": 80,
+          "height": 18
+        },
+        {
+          "texto": "Pacientes",
+          "width": 82,
+          "height": 18
+        },
+        {
+          "texto": "Visita",
+          "width": 49,
+          "height": 18
+        },
+        {
+          "texto": "WhatsApp",
+          "width": 114,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "viewport": "1280x800",
+      "punteroGrueso": true,
+      "overflow": 0,
+      "filaPx": 79,
+      "enlaces": [
+        {
+          "texto": "Método",
+          "width": 63,
+          "height": 18
+        },
+        {
+          "texto": "Servicios",
+          "width": 80,
+          "height": 18
+        },
+        {
+          "texto": "Pacientes",
+          "width": 82,
+          "height": 18
+        },
+        {
+          "texto": "Visita",
+          "width": 49,
+          "height": 18
+        },
+        {
+          "texto": "WhatsApp",
+          "width": 114,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "viewport": "1440x900",
+      "punteroGrueso": true,
+      "overflow": 0,
+      "filaPx": 79,
+      "enlaces": [
+        {
+          "texto": "Método",
+          "width": 63,
+          "height": 18
+        },
+        {
+          "texto": "Servicios",
+          "width": 80,
+          "height": 18
+        },
+        {
+          "texto": "Pacientes",
+          "width": 82,
+          "height": 18
+        },
+        {
+          "texto": "Visita",
+          "width": 49,
+          "height": 18
+        },
+        {
+          "texto": "WhatsApp",
+          "width": 114,
+          "height": 44
+        }
+      ]
+    }
+  ],
+  "failures": [
+    {
+      "contraste": "AA",
+      "contrasteFlojo": [
+        {
+          "modo": "off",
+          "viewport": "1440x900",
+          "capitulo": 3,
+          "elemento": "h2",
+          "fontPx": 92,
+          "contraste": 2.62,
+          "contrastePuro": 3.48,
+          "pixelesDeTexto": 27024,
+          "pixelesPuros": 1271,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          },
+          "umbral": 3
+        },
+        {
+          "modo": "off",
+          "viewport": "1440x900",
+          "capitulo": 3,
+          "elemento": "parrafo",
+          "fontPx": 18,
+          "contraste": 4.18,
+          "contrastePuro": 5.51,
+          "pixelesDeTexto": 8636,
+          "pixelesPuros": 745,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          },
+          "umbral": 4.5
+        }
+      ],
+      "tarjetaNoVisible": []
+    },
+    {
+      "nav": "1024x768",
+      "esperados": 5,
+      "medida": {
+        "punteroGrueso": true,
+        "overflow": 0,
+        "filaPx": 79,
+        "enlaces": [
+          {
+            "texto": "Método",
+            "width": 63,
+            "height": 18
+          },
+          {
+            "texto": "Servicios",
+            "width": 80,
+            "height": 18
+          },
+          {
+            "texto": "Pacientes",
+            "width": 82,
+            "height": 18
+          },
+          {
+            "texto": "Visita",
+            "width": 49,
+            "height": 18
+          },
+          {
+            "texto": "WhatsApp",
+            "width": 114,
+            "height": 44
+          }
+        ]
+      }
+    },
+    {
+      "nav": "1280x800",
+      "esperados": 5,
+      "medida": {
+        "punteroGrueso": true,
+        "overflow": 0,
+        "filaPx": 79,
+        "enlaces": [
+          {
+            "texto": "Método",
+            "width": 63,
+            "height": 18
+          },
+          {
+            "texto": "Servicios",
+            "width": 80,
+            "height": 18
+          },
+          {
+            "texto": "Pacientes",
+            "width": 82,
+            "height": 18
+          },
+          {
+            "texto": "Visita",
+            "width": 49,
+            "height": 18
+          },
+          {
+            "texto": "WhatsApp",
+            "width": 114,
+            "height": 44
+          }
+        ]
+      }
+    },
+    {
+      "nav": "1440x900",
+      "esperados": 5,
+      "medida": {
+        "punteroGrueso": true,
+        "overflow": 0,
+        "filaPx": 79,
+        "enlaces": [
+          {
+            "texto": "Método",
+            "width": 63,
+            "height": 18
+          },
+          {
+            "texto": "Servicios",
+            "width": 80,
+            "height": 18
+          },
+          {
+            "texto": "Pacientes",
+            "width": 82,
+            "height": 18
+          },
+          {
+            "texto": "Visita",
+            "width": 49,
+            "height": 18
+          },
+          {
+            "texto": "WhatsApp",
+            "width": 114,
+            "height": 44
+          }
+        ]
+      }
+    }
+  ]
+}
