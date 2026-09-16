@@ -1,36 +1,154 @@
 {
   "frameBytes": {
-    "desktop": 7983510,
-    "mobile": 2980502
+    "desktop": 7140240,
+    "mobile": 2078178
   },
   "limits": {
     "desktop": 8000000,
-    "mobile": 3000000
+    "mobile": 2500000
+  },
+  "entryBudgets": {
+    "mobile": 2500000,
+    "desktop": 8000000
+  },
+  "lcp": {
+    "frio": 740,
+    "repeticiones": [
+      632,
+      640,
+      652
+    ],
+    "mediana": 640,
+    "presupuestoMediana": 2500,
+    "topeFrio": 4000
+  },
+  "teclado": {
+    "1440x900": {
+      "totalWa": 13,
+      "alcanzados": 13
+    },
+    "390x844": {
+      "totalWa": 13,
+      "alcanzados": 13
+    }
   },
   "results": [
     {
       "mode": "on",
       "name": "390x844",
-      "lcpMs": 756,
+      "lcpMs": 740,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 3170256,
+      "inputBytes": 2461821,
+      "respuestasSinCuerpo": 0,
+      "entryBudget": 2500000,
       "overflowPx": 0,
       "errors": [],
       "broken": [],
       "scrollProof": 45,
       "contentScreens": 7.67,
       "labelContrasts": [
-        15.23,
-        8.54,
-        8.54,
-        8.54,
-        8.54,
-        8.54,
-        8.54,
-        15.23,
-        8.55
+        {
+          "capitulo": 1,
+          "contraste": 6.86,
+          "contrastePuro": 8.48,
+          "pixelesDeTexto": 237,
+          "pixelesPuros": 53,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        },
+        {
+          "capitulo": 2,
+          "contraste": 6.8,
+          "contrastePuro": 8.42,
+          "pixelesDeTexto": 332,
+          "pixelesPuros": 83,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        },
+        {
+          "capitulo": 3,
+          "contraste": 7.13,
+          "contrastePuro": 8.44,
+          "pixelesDeTexto": 235,
+          "pixelesPuros": 76,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        },
+        {
+          "capitulo": 4,
+          "contraste": 6.93,
+          "contrastePuro": 8.46,
+          "pixelesDeTexto": 240,
+          "pixelesPuros": 71,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        },
+        {
+          "capitulo": 5,
+          "contraste": 6.87,
+          "contrastePuro": 8.44,
+          "pixelesDeTexto": 262,
+          "pixelesPuros": 67,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        },
+        {
+          "capitulo": 6,
+          "contraste": 6.94,
+          "contrastePuro": 8.4,
+          "pixelesDeTexto": 161,
+          "pixelesPuros": 41,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        },
+        {
+          "capitulo": 7,
+          "contraste": 6.81,
+          "contrastePuro": 8.47,
+          "pixelesDeTexto": 289,
+          "pixelesPuros": 74,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        },
+        {
+          "capitulo": 8,
+          "contraste": 6.87,
+          "contrastePuro": 8.46,
+          "pixelesDeTexto": 263,
+          "pixelesPuros": 67,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        },
+        {
+          "capitulo": 9,
+          "contraste": 7.08,
+          "contrastePuro": 8.45,
+          "pixelesDeTexto": 219,
+          "pixelesPuros": 79,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        }
       ],
+      "contrasteMin": 6.8,
       "motionToggle": {
         "width": 155.578125,
         "height": 44,
@@ -41,16 +159,19 @@
     {
       "mode": "on",
       "name": "667x375",
-      "lcpMs": 144,
+      "lcpMs": 132,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 3170256,
+      "inputBytes": 2461821,
+      "respuestasSinCuerpo": 0,
+      "entryBudget": 2500000,
       "overflowPx": 0,
       "errors": [],
       "broken": [],
       "scrollProof": 45,
       "contentScreens": 14.84,
       "labelContrasts": null,
+      "contrasteMin": null,
       "motionToggle": {
         "width": 169.90625,
         "height": 44,
@@ -61,16 +182,19 @@
     {
       "mode": "on",
       "name": "768x1024",
-      "lcpMs": 128,
+      "lcpMs": 144,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 3170256,
+      "inputBytes": 2461821,
+      "respuestasSinCuerpo": 0,
+      "entryBudget": 2500000,
       "overflowPx": 0,
       "errors": [],
       "broken": [],
       "scrollProof": 45,
       "contentScreens": 6.29,
       "labelContrasts": null,
+      "contrasteMin": null,
       "motionToggle": {
         "width": 169.90625,
         "height": 44,
@@ -81,16 +205,19 @@
     {
       "mode": "on",
       "name": "1024x768",
-      "lcpMs": 136,
+      "lcpMs": 148,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 8173264,
+      "inputBytes": 7523883,
+      "respuestasSinCuerpo": 0,
+      "entryBudget": 8000000,
       "overflowPx": 0,
       "errors": [],
       "broken": [],
       "scrollProof": 45,
       "contentScreens": 6.17,
       "labelContrasts": null,
+      "contrasteMin": null,
       "motionToggle": {
         "width": 169.90625,
         "height": 44,
@@ -101,26 +228,119 @@
     {
       "mode": "on",
       "name": "1440x900",
-      "lcpMs": 148,
+      "lcpMs": 164,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 8173264,
+      "inputBytes": 7523883,
+      "respuestasSinCuerpo": 0,
+      "entryBudget": 8000000,
       "overflowPx": 0,
       "errors": [],
       "broken": [],
       "scrollProof": 45,
       "contentScreens": 5.88,
       "labelContrasts": [
-        15.23,
-        15.21,
-        15.21,
-        8.54,
-        8.54,
-        15.2,
-        8.54,
-        15.23,
-        8.54
+        {
+          "capitulo": 1,
+          "contraste": 6.77,
+          "contrastePuro": 8.37,
+          "pixelesDeTexto": 212,
+          "pixelesPuros": 30,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        },
+        {
+          "capitulo": 2,
+          "contraste": 6.6,
+          "contrastePuro": 8.36,
+          "pixelesDeTexto": 316,
+          "pixelesPuros": 55,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        },
+        {
+          "capitulo": 3,
+          "contraste": 6.57,
+          "contrastePuro": 8.39,
+          "pixelesDeTexto": 236,
+          "pixelesPuros": 45,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        },
+        {
+          "capitulo": 4,
+          "contraste": 6.75,
+          "contrastePuro": 8.42,
+          "pixelesDeTexto": 214,
+          "pixelesPuros": 35,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        },
+        {
+          "capitulo": 5,
+          "contraste": 6.69,
+          "contrastePuro": 8.31,
+          "pixelesDeTexto": 244,
+          "pixelesPuros": 48,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        },
+        {
+          "capitulo": 6,
+          "contraste": 6.61,
+          "contrastePuro": 8.27,
+          "pixelesDeTexto": 168,
+          "pixelesPuros": 22,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        },
+        {
+          "capitulo": 7,
+          "contraste": 6.78,
+          "contrastePuro": 8.41,
+          "pixelesDeTexto": 254,
+          "pixelesPuros": 44,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        },
+        {
+          "capitulo": 8,
+          "contraste": 6.64,
+          "contrastePuro": 8.32,
+          "pixelesDeTexto": 255,
+          "pixelesPuros": 43,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        },
+        {
+          "capitulo": 9,
+          "contraste": 6.62,
+          "contrastePuro": 8.4,
+          "pixelesDeTexto": 213,
+          "pixelesPuros": 45,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        }
       ],
+      "contrasteMin": 6.57,
       "motionToggle": {
         "width": 169.90625,
         "height": 44,
@@ -131,16 +351,19 @@
     {
       "mode": "on",
       "name": "1920x1080",
-      "lcpMs": 168,
+      "lcpMs": 180,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 8173264,
+      "inputBytes": 7523883,
+      "respuestasSinCuerpo": 0,
+      "entryBudget": 8000000,
       "overflowPx": 0,
       "errors": [],
       "broken": [],
       "scrollProof": 45,
       "contentScreens": 5.34,
       "labelContrasts": null,
+      "contrasteMin": null,
       "motionToggle": {
         "width": 169.90625,
         "height": 44,
@@ -151,26 +374,119 @@
     {
       "mode": "off",
       "name": "390x844",
-      "lcpMs": 672,
+      "lcpMs": 648,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 867374,
+      "inputBytes": 1034524,
+      "respuestasSinCuerpo": 0,
+      "entryBudget": 2500000,
       "overflowPx": 0,
       "errors": [],
       "broken": [],
       "scrollProof": null,
       "contentScreens": null,
       "labelContrasts": [
-        8.54,
-        8.54,
-        8.54,
-        8.54,
-        8.54,
-        8.54,
-        8.55,
-        8.54,
-        8.54
+        {
+          "capitulo": 1,
+          "contraste": 7.07,
+          "contrastePuro": 8.51,
+          "pixelesDeTexto": 236,
+          "pixelesPuros": 53,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        },
+        {
+          "capitulo": 2,
+          "contraste": 6.97,
+          "contrastePuro": 8.49,
+          "pixelesDeTexto": 332,
+          "pixelesPuros": 83,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        },
+        {
+          "capitulo": 3,
+          "contraste": 7.36,
+          "contrastePuro": 8.49,
+          "pixelesDeTexto": 235,
+          "pixelesPuros": 76,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        },
+        {
+          "capitulo": 4,
+          "contraste": 7.05,
+          "contrastePuro": 8.5,
+          "pixelesDeTexto": 240,
+          "pixelesPuros": 71,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        },
+        {
+          "capitulo": 5,
+          "contraste": 7.05,
+          "contrastePuro": 8.49,
+          "pixelesDeTexto": 262,
+          "pixelesPuros": 67,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        },
+        {
+          "capitulo": 6,
+          "contraste": 7.14,
+          "contrastePuro": 8.48,
+          "pixelesDeTexto": 161,
+          "pixelesPuros": 41,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        },
+        {
+          "capitulo": 7,
+          "contraste": 6.96,
+          "contrastePuro": 8.51,
+          "pixelesDeTexto": 289,
+          "pixelesPuros": 74,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        },
+        {
+          "capitulo": 8,
+          "contraste": 7.09,
+          "contrastePuro": 8.5,
+          "pixelesDeTexto": 263,
+          "pixelesPuros": 67,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        },
+        {
+          "capitulo": 9,
+          "contraste": 7.24,
+          "contrastePuro": 8.5,
+          "pixelesDeTexto": 219,
+          "pixelesPuros": 79,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        }
       ],
+      "contrasteMin": 6.96,
       "motionToggle": {
         "width": 165.421875,
         "height": 44,
@@ -181,16 +497,19 @@
     {
       "mode": "off",
       "name": "667x375",
-      "lcpMs": 108,
+      "lcpMs": 124,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 867374,
+      "inputBytes": 1034524,
+      "respuestasSinCuerpo": 0,
+      "entryBudget": 2500000,
       "overflowPx": 0,
       "errors": [],
       "broken": [],
       "scrollProof": null,
       "contentScreens": null,
       "labelContrasts": null,
+      "contrasteMin": null,
       "motionToggle": {
         "width": 179.484375,
         "height": 44,
@@ -201,16 +520,19 @@
     {
       "mode": "off",
       "name": "768x1024",
-      "lcpMs": 128,
+      "lcpMs": 132,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 867374,
+      "inputBytes": 1034524,
+      "respuestasSinCuerpo": 0,
+      "entryBudget": 2500000,
       "overflowPx": 0,
       "errors": [],
       "broken": [],
       "scrollProof": null,
       "contentScreens": null,
       "labelContrasts": null,
+      "contrasteMin": null,
       "motionToggle": {
         "width": 179.484375,
         "height": 44,
@@ -224,13 +546,16 @@
       "lcpMs": 124,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 1089333,
+      "inputBytes": 1256483,
+      "respuestasSinCuerpo": 0,
+      "entryBudget": 8000000,
       "overflowPx": 0,
       "errors": [],
       "broken": [],
       "scrollProof": null,
       "contentScreens": null,
       "labelContrasts": null,
+      "contrasteMin": null,
       "motionToggle": {
         "width": 179.484375,
         "height": 44,
@@ -244,23 +569,116 @@
       "lcpMs": 140,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 1089333,
+      "inputBytes": 1256483,
+      "respuestasSinCuerpo": 0,
+      "entryBudget": 8000000,
       "overflowPx": 0,
       "errors": [],
       "broken": [],
       "scrollProof": null,
       "contentScreens": null,
       "labelContrasts": [
-        8.54,
-        8.54,
-        8.54,
-        8.54,
-        8.54,
-        8.53,
-        8.54,
-        8.54,
-        8.54
+        {
+          "capitulo": 1,
+          "contraste": 7.2,
+          "contrastePuro": 8.45,
+          "pixelesDeTexto": 203,
+          "pixelesPuros": 31,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        },
+        {
+          "capitulo": 2,
+          "contraste": 6.91,
+          "contrastePuro": 8.44,
+          "pixelesDeTexto": 306,
+          "pixelesPuros": 71,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        },
+        {
+          "capitulo": 3,
+          "contraste": 6.85,
+          "contrastePuro": 8.45,
+          "pixelesDeTexto": 228,
+          "pixelesPuros": 50,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        },
+        {
+          "capitulo": 4,
+          "contraste": 7.18,
+          "contrastePuro": 8.46,
+          "pixelesDeTexto": 200,
+          "pixelesPuros": 44,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        },
+        {
+          "capitulo": 5,
+          "contraste": 7.12,
+          "contrastePuro": 8.46,
+          "pixelesDeTexto": 228,
+          "pixelesPuros": 49,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        },
+        {
+          "capitulo": 6,
+          "contraste": 6.86,
+          "contrastePuro": 8.4,
+          "pixelesDeTexto": 163,
+          "pixelesPuros": 27,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        },
+        {
+          "capitulo": 7,
+          "contraste": 7.1,
+          "contrastePuro": 8.46,
+          "pixelesDeTexto": 244,
+          "pixelesPuros": 53,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        },
+        {
+          "capitulo": 8,
+          "contraste": 6.95,
+          "contrastePuro": 8.47,
+          "pixelesDeTexto": 242,
+          "pixelesPuros": 46,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        },
+        {
+          "capitulo": 9,
+          "contraste": 6.89,
+          "contrastePuro": 8.47,
+          "pixelesDeTexto": 202,
+          "pixelesPuros": 48,
+          "estadoReal": {
+            "visibility": "visible",
+            "opacity": 1
+          }
+        }
       ],
+      "contrasteMin": 6.85,
       "motionToggle": {
         "width": 179.484375,
         "height": 44,
@@ -271,16 +689,19 @@
     {
       "mode": "off",
       "name": "1920x1080",
-      "lcpMs": 148,
+      "lcpMs": 152,
       "clsInitial": 0,
       "clsScrollDiagnostico": 0,
-      "inputBytes": 1089333,
+      "inputBytes": 1256483,
+      "respuestasSinCuerpo": 0,
+      "entryBudget": 8000000,
       "overflowPx": 0,
       "errors": [],
       "broken": [],
       "scrollProof": null,
       "contentScreens": null,
       "labelContrasts": null,
+      "contrasteMin": null,
       "motionToggle": {
         "width": 179.484375,
         "height": 44,

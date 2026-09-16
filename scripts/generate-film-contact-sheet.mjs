@@ -7,7 +7,7 @@ const indexes = Array.from({ length: 12 }, (_, index) => Math.round(index * (fra
 const width = 480
 const height = 270
 const tiles = await Promise.all(indexes.map(async (index, sample) => ({
-  input: await sharp(`public${frames[index]}`).resize(width, height, { fit: 'cover' }).toBuffer(),
+  input: await sharp(`public${frames[index].split('?')[0]}`).resize(width, height, { fit: 'cover' }).toBuffer(),
   left: (sample % 4) * width,
   top: Math.floor(sample / 4) * height,
 })))

@@ -1,12 +1,12 @@
 /**
- * FILM-CHECK v2.2
+ * FILM-CHECK v2.3
  *
  * Guardarraíl absoluto calibrado con el salto humano confirmado del clip 02
  * original: REF_SALTO = 43.109 y LIMITE_SALTO = 0.75 * REF_SALTO = 32.33175.
  * Falla si cualquier par interno alcanza ese límite. La mediana, razón local,
  * aislamiento y rachas se conservan como información; no deciden la puerta.
  * Los cortes declarados tras 65/131/197 se excluyen y se siguen listando.
- * También se exigen 264 fotogramas y 8 MB desktop / 3 MB mobile.
+ * También se exigen 264 fotogramas y 8 MB desktop / 2.5 MB mobile (v2.3).
  */
 import { readFileSync, readdirSync, statSync } from 'node:fs'
 import { dirname, isAbsolute, join } from 'node:path'
@@ -15,7 +15,7 @@ import sharp from 'sharp'
 const manifestPath = process.env.FILM_MANIFEST ?? 'public/film/manifest.json'
 const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'))
 const declaredCuts = new Set(manifest.cuts.map(({ after }) => after))
-const LIMITS = { desktop: 8_000_000, mobile: 3_000_000 }
+const LIMITS = { desktop: 8_000_000, mobile: 2_500_000 }
 const REF_SALTO = 43.109
 const LIMITE_SALTO = 0.75 * REF_SALTO
 const RATIO_THRESHOLD = 4.0
@@ -23,7 +23,9 @@ const ISOLATION_THRESHOLD = 2.0
 const referenceClip02 = process.env.FILM_REFERENCE_C02
 const manifestRoot = dirname(manifestPath)
 const publicRoot = manifestPath === 'public/film/manifest.json' ? 'public' : dirname(manifestRoot)
-const absolute = (url) => url.startsWith('/') ? join(publicRoot, url.slice(1)) : isAbsolute(url) ? url : join(manifestRoot, url)
+// El manifiesto sirve cada fotograma con `?v=<huella>`; en disco no existe esa query.
+const onDisk = (url) => url.split('?')[0]
+const absolute = (raw) => { const url = onDisk(raw); return url.startsWith('/') ? join(publicRoot, url.slice(1)) : isAbsolute(url) ? url : join(manifestRoot, url) }
 const sum = (values) => values.reduce((total, value) => total + value, 0)
 const median = (values) => [...values].sort((a, b) => a - b)[Math.floor(values.length / 2)]
 const rounded = (value) => Number(value.toFixed(3))
@@ -95,7 +97,7 @@ async function inspect(set) {
 }
 
 const report = {
-  version: 2.2,
+  version: 2.3,
   calibracion: { refSalto: REF_SALTO, limiteSalto: LIMITE_SALTO, factor: 0.75, escala: 'gris 64x64, diferencia media absoluta' },
   metricasInformativas: { razonClip: RATIO_THRESHOLD, picoAislado: ISOLATION_THRESHOLD },
   fps: manifest.fps, pinScreens: manifest.pinVh, contentScreensMax: 8,

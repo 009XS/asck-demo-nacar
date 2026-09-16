@@ -99,9 +99,11 @@ export function montarActo(animar: boolean): gsap.Context {
 
     const controller = new AbortController()
     let disposed = false
+    let quitarFoco: (() => void) | undefined
     self.add(() => () => {
       disposed = true
       controller.abort()
+      quitarFoco?.()
       ScrollTrigger.removeEventListener('refresh', resize)
       gsap.set(root, { clearProps: '--film-progress' })
       gsap.set(root.querySelectorAll('.film-card'), { clearProps: 'all' })
@@ -127,11 +129,24 @@ export function montarActo(animar: boolean): gsap.Context {
           const from = Number(card.dataset.from)
           const to = Number(card.dataset.to)
           const span = to - from
-          timeline.fromTo(card, { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: span * 0.18, ease: 'power2.out' }, from + span * 0.06)
-          if (index < cards.length - 1) timeline.to(card, { autoAlpha: 0, y: -20, duration: span * 0.14, ease: 'power2.in' }, to - span * 0.2)
+          // `opacity`, NO `autoAlpha`: autoAlpha apaga la visibility y eso saca
+          // del orden de tabulación a 8 de los 9 CTA de capítulo. Los punteros
+          // se apagan aparte (abajo) para que nadie pulse una tarjeta invisible.
+          timeline.fromTo(card, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: span * 0.18, ease: 'power2.out' }, from + span * 0.06)
+          if (index < cards.length - 1) timeline.to(card, { opacity: 0, y: -20, duration: span * 0.14, ease: 'power2.in' }, to - span * 0.2)
         })
         timeline.set({}, {}, 1)
-        ScrollTrigger.create({
+
+        // Lee el opacity EN LÍNEA que escribe la timeline: cero lecturas de
+        // estilo calculado, así que no cuesta layout dentro del scrub.
+        const sincronizarPunteros = (): void => {
+          for (const card of cards) {
+            const quiere = Number(card.style.opacity || '0') > 0.5 ? 'auto' : 'none'
+            if (card.style.pointerEvents !== quiere) card.style.pointerEvents = quiere
+          }
+        }
+
+        const trigger = ScrollTrigger.create({
         trigger: root, start: 'top top', end: () => `+=${Math.round(data.pinVh * innerHeight)}`,
         pin: true, pinType: 'transform', pinSpacing: true, scrub: 0.5, anticipatePin: 1, invalidateOnRefresh: true,
         animation: timeline,
@@ -142,11 +157,31 @@ export function montarActo(animar: boolean): gsap.Context {
           preloadDirection(index, direction)
           previousIndex = index
           paint()
+          sincronizarPunteros()
           if (count) count.textContent = String(Math.min(9, Math.floor(progress * 9) + 1)).padStart(2, '0')
         },
         })
+
+        // Ruta de teclado a los 9 CTA de capítulo: al recibir el foco, la
+        // película salta al tramo de ese capítulo para que el usuario VEA lo
+        // que está enfocando (si no, el foco cae sobre texto a opacidad 0).
+        const alEnfocar = (event: FocusEvent): void => {
+          const card = (event.target as HTMLElement | null)?.closest<HTMLElement>('.film-card')
+          if (!card) return
+          const from = Number(card.dataset.from)
+          const to = Number(card.dataset.to)
+          if (!Number.isFinite(from) || !Number.isFinite(to)) return
+          const punto = Math.min(1, Math.max(0, (from + to) / 2))
+          const destino = Math.round(trigger.start + (trigger.end - trigger.start) * punto)
+          if (Math.abs(scrollY - destino) < 8) return
+          scrollTo(0, destino)
+        }
+        root.addEventListener('focusin', alEnfocar)
+        quitarFoco = () => root.removeEventListener('focusin', alEnfocar)
+
         ScrollTrigger.addEventListener('refresh', resize)
         resize()
+        sincronizarPunteros()
         ScrollTrigger.refresh()
       })
     }).catch((error: unknown) => {
