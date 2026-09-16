@@ -104,3 +104,24 @@ ffmpeg -i <clip>.mp4 -vf "fps=10,scale=720:-2"  -c:v libwebp -quality 20 -compre
 Fuentes: `assets-src/clip/clip-01.mp4`, `assets-src/clip-v2/clip-02-cand-b.mp4`, `clip-03.mp4` y `clip-04.mp4` (1344×768, 24 fps, 6.583 s). Los WebP resultantes son 1440×822 desktop / 720×412 móvil, 10 fps; peso total medido: **7,140,240 B / 2,078,178 B** (antes 7,983,510 / 2,980,502 con calidades desiguales). El modo `motion-off` mantiene las nueve JPG maestras como láminas fijas.
 
 La comprobación perceptual v2.3 mide un máximo interno de 25.365 desktop y 25.199 móvil en el set completo. El clip 02 elegido tiene pico 9.894 y razón máxima 1.466, sin sustitución de objetos. La puerta absoluta vigente es `0.75 × REF_SALTO = 32.33175`; los únicos saltos excluidos siguen siendo los tres cortes declarados.
+
+### Scrim y contraste (v2.4)
+
+El texto sobre imagen se apoya en **dos ejes**, no en uno. Hasta la v2.3 el modo quieto llevaba un único degradado vertical (`0deg`, `rgba(16,32,28,.9) → .12` al 70 %) y el titular y el párrafo viven al **40–60 % de la altura** de la lámina, no pegados al borde inferior: sobre `still-03.jpg` —la curva de porcelana más clara del set— eso daba **h2 2.62 : 1 y párrafo 4.23 : 1 a 1440×900**, por debajo de WCAG AA. Desde la v2.4:
+
+- **Escritorio (modo quieto)**: cortina `90deg` (`.62 → .50 → .16 → 0` al 88 %) sobre degradado `0deg` (`.74 → .32 → .08 → 0`). La cortina repite la gramática del scrim animado (`.film__scrim`) y se apaga antes del 88 % del ancho para que la lámina siga respirando a la derecha.
+- **Móvil (modo quieto, misma consulta de medios que las láminas `mobile-*`)**: manda el eje vertical (`.84 → .62 → .26 → .05`) con una cortina lateral de apoyo (`.24 → .10 → 0`), porque con el recorte vertical el texto ocupa casi todo el ancho.
+- **Modo animado en ≤ 640 px**: el scrim pasa de dos paradas a cuatro (`.90 → .62 → .24 → .04`) para densificar la banda del texto sin ensuciar el cielo del fotograma.
+
+Todo con `--petroleo` y alfa: **ni blanco ni negro puros**. La puerta de `scripts/qa.mjs` mide desde la v2.4 la **etiqueta, el titular y el párrafo** de los nueve capítulos en los dos modos y los dos anchos (108 medidas, densidad ×2, estado real sin forzar estilos), con umbral 4.5 : 1 para texto normal y 3.0 : 1 para texto grande (≥ 24 px computados; por debajo se le exige 4.5).
+
+### Resolución real de la película — limitación conocida, no defecto
+
+El master es **1344×768 @ 24 fps** (`assets-src/clip/clip-01.mp4` y hermanos), así que el set «desktop» de 1440×822 **ya es un reescalado**. En pantalla, con `object-fit: cover` sobre un lienzo que se dibuja a `min(devicePixelRatio, 2)`:
+
+| Viewport | Lienzo (px de dispositivo) | Fotograma servido | Ampliación |
+|---|---|---|---:|
+| 390×844 DPR 2 | 780 × 1688 | 720 × 412 | **≈ ×4.1** |
+| 1440×900 DPR 2 | 2880 × 1800 | 1440 × 822 | ≈ ×2.2 |
+
+Es decir: en un teléfono retina el fotograma móvil se dibuja **ampliado unas cuatro veces**, y una franja central de ~176 px del original ocupa toda la altura. La película se ve blanda en DPR 2 y **eso está aceptado por escrito**: subir el set a la densidad real multiplicaría el peso y el presupuesto de entrada móvil (2.5 MB) ya va con ~1.5 % de margen. No se cambia sin volver a grabar el metraje a ≥ 2160 px de ancho. Ninguna afirmación de calidad de la landing debe apoyarse en mirar los WebP «a 1:1»: **1:1 no es lo que ve nadie**.

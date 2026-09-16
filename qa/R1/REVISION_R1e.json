@@ -1,0 +1,900 @@
+{
+  "revision": "R1e",
+  "fecha": "2026-09-15",
+  "objeto": {
+    "url": "https://nacar.asck.tech",
+    "commitProduccion": "f67d051",
+    "worktree": "origin/main = d21a4e2",
+    "diffCodigoVsProduccion": "ninguno (solo qa/, docs/ y RUBRICA_v2.md)"
+  },
+  "antecedente": {
+    "revision": "R1d",
+    "veredicto": "APROBADA CON RESERVAS",
+    "score": 8.3
+  },
+  "verdict": "APROBADA CON RESERVAS",
+  "score": 8.4,
+  "autoasignado_rubrica_v2": 8.6,
+  "topes_activos": [],
+  "criteria": {
+    "concepto_y_narrativa": {
+      "peso": 0.15,
+      "nota": 8.2,
+      "r1d": 8.2
+    },
+    "tipografia": {
+      "peso": 0.15,
+      "nota": 8.5,
+      "r1d": 8.5
+    },
+    "composicion_y_espacio": {
+      "peso": 0.1,
+      "nota": 7.5,
+      "r1d": 7.5
+    },
+    "color_y_atmosfera": {
+      "peso": 0.1,
+      "nota": 7.8,
+      "r1d": 8.5
+    },
+    "movimiento_y_scroll": {
+      "peso": 0.15,
+      "nota": 8.7,
+      "r1d": 9
+    },
+    "fallback_reduce_y_accesibilidad": {
+      "peso": 0.1,
+      "nota": 8.6,
+      "r1d": 8.5
+    },
+    "rendimiento": {
+      "peso": 0.1,
+      "nota": 8.5,
+      "r1d": 7.5
+    },
+    "detalle_craft": {
+      "peso": 0.1,
+      "nota": 8.8,
+      "r1d": 8
+    },
+    "contenido_y_conversion": {
+      "peso": 0.05,
+      "nota": 9,
+      "r1d": 9
+    }
+  },
+  "reservas_r1d": {
+    "peso_movil": {
+      "estado": "CERRADA",
+      "entradaCuerpoB": 2461734,
+      "entradaCdpB": 2470501,
+      "presupuestoB": 2500000,
+      "margenB": 38266,
+      "antesB": 3365621
+    },
+    "peso_desktop": {
+      "estado": "CERRADA",
+      "entradaCuerpoB": 7523796,
+      "entradaCdpB": 7532992,
+      "presupuestoB": 8000000,
+      "antesB": 8369018
+    },
+    "puerta_de_bytes_ciega": {
+      "estado": "CERRADA",
+      "respuestas": 275,
+      "conContentLength": 0,
+      "sumaContentLengthMetodoViejo": 0,
+      "cuerpoRealMetodoNuevo": 7523796,
+      "respuestas200SinCuerpo": 0
+    },
+    "cls_puerta_floja": {
+      "estado": "CERRADA",
+      "umbralNuevo": 0.1,
+      "viewports": 6,
+      "medidoCicloVida": [
+        {
+          "mode": "on",
+          "name": "390x844",
+          "cls": 0
+        },
+        {
+          "mode": "on",
+          "name": "667x375",
+          "cls": 0
+        },
+        {
+          "mode": "on",
+          "name": "768x1024",
+          "cls": 0
+        },
+        {
+          "mode": "on",
+          "name": "1024x768",
+          "cls": 0
+        },
+        {
+          "mode": "on",
+          "name": "1440x900",
+          "cls": 0
+        },
+        {
+          "mode": "on",
+          "name": "1920x1080",
+          "cls": 0
+        },
+        {
+          "mode": "off",
+          "name": "390x844",
+          "cls": 0
+        },
+        {
+          "mode": "off",
+          "name": "667x375",
+          "cls": 0
+        },
+        {
+          "mode": "off",
+          "name": "768x1024",
+          "cls": 0
+        },
+        {
+          "mode": "off",
+          "name": "1024x768",
+          "cls": 0
+        },
+        {
+          "mode": "off",
+          "name": "1440x900",
+          "cls": 0
+        },
+        {
+          "mode": "off",
+          "name": "1920x1080",
+          "cls": 0
+        }
+      ],
+      "medidoRuedaReal": [
+        {
+          "name": "390x844",
+          "cls": 0
+        },
+        {
+          "name": "667x375",
+          "cls": 0
+        },
+        {
+          "name": "768x1024",
+          "cls": 0
+        },
+        {
+          "name": "1024x768",
+          "cls": 0
+        },
+        {
+          "name": "1440x900",
+          "cls": 0
+        },
+        {
+          "name": "1920x1080",
+          "cls": 0
+        }
+      ]
+    },
+    "contraste_forzado": {
+      "estado": "CERRADA",
+      "n": 36,
+      "minNucleoAncho": 7.39,
+      "maxNucleoAncho": 7.83,
+      "minNucleoPuro": 8.39,
+      "tarjetasNoVisibles": 0
+    },
+    "deseable_css_muerto": {
+      "estado": "CERRADA",
+      "bloquesEnCssServido": 0,
+      "nodosEnDom": 0,
+      "cssBytes": 21582
+    },
+    "deseable_cache_control": {
+      "estado": "CERRADA",
+      "fotograma": "public, max-age=31536000, immutable",
+      "manifiesto": "no-cache, must-revalidate",
+      "poster": "public, max-age=604800",
+      "huellaVerificadaSobreLoServido": true
+    },
+    "deseable_cta_teclado": {
+      "estado": "CERRADA",
+      "teclado": {
+        "1440x900": {
+          "total": 13,
+          "conMensaje": 13,
+          "alcanzados": 13,
+          "focosSinContorno": 0,
+          "focosInvisibles": 0,
+          "focosFueraDePantalla": 1,
+          "pasos": 22
+        },
+        "390x844": {
+          "total": 13,
+          "conMensaje": 13,
+          "alcanzados": 13,
+          "focosSinContorno": 0,
+          "focosInvisibles": 0,
+          "focosFueraDePantalla": 1,
+          "pasos": 18
+        }
+      },
+      "punteros": {
+        "1440x900": 9,
+        "390x844": 9,
+        "tras_rueda_real": [
+          {
+            "i": 5,
+            "op": 1,
+            "pe": "auto",
+            "recibeElClic": true
+          }
+        ]
+      }
+    }
+  },
+  "blocking_fixes": [
+    {
+      "id": "N1",
+      "titulo": "Capitulo 03 del modo quieto por debajo de WCAG AA",
+      "evidencia": {
+        "h2": {
+          "contraste": 2.62,
+          "umbral": 3,
+          "donde": "cap 3, off, 1440x900, 92px"
+        },
+        "parrafo": {
+          "contraste": 4.23,
+          "umbral": 4.5,
+          "donde": "cap 3, off, 1440x900, 18px"
+        }
+      },
+      "causa": "El scrim del modo quieto es un degradado vertical (0deg) que no cubre la esquina alta-izquierda de still-03.jpg, que es casi blanca",
+      "arreglo": "Anadir un degradado direccional (90deg) al ::before del modo quieto, o densificar la lamina 03",
+      "captura": "r1e-04-capitulo03-quieto-1440.png"
+    },
+    {
+      "id": "N1b",
+      "titulo": "La puerta de contraste solo mide .label; los dos textos que fallan no se miden",
+      "evidencia": {
+        "elementosMedidosPorLaPuerta": [
+          ".label"
+        ],
+        "elementosSobreImagenSinMedir": [
+          "h2 del capitulo",
+          "parrafo del capitulo"
+        ]
+      },
+      "arreglo": "Extender medirContrastes() a h2 (umbral 3.0) y parrafo (umbral 4.5) en las mismas 36 combinaciones"
+    }
+  ],
+  "nice_to_have": [
+    {
+      "id": "N3",
+      "titulo": "Objetivos tactiles de la nav < 44px con pointer:coarse en TODO ancho >= 1024, no solo 1024-1180",
+      "medido": {
+        "390": 0,
+        "768": 0,
+        "820": 0,
+        "1024": 4,
+        "1180": 4,
+        "1280": 4
+      }
+    },
+    {
+      "id": "N2",
+      "titulo": "El fotograma nunca se dibuja a tamano real: x4.10 en movil DPR2 y x2.19 en 1440 DPR2, sobre un master de 1344x768",
+      "medido": {
+        "movil": {
+          "filmCss": {
+            "w": 390,
+            "h": 844
+          },
+          "canvasBuffer": {
+            "w": 780,
+            "h": 1688
+          },
+          "dpr": 2,
+          "frame": "163",
+          "ampliacionCover": 4.1,
+          "fotograma": "720x412",
+          "capturaPx": "780x1690"
+        },
+        "desktop": {
+          "filmCss": {
+            "w": 1440,
+            "h": 900
+          },
+          "canvasBuffer": {
+            "w": 2880,
+            "h": 1800
+          },
+          "dpr": 2,
+          "frame": "163",
+          "ampliacionCover": 2.19,
+          "fotograma": "1440x822",
+          "capturaPx": "2880x1802"
+        },
+        "masterFuente": "1344x768 @24fps (ffprobe)"
+      },
+      "captura": "r1e-05-calidad-1a1.png"
+    },
+    {
+      "id": "N4",
+      "titulo": "Se pierde la posicion de lectura al conmutar el movimiento",
+      "medido": {
+        "390x844": {
+          "scrollYAntes": 12526,
+          "scrollYDespues": 14456,
+          "docAntes": 28450,
+          "docDespues": 15300
+        },
+        "1440x900": {
+          "scrollYAntes": 12736,
+          "scrollYDespues": 13112,
+          "docAntes": 28034,
+          "docDespues": 14012
+        }
+      }
+    },
+    {
+      "id": "N5",
+      "titulo": "Un fotograma sin ?v= (o con cualquier ?v=) sigue respondiendo immutable"
+    },
+    {
+      "id": "N6",
+      "titulo": "Arranque en frio no reproducible sin desplegar; queda anotado, no cerrado",
+      "medido": {
+        "frioDeMiProceso": 1188,
+        "medianaDeTres": 1088,
+        "qaRemotoFrio": 1356,
+        "qaRemotoMediana": 1116
+      }
+    },
+    {
+      "id": "margen",
+      "titulo": "El margen movil es de 38,266 B (1.5%): no es holgura"
+    },
+    {
+      "id": "fluidez",
+      "titulo": "La fluidez publicada por R1d (p95 16.8ms, 0 tareas largas) no se reproduce",
+      "medido": {
+        "pasada1": [
+          {
+            "name": "390x844",
+            "p50": 17.4,
+            "p95": 56.9,
+            "largas": 8
+          },
+          {
+            "name": "667x375",
+            "p50": 16.7,
+            "p95": 18.3,
+            "largas": 1
+          },
+          {
+            "name": "768x1024",
+            "p50": 16.7,
+            "p95": 22.9,
+            "largas": 1
+          },
+          {
+            "name": "1024x768",
+            "p50": 16.8,
+            "p95": 23.8,
+            "largas": 1
+          },
+          {
+            "name": "1440x900",
+            "p50": 17.7,
+            "p95": 34.5,
+            "largas": 1
+          },
+          {
+            "name": "1920x1080",
+            "p50": 26.6,
+            "p95": 51.5,
+            "largas": 1
+          }
+        ],
+        "pasada2": [
+          {
+            "name": "1440x900",
+            "p50": 17.7,
+            "p95": 36.6,
+            "largas": 1
+          },
+          {
+            "name": "1920x1080",
+            "p50": 27.7,
+            "p95": 54,
+            "largas": 1
+          },
+          {
+            "name": "390x844",
+            "p50": 17.1,
+            "p95": 42.3,
+            "largas": 9
+          }
+        ]
+      }
+    },
+    {
+      "id": "composicion",
+      "titulo": "Los nueve capitulos arrancan en x=72px exactos",
+      "medido": [
+        72,
+        72,
+        72,
+        72,
+        72,
+        72,
+        72,
+        72,
+        72
+      ]
+    },
+    {
+      "id": "laminas",
+      "titulo": "mobile-01.jpg y mobile-02.jpg del modo quieto son casi la misma macro de nacar"
+    }
+  ],
+  "medido_en_vivo": {
+    "integridad": {
+      "fotogramasSha256": {
+        "desktop": "264/264",
+        "mobile": "264/264"
+      },
+      "huellas": {
+        "desktop": "fdaffb917d",
+        "mobile": "df4c114570"
+      },
+      "manifiestoJsonProfundoIdentico": true
+    },
+    "perfiles": [
+      {
+        "mode": "on",
+        "name": "390x844",
+        "lcpMs": 1084,
+        "clsInicial": 0,
+        "clsCicloVida": 0,
+        "bytesCuerpo": 2461734,
+        "bytesCDP": 2470501,
+        "overflowPx": 0,
+        "cambiosFrame": 45,
+        "cambiosCanvas": 45,
+        "errores": 0,
+        "http4xx": 0,
+        "respuestas200SinCuerpo": 0
+      },
+      {
+        "mode": "on",
+        "name": "667x375",
+        "lcpMs": 772,
+        "clsInicial": 0,
+        "clsCicloVida": 0,
+        "bytesCuerpo": 2461734,
+        "bytesCDP": 2470501,
+        "overflowPx": 0,
+        "cambiosFrame": 45,
+        "cambiosCanvas": 45,
+        "errores": 0,
+        "http4xx": 0,
+        "respuestas200SinCuerpo": 0
+      },
+      {
+        "mode": "on",
+        "name": "768x1024",
+        "lcpMs": 764,
+        "clsInicial": 0,
+        "clsCicloVida": 0,
+        "bytesCuerpo": 2461734,
+        "bytesCDP": 2470501,
+        "overflowPx": 0,
+        "cambiosFrame": 45,
+        "cambiosCanvas": 45,
+        "errores": 0,
+        "http4xx": 0,
+        "respuestas200SinCuerpo": 0
+      },
+      {
+        "mode": "on",
+        "name": "1024x768",
+        "lcpMs": 912,
+        "clsInicial": 0,
+        "clsCicloVida": 0,
+        "bytesCuerpo": 7523796,
+        "bytesCDP": 7532992,
+        "overflowPx": 0,
+        "cambiosFrame": 45,
+        "cambiosCanvas": 45,
+        "errores": 0,
+        "http4xx": 0,
+        "respuestas200SinCuerpo": 0
+      },
+      {
+        "mode": "on",
+        "name": "1440x900",
+        "lcpMs": 932,
+        "clsInicial": 0,
+        "clsCicloVida": 0,
+        "bytesCuerpo": 7523796,
+        "bytesCDP": 7532992,
+        "overflowPx": 0,
+        "cambiosFrame": 45,
+        "cambiosCanvas": 45,
+        "errores": 0,
+        "http4xx": 0,
+        "respuestas200SinCuerpo": 0
+      },
+      {
+        "mode": "on",
+        "name": "1920x1080",
+        "lcpMs": 912,
+        "clsInicial": 0,
+        "clsCicloVida": 0,
+        "bytesCuerpo": 7523796,
+        "bytesCDP": 7532992,
+        "overflowPx": 0,
+        "cambiosFrame": 45,
+        "cambiosCanvas": 45,
+        "errores": 0,
+        "http4xx": 0,
+        "respuestas200SinCuerpo": 0
+      },
+      {
+        "mode": "off",
+        "name": "390x844",
+        "lcpMs": 936,
+        "clsInicial": 0,
+        "clsCicloVida": 0,
+        "bytesCuerpo": 1034437,
+        "bytesCDP": 915254,
+        "overflowPx": 0,
+        "cambiosFrame": null,
+        "cambiosCanvas": null,
+        "errores": 0,
+        "http4xx": 0,
+        "respuestas200SinCuerpo": 0
+      },
+      {
+        "mode": "off",
+        "name": "667x375",
+        "lcpMs": 740,
+        "clsInicial": 0,
+        "clsCicloVida": 0,
+        "bytesCuerpo": 1034437,
+        "bytesCDP": 915236,
+        "overflowPx": 0,
+        "cambiosFrame": null,
+        "cambiosCanvas": null,
+        "errores": 0,
+        "http4xx": 0,
+        "respuestas200SinCuerpo": 0
+      },
+      {
+        "mode": "off",
+        "name": "768x1024",
+        "lcpMs": 1052,
+        "clsInicial": 0,
+        "clsCicloVida": 0,
+        "bytesCuerpo": 1034437,
+        "bytesCDP": 915257,
+        "overflowPx": 0,
+        "cambiosFrame": null,
+        "cambiosCanvas": null,
+        "errores": 0,
+        "http4xx": 0,
+        "respuestas200SinCuerpo": 0
+      },
+      {
+        "mode": "off",
+        "name": "1024x768",
+        "lcpMs": 884,
+        "clsInicial": 0,
+        "clsCicloVida": 0,
+        "bytesCuerpo": 1256396,
+        "bytesCDP": 1135843,
+        "overflowPx": 0,
+        "cambiosFrame": null,
+        "cambiosCanvas": null,
+        "errores": 0,
+        "http4xx": 0,
+        "respuestas200SinCuerpo": 0
+      },
+      {
+        "mode": "off",
+        "name": "1440x900",
+        "lcpMs": 872,
+        "clsInicial": 0,
+        "clsCicloVida": 0,
+        "bytesCuerpo": 1256396,
+        "bytesCDP": 1135865,
+        "overflowPx": 0,
+        "cambiosFrame": null,
+        "cambiosCanvas": null,
+        "errores": 0,
+        "http4xx": 0,
+        "respuestas200SinCuerpo": 0
+      },
+      {
+        "mode": "off",
+        "name": "1920x1080",
+        "lcpMs": 928,
+        "clsInicial": 0,
+        "clsCicloVida": 0,
+        "bytesCuerpo": 1256396,
+        "bytesCDP": 1135843,
+        "overflowPx": 0,
+        "cambiosFrame": null,
+        "cambiosCanvas": null,
+        "errores": 0,
+        "http4xx": 0,
+        "respuestas200SinCuerpo": 0
+      }
+    ],
+    "lcp": {
+      "frioDeMiProceso": 1188,
+      "repeticiones": [
+        1176,
+        1060,
+        1088
+      ],
+      "mediana": 1088,
+      "elemento": "p.h-sub",
+      "presupuesto": 2500,
+      "topeFrio": 4000
+    },
+    "continuidad": {
+      "desktop": {
+        "fotogramas": 264,
+        "bytes": 7140240,
+        "sha256Iguales": "264/264",
+        "cortes": [
+          76.857,
+          98.226,
+          81.301
+        ],
+        "maxInterno": 25.365,
+        "indiceMaxInterno": 155,
+        "guardarrail": 57.64252,
+        "top6Internos": [
+          {
+            "i": 155,
+            "v": 25.365
+          },
+          {
+            "i": 150,
+            "v": 20.475
+          },
+          {
+            "i": 156,
+            "v": 20.242
+          },
+          {
+            "i": 23,
+            "v": 20.008
+          },
+          {
+            "i": 157,
+            "v": 19.45
+          },
+          {
+            "i": 153,
+            "v": 19.369
+          }
+        ],
+        "mediana": 7.167
+      },
+      "mobile": {
+        "fotogramas": 264,
+        "bytes": 2078178,
+        "sha256Iguales": "264/264",
+        "cortes": [
+          76.863,
+          98.119,
+          81.183
+        ],
+        "maxInterno": 25.199,
+        "indiceMaxInterno": 155,
+        "guardarrail": 57.64691,
+        "top6Internos": [
+          {
+            "i": 155,
+            "v": 25.199
+          },
+          {
+            "i": 150,
+            "v": 20.397
+          },
+          {
+            "i": 156,
+            "v": 20.109
+          },
+          {
+            "i": 23,
+            "v": 19.806
+          },
+          {
+            "i": 157,
+            "v": 19.341
+          },
+          {
+            "i": 153,
+            "v": 19.302
+          }
+        ],
+        "mediana": 7.2
+      }
+    },
+    "contraste": {
+      "etiqueta": {
+        "n": 36,
+        "min": 7.39,
+        "max": 7.83
+      },
+      "h2": {
+        "n": 36,
+        "min": 2.62,
+        "umbral": 3
+      },
+      "parrafo": {
+        "n": 36,
+        "min": 4.23,
+        "umbral": 4.5
+      }
+    },
+    "tipografia": {
+      "familias": [
+        "Cormorant Garamond",
+        "Inter Variable"
+      ],
+      "woff2": 4,
+      "bytesWoff2": 115524,
+      "h1Px": 158.4,
+      "bodyPx": 16.56,
+      "ratio": 9.6,
+      "fontDisplay": "optional (desviacion justificada; verificada a 400 kbps)"
+    },
+    "conversion": {
+      "waMe": 13,
+      "conMensaje": 13,
+      "tel": [
+        "tel:+525514879836"
+      ],
+      "mailto": [
+        "mailto:asck7986@gmail.com"
+      ]
+    },
+    "overflow": {
+      "320": 0,
+      "360": 0,
+      "375": 0,
+      "390": 0,
+      "414": 0,
+      "768": 0,
+      "820": 0,
+      "1180": 0
+    },
+    "e404": {
+      "status": 404,
+      "titulo": "404 — NÁCAR",
+      "tieneVuelta": true
+    },
+    "qaDelRepoContraProduccion": {
+      "comando": "QA_BASE=https://nacar.asck.tech QA_STEP_MS=600 npm run qa",
+      "resultado": "APROBADO en la primera pasada",
+      "exit": 0
+    }
+  },
+  "comparacion_referentes": {
+    "NACAR": {
+      "url": "https://nacar.asck.tech",
+      "lcp390Ms": 1228,
+      "lcp1440Ms": 944,
+      "cls390": 0,
+      "clsTrasRecorrer1440": 0,
+      "cargaInicial390B": 512358,
+      "entradaTotal1440B": 7532992,
+      "pantallas": 31.2,
+      "piezaPinneada": 1,
+      "canvas": 1,
+      "enlacesWaMe": 13,
+      "cambios45": 45,
+      "erroresConsola": 0,
+      "http4xx": 0,
+      "overflow390": 0,
+      "familias": [
+        "Inter Variable",
+        "Cormorant Garamond"
+      ],
+      "interruptorMovimiento": {
+        "txt": "Quitar movimiento",
+        "w": 170,
+        "h": 44,
+        "pressed": "true"
+      }
+    },
+    "UMBRAL": {
+      "url": "https://arquitectura.asck.tech",
+      "lcp390Ms": 672,
+      "lcp1440Ms": 688,
+      "cls390": 0,
+      "clsTrasRecorrer1440": 1.5361,
+      "cargaInicial390B": 5666468,
+      "entradaTotal1440B": 20349673,
+      "pantallas": 38.2,
+      "piezaPinneada": 1,
+      "canvas": 2,
+      "enlacesWaMe": 0,
+      "cambios45": 45,
+      "erroresConsola": 0,
+      "http4xx": 0,
+      "overflow390": 0,
+      "familias": [
+        "Inter Variable",
+        "Cormorant Garamond"
+      ],
+      "interruptorMovimiento": null
+    },
+    "DANZA": {
+      "url": "https://danza.asck.tech",
+      "lcp390Ms": 1192,
+      "lcp1440Ms": 944,
+      "cls390": 0.026,
+      "clsTrasRecorrer1440": 0.0001,
+      "cargaInicial390B": 1156536,
+      "entradaTotal1440B": 2553178,
+      "pantallas": 10.7,
+      "piezaPinneada": 0,
+      "canvas": 1,
+      "enlacesWaMe": 6,
+      "cambios45": 45,
+      "erroresConsola": 0,
+      "http4xx": 0,
+      "overflow390": 0,
+      "familias": [
+        "Patrick",
+        "Caveat"
+      ],
+      "interruptorMovimiento": {
+        "txt": "Pausar movimiento",
+        "w": 99,
+        "h": 44,
+        "pressed": "false"
+      }
+    },
+    "EXCAMORMAR": {
+      "url": "https://excamormar.asck.tech",
+      "lcp390Ms": 2032,
+      "lcp1440Ms": 924,
+      "cls390": 0,
+      "clsTrasRecorrer1440": 0,
+      "cargaInicial390B": 9535257,
+      "entradaTotal1440B": 34811223,
+      "pantallas": 33.7,
+      "piezaPinneada": 0,
+      "canvas": 1,
+      "enlacesWaMe": 0,
+      "cambios45": 45,
+      "erroresConsola": 0,
+      "http4xx": 0,
+      "overflow390": 0,
+      "familias": [
+        "Inter Variable",
+        "Archivo Variable"
+      ],
+      "interruptorMovimiento": {
+        "txt": "Ver el recorrido sin animación",
+        "w": 252,
+        "h": 44,
+        "pressed": null
+      }
+    }
+  },
+  "conclusion_referentes": "NACAR supera a Entre lineas y a Excamormar en todos los ejes medidos y empata tecnicamente con UMBRAL: le gana en CLS (0.0000 contra 1.5361 tras recorrer la pieza), en peso (7.5 MB contra 20.3), en carga inicial movil (512 KB contra 5.67 MB), en fallback con interruptor y en conversion; le pierde en LCP, en identidad tipografica (el par es el suyo) y en variedad de composicion. No lo supera: lo iguala por otro camino."
+}
