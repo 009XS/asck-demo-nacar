@@ -1,0 +1,38 @@
+
+> nacar-dental-landing@1.0.0 qa
+> node scripts/qa.mjs
+
+on 390x844: LCP 3664ms CLS inicial 0 CLS barrido 0 entrada 2462177 B / 2500000 overflow 0px cambios 45 coda 7.67vh
+on 667x375: LCP 852ms CLS inicial 0 CLS barrido 0 entrada 2462177 B / 2500000 overflow 0px cambios 45 coda 14.84vh
+on 768x1024: LCP 828ms CLS inicial 0 CLS barrido 0 entrada 2462177 B / 2500000 overflow 0px cambios 45 coda 6.29vh
+on 1024x768: LCP 876ms CLS inicial 0 CLS barrido 0 entrada 7524239 B / 8000000 overflow 0px cambios 45 coda 6.17vh
+on 1440x900: LCP 1124ms CLS inicial 0 CLS barrido 0 entrada 7524239 B / 8000000 overflow 0px cambios 45 coda 5.88vh
+on 1920x1080: LCP 1024ms CLS inicial 0 CLS barrido 0 entrada 7524239 B / 8000000 overflow 0px cambios 45 coda 5.34vh
+off 390x844: LCP 1180ms CLS inicial 0 CLS barrido 0 entrada 1034880 B / 2500000 overflow 0px cambios - coda -vh
+off 667x375: LCP 944ms CLS inicial 0 CLS barrido 0 entrada 1034880 B / 2500000 overflow 0px cambios - coda -vh
+off 768x1024: LCP 724ms CLS inicial 0 CLS barrido 0 entrada 1034880 B / 2500000 overflow 0px cambios - coda -vh
+off 1024x768: LCP 908ms CLS inicial 0 CLS barrido 0 entrada 1256839 B / 8000000 overflow 0px cambios - coda -vh
+off 1440x900: LCP 728ms CLS inicial 0 CLS barrido 0 entrada 1256839 B / 8000000 overflow 0px cambios - coda -vh
+off 1920x1080: LCP 940ms CLS inicial 0 CLS barrido 0 entrada 1256839 B / 8000000 overflow 0px cambios - coda -vh
+contraste label    on 390x844: min 7.39:1 (cap 2, 11px, umbral 4.5) max 7.59:1
+contraste label    on 1440x900: min 7.40:1 (cap 2, 11px, umbral 4.5) max 7.59:1
+contraste label    off 390x844: min 7.49:1 (cap 5, 11px, umbral 4.5) max 7.78:1
+contraste label    off 1440x900: min 7.64:1 (cap 3, 11px, umbral 4.5) max 7.83:1
+contraste h2       on 390x844: min 4.95:1 (cap 2, 50.7px, umbral 3) max 13.85:1
+contraste h2       on 1440x900: min 5.67:1 (cap 2, 92px, umbral 3) max 13.06:1
+contraste h2       off 390x844: min 6.05:1 (cap 5, 50.7px, umbral 3) max 13.87:1
+contraste h2       off 1440x900: min 6.26:1 (cap 3, 92px, umbral 3) max 12.46:1
+contraste parrafo  on 390x844: min 6.02:1 (cap 6, 16px, umbral 4.5) max 11.18:1
+contraste parrafo  on 1440x900: min 5.90:1 (cap 2, 18px, umbral 4.5) max 11.36:1
+contraste parrafo  off 390x844: min 6.50:1 (cap 4, 16px, umbral 4.5) max 8.91:1
+contraste parrafo  off 1440x900: min 6.79:1 (cap 3, 18px, umbral 4.5) max 11.07:1
+nav 390x844 (pointer: coarse): 1/1 enlaces visibles, 0 por debajo de 44 px, fila 79px, overflow 0px
+nav 820x1180 (pointer: coarse): 1/1 enlaces visibles, 0 por debajo de 44 px, fila 79px, overflow 0px
+nav 1024x768 (pointer: coarse): 5/5 enlaces visibles, 0 por debajo de 44 px, fila 79px, overflow 0px
+nav 1280x800 (pointer: coarse): 5/5 enlaces visibles, 0 por debajo de 44 px, fila 79px, overflow 0px
+nav 1440x900 (pointer: coarse): 5/5 enlaces visibles, 0 por debajo de 44 px, fila 79px, overflow 0px
+LCP 390x844 CPU4x: frío 3664 ms | repeticiones 1076 / 1144 / 1216 ms | mediana 1144 ms
+teclado 1440x900 (modo on): 13/13 enlaces wa.me alcanzados con Tab
+teclado 390x844 (modo on): 13/13 enlaces wa.me alcanzados con Tab
+punteros 1440x900 (modo on): 9/9 CTA de capitulo reciben el clic; 0 tarjetas invisibles clicables
+QA APROBADO: 6 viewports, consola/404/overflow/CLS<0.1/bytes reales/LCP mediana, contraste AA real de etiqueta+titular+parrafo en los 2 modos y los 2 anchos, nav >=44 px con puntero grueso, 13/13 CTA con teclado, 9/9 CTA con raton, >=40 cambios y motion-off.
