@@ -77,7 +77,16 @@ export default function FooterSection() {
             </p>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center gap-4">
+            <a 
+              href="https://dental.asck.tech/admin" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="px-3 py-1.5 bg-emerald-950/60 hover:bg-emerald-900/80 border border-emerald-500/40 rounded text-emerald-300 hover:text-emerald-200 transition-colors inline-flex items-center gap-1.5"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>Portal Clínico (Dentalprinter) ↗</span>
+            </a>
             <a href="#inicio" className="text-nacar-jade-claro hover:text-white transition-colors">Subir al Inicio ↑</a>
             <span>•</span>
             <a href="mailto:asck7986@gmail.com" className="hover:text-white transition-colors">Contacto ASCK</a>
