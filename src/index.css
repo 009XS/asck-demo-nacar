@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #F8FAFC;
+    color: #0F172A;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  h1, h2, h3, .font-headline {
+    font-family: 'Epilogue', sans-serif;
+  }
+
+  .font-mono-ui {
+    font-family: 'Geist', sans-serif;
+  }
+
+  .font-note {
+    font-family: 'Patrick Hand', cursive;
+  }
+}
+
+/* Material Symbols Utility */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Google Stitch Background Gradients */
+.stitch-hero-gradient {
+  background: radial-gradient(120% 120% at 50% 0%, #EFF6FF 0%, #F8FAFC 60%, #FFFFFF 100%);
+}
+
+.stitch-card-gradient {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+}
+
+/* Elegant Highlighters */
+.highlight-mint {
+  background: linear-gradient(104deg, rgba(167,243,208,0) 0.5%, rgba(167,243,208,0.7) 2%, rgba(167,243,208,0.55) 96%, rgba(167,243,208,0) 99%);
+  border-radius: 4px;
+  padding: 0 4px;
+  display: inline;
+}
+
+.highlight-yellow {
+  background: linear-gradient(104deg, rgba(254,240,138,0) 0.5%, rgba(254,240,138,0.7) 2%, rgba(254,240,138,0.6) 96%, rgba(254,240,138,0) 99%);
+  border-radius: 4px;
+  padding: 0 4px;
+  display: inline;
+}
+
+.highlight-pink {
+  background: linear-gradient(104deg, rgba(254,205,211,0) 0.5%, rgba(254,205,211,0.7) 2%, rgba(254,205,211,0.6) 96%, rgba(254,205,211,0) 99%);
+  border-radius: 4px;
+  padding: 0 4px;
+  display: inline;
+}
+
+.highlight-sky {
+  background: linear-gradient(104deg, rgba(186,230,253,0) 0.5%, rgba(186,230,253,0.7) 2%, rgba(186,230,253,0.6) 96%, rgba(186,230,253,0) 99%);
+  border-radius: 4px;
+  padding: 0 4px;
+  display: inline;
+}
+
+/* Refined Subtle Washi Sticker Badge */
+.washi-badge {
+  background-color: #FEF9C3;
+  color: #713F12;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}

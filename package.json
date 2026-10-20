@@ -4,22 +4,26 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --port 5187 --strictPort",
-    "build": "tsc -p tsconfig.json && vite build --configLoader runner",
-    "preview": "vite preview --configLoader runner --port 4187 --strictPort",
-    "typecheck": "tsc -p tsconfig.json",
-    "qa": "node scripts/qa.mjs",
-    "film-check": "node scripts/film-check.mjs"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "@fontsource-variable/inter": "^5.2.5",
-    "@fontsource/cormorant-garamond": "^5.2.5",
-    "gsap": "^3.13.0"
+    "clsx": "^2.1.1",
+    "framer-motion": "^14.4.0",
+    "lucide-react": "^0.475.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^2.5.5"
   },
   "devDependencies": {
-    "playwright": "^1.62.1",
-    "sharp": "^0.35.4",
-    "typescript": "^5.8.3",
-    "vite": "^7.0.0"
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "playwright": "^1.64.1",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "vite": "^6.1.0"
   }
 }
