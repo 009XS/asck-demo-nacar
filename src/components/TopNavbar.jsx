@@ -64,25 +64,11 @@ export default function TopNavbar() {
         {/* Acciones */}
         <div className="flex items-center gap-3">
           {/* Rating Badge Discreto */}
-          <div className="hidden xl:flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EAE5DC]/60 text-xs text-nacar-pizarra">
+          <div className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EAE5DC]/60 text-xs text-nacar-pizarra">
             <Star className="w-3.5 h-3.5 fill-nacar-oro text-nacar-oro" />
             <span className="font-semibold text-nacar-tinta">{flagshipClinic.rating}</span>
             <span className="text-[11px]">({flagshipClinic.reviews} reseñas)</span>
           </div>
-
-          {/* Acceso Directo Sistema Clínico */}
-          <a
-            href="https://dental.asck.tech/admin"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-none border border-nacar-jade/60 hover:border-nacar-jade bg-white/70 hover:bg-white text-nacar-jade text-[11px] font-sans font-semibold tracking-[0.14em] uppercase shadow-xs transition-all"
-            title="Acceso directo al Sistema Clínico Dentalprinter"
-          >
-            <ShieldCheck className="w-3.5 h-3.5 text-nacar-jade" />
-            <span className="hidden sm:inline">Portal Clínico</span>
-            <span className="sm:hidden">Sistema</span>
-            <span className="text-[10px] font-mono opacity-70">↗</span>
-          </a>
 
           {/* Botón WhatsApp Primario */}
           <a
@@ -122,17 +108,6 @@ export default function TopNavbar() {
               </a>
             ))}
           </div>
-
-          {/* Acceso Directo Sistema Clínico en Móvil */}
-          <a
-            href="https://dental.asck.tech/admin"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-nacar-jade text-nacar-porcelana font-sans font-semibold text-xs tracking-[0.16em] uppercase shadow-xs transition-all"
-          >
-            <ShieldCheck className="w-4 h-4" />
-            <span>Acceso al Sistema Clínico ↗</span>
-          </a>
           <div className="pt-2 flex items-center justify-between text-xs text-nacar-pizarra">
             <span className="flex items-center gap-1">
               <MapPin className="w-3.5 h-3.5 text-rose-600" />

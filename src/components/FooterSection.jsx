@@ -66,8 +66,35 @@ export default function FooterSection() {
           </div>
         </div>
 
+        {/* Banner Final de Acceso al Sistema Clínico (Hasta el final de la página) */}
+        <div className="pt-10 pb-2 border-t border-white/10">
+          <div className="bg-[#142924] border border-nacar-jade/40 p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="space-y-1.5 text-center md:text-left">
+              <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-nacar-jade/20 text-nacar-jade-claro text-[10px] font-sans font-semibold uppercase tracking-wider">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                Acceso para Profesionales & Doctores
+              </div>
+              <h3 className="text-white font-sans text-base sm:text-lg font-semibold tracking-wide">
+                Sistema de Gestión Clínica Dentalprinter Suite
+              </h3>
+              <p className="text-slate-400 font-light text-xs max-w-xl">
+                Acceso directo al ERP clínico: odontograma interactivo, agenda multi-doctor, expedientes clínicos y módulo financiero.
+              </p>
+            </div>
+            <a
+              href="https://dental.asck.tech/admin"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-nacar-jade hover:bg-nacar-jade-hover text-nacar-porcelana text-xs font-sans font-semibold tracking-[0.16em] uppercase shadow-md transition-all hover:scale-[1.02]"
+            >
+              <span>Ingresar al Sistema Clínico</span>
+              <span className="text-sm font-mono">↗</span>
+            </a>
+          </div>
+        </div>
+
         {/* Separador y Créditos ASCK Software */}
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-slate-500 text-center md:text-left text-[11px]">
+        <div className="pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-slate-500 text-center md:text-left text-[11px]">
           <div>
             <p className="text-slate-400">
               © {new Date().getFullYear()} NÁCAR · Estudio Dental de Precisión.
@@ -78,15 +105,6 @@ export default function FooterSection() {
           </div>
 
           <div className="flex flex-wrap items-center gap-4">
-            <a 
-              href="https://dental.asck.tech/admin" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="px-3 py-1.5 bg-emerald-950/60 hover:bg-emerald-900/80 border border-emerald-500/40 rounded text-emerald-300 hover:text-emerald-200 transition-colors inline-flex items-center gap-1.5"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span>Portal Clínico (Dentalprinter) ↗</span>
-            </a>
             <a href="#inicio" className="text-nacar-jade-claro hover:text-white transition-colors">Subir al Inicio ↑</a>
             <span>•</span>
             <a href="mailto:asck7986@gmail.com" className="hover:text-white transition-colors">Contacto ASCK</a>
